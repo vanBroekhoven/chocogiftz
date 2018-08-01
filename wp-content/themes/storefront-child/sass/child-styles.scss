@@ -1,0 +1,92 @@
+// body {
+//   background-color: #800080;
+//   color: #349ebb;
+//   p {
+//     text-decoration: underline;
+//     color: inherit;
+//     background-color: red;
+//   }
+// }
+
+// LOREM IPSUM
+
+// Google Fonts
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans|Lato|Open+Sans|Roboto');
+@import url('https://fonts.googleapis.com/css?family=Dr+Sugiyama');
+
+// Variables
+$font-stack: 'Josefin Sans', sans-serif;
+$logo-font: 'Dr Sugiyama', cursive;
+
+// Color variables
+$primary-color: white;
+$secundairy-color: #333333;
+$light-color: #f3f3f3;
+$logo-color: white;  //#F2E7B8
+
+$info-color: red;
+
+body {
+  font: 100% $font-stack;
+  background: $primary-color;
+}
+
+// .site-header {
+//   font: 100% $font-stack;
+//   background-color: $primary-color;
+// }
+
+p.site-description, .site-header, .storefront-handheld-footer-bar {
+    color: $logo-color;
+}
+
+.site-header-cart .cart-contents{
+  color: white;
+}
+
+.site-footer {
+  font: 100% $font-stack;
+  background-color: $light-color;
+}
+
+.woocommerce-info, .woocommerce-noreviews, p.no-comments {
+  background-color: $info-color;
+}
+
+.entry-title {
+  border-bottom: 1px solid black;
+}
+
+.storefront-full-width-content h1:last-child, {
+  border-bottom: 1px solid black;
+}
+
+// .site-branding h1 a {
+//   font: 100% $logo-font;
+//   font-size: 3em;
+//   color: #F8E8A2;
+// }
+//
+.site-title a {
+  color: $logo-color;
+  font: 200% $logo-font;
+  font-size: 3em;
+}
+
+.main-navigation ul li {
+  a {
+    color: white;
+  }
+  a:hover {
+    color: grey;
+  }
+  a:active {
+    color: blue; // DIT MOET NOG ANDERS
+  }
+}
+
+ul.products img {
+    margin-bottom: 1.618em;
+    border: 5px solid #444;
+    border-style: solid;
+}
