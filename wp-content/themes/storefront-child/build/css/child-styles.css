@@ -2,7 +2,11 @@
 @import url("https://fonts.googleapis.com/css?family=Dr+Sugiyama");
 body {
   font: 100% "Josefin Sans", sans-serif;
-  background: white; }
+  background: white;
+  color: #333333; }
+  body p.site-description {
+    color: white;
+    font-size: 2em; }
 
 p.site-description, .site-header, .storefront-handheld-footer-bar {
   color: white; }

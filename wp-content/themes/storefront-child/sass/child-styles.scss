@@ -29,6 +29,11 @@ $info-color: red;
 body {
   font: 100% $font-stack;
   background: $primary-color;
+  color: $secundairy-color;
+  p.site-description {
+    color: $logo-color;
+    font-size: 2em;
+  }
 }
 
 // .site-header {
@@ -81,7 +86,7 @@ p.site-description, .site-header, .storefront-handheld-footer-bar {
     color: grey;
   }
   a:active {
-    color: blue; // DIT MOET NOG ANDERS
+    color: blue; // DIT MOET NOG ANDERS (dat het blijft)
   }
 }
 
