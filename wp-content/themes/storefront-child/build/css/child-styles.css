@@ -5,43 +5,29 @@ body {
   background: white;
   color: #333333; }
   body p.site-description {
+    color: white; }
+  body .site-title a {
     color: white;
-    font-size: 2em; }
-
-p.site-description, .site-header, .storefront-handheld-footer-bar {
-  color: white; }
-
-.site-header-cart .cart-contents {
-  color: white; }
-
-.site-footer {
-  font: 100% "Josefin Sans", sans-serif;
-  background-color: #f3f3f3; }
-
-.woocommerce-info, .woocommerce-noreviews, p.no-comments {
-  background-color: red; }
-
-.entry-title {
-  border-bottom: 1px solid black; }
-
-.storefront-full-width-content h1:last-child {
-  border-bottom: 1px solid black; }
-
-.site-title a {
-  color: white;
-  font: 200% "Dr Sugiyama", cursive;
-  font-size: 3em; }
-
-.main-navigation ul li a {
-  color: white; }
-
-.main-navigation ul li a:hover {
-  color: grey; }
-
-.main-navigation ul li a:active {
-  color: blue; }
-
-ul.products img {
-  margin-bottom: 1.618em;
-  border: 5px solid #444;
-  border-style: solid; }
+    font: 200% "Dr Sugiyama", cursive;
+    font-size: 2.5em; }
+  body .site-header-cart .cart-contents {
+    color: white; }
+  body .site-footer {
+    font: 100% "Josefin Sans", sans-serif;
+    background-color: #f3f3f3; }
+  body .woocommerce-info, body .woocommerce-noreviews, body p.no-comments {
+    background-color: red; }
+  body .main-navigation ul li a {
+    color: white; }
+  body .main-navigation ul li a:hover {
+    color: grey; }
+  body .main-navigation ul li a:active {
+    color: blue; }
+  body ul.products img {
+    margin-bottom: 1.618em;
+    border: 5px solid #444;
+    border-style: solid; }
+  body .entry-title {
+    border-bottom: 1px solid black; }
+  body .storefront-full-width-content h1:last-child {
+    border-bottom: 1px solid black; }
