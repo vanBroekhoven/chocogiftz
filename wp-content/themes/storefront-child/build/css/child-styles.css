@@ -31,3 +31,5 @@ body {
     border-bottom: 1px solid black; }
   body .storefront-full-width-content h1:last-child {
     border-bottom: 1px solid black; }
+  body .storefront-handheld-footer-bar ul li.home > a:before {
+    content: "\f015"; }

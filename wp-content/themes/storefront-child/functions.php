@@ -35,6 +35,11 @@ function jk_remove_handheld_footer_links( $links ) {
 	return $links;
 }
 
+// Function to link home
+function jk_home_link() {
+	echo '<a href="' . esc_url( home_url( '/' ) ) . '">' . __( 'Home' ) . '</a>';
+}
+
 // HOOKS:
 add_action( 'wp_enqueue_scripts', 'storefront_child_scripts' );
 
@@ -43,3 +48,17 @@ add_action( 'wp_enqueue_scripts', 'my_theme_enqueue_styles', PHP_INT_MAX);
 add_action( 'init', 'custom_remove_footer_credit', 10 );
 
 add_filter( 'storefront_handheld_footer_bar_links', 'jk_remove_handheld_footer_links' );
+
+add_filter( 'storefront_handheld_footer_bar_links', 'jk_add_home_link' );
+function jk_add_home_link( $links ) {
+	$new_links = array(
+		'home' => array(
+			'priority' => 10,
+			'callback' => 'jk_home_link',
+		),
+	);
+
+	$links = array_merge( $new_links, $links );
+
+	return $links;
+}
