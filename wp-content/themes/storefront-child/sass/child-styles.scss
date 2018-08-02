@@ -62,3 +62,15 @@ body {
 	content: "\f015";
   }
 }
+
+/* Styles placed here will only apply to screens less than 1000 pixels wide */
+@media only screen and (max-width: 1000px)  {
+  body {
+    .site-branding {
+      .site-title a {
+        font-size: 1.4em;
+        font-weight: 500;
+      }
+    }
+  }
+}
