@@ -43,9 +43,6 @@ body {
     a:hover {
       color: grey;
     }
-    a:active {
-      color: blue; // DIT MOET NOG ANDERS (dat het blijft)
-    }
   }
   ul.products img {
       margin-bottom: 1.618em;
@@ -61,4 +58,8 @@ body {
   .storefront-handheld-footer-bar ul li.home > a:before {
 	content: "\f015";
   }
+}
+
+.site-header ul.menu li.current-menu-item > a {
+  color: purple;
 }
