@@ -18,6 +18,11 @@ body {
   font: 100% $font-stack;
   background: $primary-color;
   color: $secundairy-color;
+  .site-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
   p.site-description {
     color: $primary-color;
   }
