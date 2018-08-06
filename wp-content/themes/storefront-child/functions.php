@@ -4,7 +4,7 @@
 
 // Enqueue child-theme javascript
 function storefront_child_scripts() {
-  wp_enqueue_script( 'extra js', get_stylesheet_directory_uri() . '/js/extra.js');
+  wp_enqueue_script( 'extra js', get_stylesheet_directory_uri() . '/../src/js/extra.js');
 }
 
 // Enqueue child-theme stylesheet

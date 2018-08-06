@@ -4,10 +4,6 @@ body {
   font: 100% "Josefin Sans", sans-serif;
   background: white;
   color: #333333; }
-  body .site-header {
-    position: fixed;
-    top: 0;
-    width: 100%; }
   body p.site-description {
     color: white; }
   body .site-title a {
