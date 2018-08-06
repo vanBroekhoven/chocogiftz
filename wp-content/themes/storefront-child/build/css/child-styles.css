@@ -4,6 +4,10 @@ body {
   font: 100% "Josefin Sans", sans-serif;
   background: white;
   color: #333333; }
+  body .site-header {
+    position: fixed;
+    top: 0;
+    width: 100%; }
   body p.site-description {
     color: white; }
   body .site-title a {
@@ -21,8 +25,6 @@ body {
     color: white; }
   body .main-navigation ul li a:hover {
     color: grey; }
-  body .main-navigation ul li a:active {
-    color: blue; }
   body ul.products img {
     margin-bottom: 1.618em;
     border: 5px solid #444;

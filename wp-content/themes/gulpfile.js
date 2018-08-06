@@ -28,7 +28,7 @@ gulp.task('message', function(){
 // A task that actually does something
 // CSS files maken van SCSS
 gulp.task('sass', function(){
-  gulp.src('scr/scss/**/*.scss')
+  gulp.src('src/scss/**/*.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest('storefront-child/build/css/'))
     .pipe(browserSync.stream());
@@ -36,11 +36,11 @@ gulp.task('sass', function(){
 
 // Watch task
 gulp.task('watch', ['browser-sync','sass'], function() {
-  gulp.watch('scr/scss/**/*.scss', ['sass']);
+  gulp.watch('src/scss/**/*.scss', ['sass']);
 });
 
 // Default taak
 // Maakt automatisch de CSS als er SCSS veranderd
 gulp.task('default', ['browser-sync','sass'], function() {
-  return gulp.watch('scr/scss/**/*.scss', ['sass']);
+  return gulp.watch('src/scss/**/*.scss', ['sass']);
 });
