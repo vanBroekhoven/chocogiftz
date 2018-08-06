@@ -41,9 +41,26 @@ body {
   body .storefront-handheld-footer-bar ul li.home > a:before {
     content: "\f015"; }
   @media screen and (min-width: 768px) {
-    body .site-branding {
-      text-align: center;
-      margin: 0 auto !important;
-      float: none !important; } }
+    body {
+      /*centers the logo*/
+      /* adjusts the width of the main navigation container to accommodate the search box in the same line*/
+      /* positions the search icon properly in the search box*/
+      /*  resizes the search box*/
+      /* places the search box to the left of the cart menu(optional)*/ }
+      body .site-branding {
+        text-align: center;
+        margin: 0 auto !important;
+        float: none !important; }
+      body .woocommerce-active .site-header .main-navigation {
+        width: 50%; }
+      body #masthead .site-search .widget_product_search form:before {
+        top: 1.75em;
+        left: .75em;
+        position: relative; }
+      body #masthead .site-search .widget_product_search input[type=search], body #masthead .site-search .widget_product_search input[type=text] {
+        padding: .5em .5em .5em 2em;
+        line-height: 1; }
+      body .woocommerce-active .site-header .site-search {
+        float: left; } }
 
 /* Styles placed here will only apply to screens less than 1000 pixels wide */

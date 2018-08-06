@@ -62,3 +62,10 @@ function jk_add_home_link( $links ) {
 
 	return $links;
 }
+
+// Move the search bar inline with the main navigation and cart menu
+add_action( 'init', 'jk_remove_storefront_header_search' );
+function jk_remove_storefront_header_search() {
+remove_action( 'storefront_header', 'storefront_product_search', 40 );
+add_action( 'storefront_header', 'storefront_product_search', 55 );
+}
