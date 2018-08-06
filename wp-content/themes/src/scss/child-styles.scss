@@ -18,6 +18,18 @@ body {
   font: 100% $font-stack;
   background: $primary-color;
   color: $secundairy-color;
+  // Sticky-header
+  .site-header {
+	position: fixed;
+	width: 100%;
+	z-index: 1000;
+  }
+  .main-content {
+	padding-top: 400px; /* adjust this to match the height of your header */
+  }
+  .storefront-breadcrumb {
+    padding-top: 300px;
+  }
   p.site-description {
     color: $primary-color;
   }
@@ -58,16 +70,24 @@ body {
   .storefront-handheld-footer-bar ul li.home > a:before {
 	content: "\f015";
   }
+
+  @media screen and (min-width: 768px) {
+  	.site-branding{
+  		text-align: center;
+  		margin: 0 auto !important;
+  		float: none !important;
+  	}
+  }
 }
 
 /* Styles placed here will only apply to screens less than 1000 pixels wide */
-@media only screen and (max-width: 1000px)  {
-  body {
-    .site-branding {
-      .site-title a {
-        font-size: 1.4em;
-        font-weight: 500;
-      }
-    }
-  }
-}
+// @media only screen and (max-width: 1000px)  {
+//   body {
+//     .site-branding {
+//       .site-title a {
+//         font-size: 1.4em;
+//         font-weight: 500;
+//       }
+//     }
+//   }
+// }

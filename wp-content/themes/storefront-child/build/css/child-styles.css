@@ -4,6 +4,15 @@ body {
   font: 100% "Josefin Sans", sans-serif;
   background: white;
   color: #333333; }
+  body .site-header {
+    position: fixed;
+    width: 100%;
+    z-index: 1000; }
+  body .main-content {
+    padding-top: 400px;
+    /* adjust this to match the height of your header */ }
+  body .storefront-breadcrumb {
+    padding-top: 300px; }
   body p.site-description {
     color: white; }
   body .site-title a {
@@ -31,9 +40,10 @@ body {
     border-bottom: 1px solid black; }
   body .storefront-handheld-footer-bar ul li.home > a:before {
     content: "\f015"; }
+  @media screen and (min-width: 768px) {
+    body .site-branding {
+      text-align: center;
+      margin: 0 auto !important;
+      float: none !important; } }
 
 /* Styles placed here will only apply to screens less than 1000 pixels wide */
-@media only screen and (max-width: 1000px) {
-  body .site-branding .site-title a {
-    font-size: 1.4em;
-    font-weight: 500; } }
