@@ -118,6 +118,15 @@ body {
     		padding: .5em .5em .5em 2em;
     		line-height: 1;
     	}
+      /*positioning the main-navigation */
+    	.main-navigation {
+    		text-align: right;
+    		position: fixed;
+    		top: 0;
+    		right: 300px;
+    		padding: 0;
+    		width: auto;
+	    }
   	}
   }
 }

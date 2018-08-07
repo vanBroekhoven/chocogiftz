@@ -60,12 +60,21 @@ body {
           width: 50%; }
         body .woocommerce-active .site-header .site-search {
           float: left; }
-      body #masthead .site-search .widget_product_search form:before {
-        top: 1.75em;
-        left: .75em;
-        position: relative; }
-      body #masthead .site-search .widget_product_search input[type=search], body #masthead .site-search .widget_product_search input[type=text] {
-        padding: .5em .5em .5em 2em;
-        line-height: 1; } }
+      body #masthead .site-search .widget_product_search {
+        /*positioning the main-navigation */ }
+        body #masthead .site-search .widget_product_search form:before {
+          top: 1.75em;
+          left: .75em;
+          position: relative; }
+        body #masthead .site-search .widget_product_search input[type=search], body #masthead .site-search .widget_product_search input[type=text] {
+          padding: .5em .5em .5em 2em;
+          line-height: 1; }
+        body #masthead .site-search .widget_product_search .main-navigation {
+          text-align: right;
+          position: fixed;
+          top: 0;
+          right: 300px;
+          padding: 0;
+          width: auto; } }
 
 /* Styles placed here will only apply to screens less than 1000 pixels wide */
