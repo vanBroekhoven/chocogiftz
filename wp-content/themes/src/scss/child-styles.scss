@@ -18,14 +18,28 @@ body {
   font: 100% $font-stack;
   background: $primary-color;
   color: $secundairy-color;
+
+  // .site-content::after, .site-content::before {
+  //   width: 199%;
+  // }
+
+  // Full width
+  .single-product .product {
+    width: 199%;
+    margin-left:-50%;
+    clear:none;
+    float: left;
+  }
+
   // Sticky-header
   .site-header {
-	position: fixed;
-	width: 100%;
-	z-index: 1000;
+  	position: fixed;
+  	width: 100%;
+  	z-index: 1000;
   }
   .main-content {
-	padding-top: 400px; /* adjust this to match the height of your header */
+  	padding-top: 400px; /* adjust this to match the height of your header */
+    width: 100%;
   }
   .storefront-breadcrumb {
     padding-top: 300px;

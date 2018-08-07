@@ -4,13 +4,19 @@ body {
   font: 100% "Josefin Sans", sans-serif;
   background: white;
   color: #333333; }
+  body .single-product .product {
+    width: 199%;
+    margin-left: -50%;
+    clear: none;
+    float: left; }
   body .site-header {
     position: fixed;
     width: 100%;
     z-index: 1000; }
   body .main-content {
     padding-top: 400px;
-    /* adjust this to match the height of your header */ }
+    /* adjust this to match the height of your header */
+    width: 100%; }
   body .storefront-breadcrumb {
     padding-top: 300px; }
   body p.site-description {
