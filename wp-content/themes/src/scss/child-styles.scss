@@ -92,27 +92,33 @@ body {
   		text-align: center;
   		margin: 0 auto !important;
   		float: none !important;
+      .site-title a {
+        font-size: 1.8em;
+        font-weight: 500;
+      }
   	}
-  	/* adjusts the width of the main navigation container to accommodate the search box in the same line*/
-  	.woocommerce-active .site-header .main-navigation {
-  		width: 50%;
+  	.woocommerce-active .site-header {
+      /* adjusts the width of the main navigation container to accommodate the search box in the same line*/
+      .main-navigation {
+    		width: 50%;
+      }
+      /* places the search box to the left of the cart menu(optional)*/
+      .site-search {
+    		float: left;
+    	}
   	}
   	/* positions the search icon properly in the search box*/
-  	#masthead .site-search .widget_product_search form:before {
-  		top: 1.75em;
-  		left: .75em;
-  		position: relative;
+  	#masthead .site-search .widget_product_search {
+      form:before {
+    		top: 1.75em;
+    		left: .75em;
+    		position: relative;
+      }
+      input[type=search], input[type=text] {
+    		padding: .5em .5em .5em 2em;
+    		line-height: 1;
+    	}
   	}
-  	/*  resizes the search box*/
-  	#masthead .site-search .widget_product_search input[type=search],#masthead .site-search .widget_product_search input[type=text] {
-  		padding: .5em .5em .5em 2em;
-  		line-height: 1;
-  	}
-  	/* places the search box to the left of the cart menu(optional)*/
-  	.woocommerce-active .site-header .site-search {
-  		float: left;
-  	}
-
   }
 }
 
