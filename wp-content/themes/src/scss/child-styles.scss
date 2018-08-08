@@ -74,62 +74,6 @@ body {
 	content: "\f015";
   }
 
-// *******
-  //   @media screen and (min-width: 768px) {
-  //   /*centers the logo*/
-  //   .site-branding{
-  //     text-align: center;
-  //     margin: 0 auto !important;
-  //     float: none !important;
-  //   }
-  //   .woocommerce-active .site-header {
-  //     /* adjusts the width of the main navigation container to accommodate the search box in the same line*/
-  //     .main-navigation {
-  //       width: 50%;
-  //     }
-  //     /* places the search box to the left of the cart menu(optional)*/
-  //     .site-search {
-  //       float: left;
-  //     }
-  //   }
-  //   /* positions the search icon properly in the search box*/
-  //   #masthead {
-  //     /*resizing the logo image */
-  //     .custom-logo-link img {
-  //       width: auto;
-  //       height: 60px;
-  //      }
-  //     .site-search .widget_product_search {
-  //       form:before {
-  //         top: 1.75em;
-  //         left: .75em;
-  //         position: relative;
-  //       }
-  //       input[type=search], input[type=text] {
-  //         padding: .5em .5em .5em 2em;
-  //         line-height: 1;
-  //       }
-  //       /*positioning the main-navigation */
-  //       .primary-navigation {
-  //         text-align: right;
-  //         position: fixed;
-  //         top: 0;
-  //         right: 300px;
-  //         padding: 0;
-  //         width: auto;
-  //         ul li {
-  //           a {
-  //             color: $logo-color;
-  //           }
-  //           a:hover {
-  //             color: grey;
-  //           }
-  //         }
-  //       }
-  //     }
-  //   }
-  // }
-
   @media screen and (min-width: 768px) {
 
   	#masthead {
