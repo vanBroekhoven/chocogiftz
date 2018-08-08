@@ -44,37 +44,55 @@ body {
     content: "\f015"; }
   @media screen and (min-width: 768px) {
     body {
-      /*centers the logo*/
-      /* positions the search icon properly in the search box*/ }
+      /* Center Logo */
+      /*adjusting the width of the main-navigation*/ }
+      body #masthead {
+        /*positioning the main-navigation */
+        /*positioning the logo*/
+        /*positioning the cart-menu */ }
+        body #masthead .main-navigation {
+          position: fixed;
+          float: left;
+          top: 0;
+          width: auto; }
+          body #masthead .main-navigation ul.menu > li > a, body #masthead .main-navigation ul.nav-menu > li > a {
+            padding: 1em 1em; }
+        body #masthead .custom-logo-link {
+          position: fixed;
+          display: inline-block;
+          top: 0;
+          margin: 0;
+          padding: 0;
+          /*resizing the logo image */ }
+          body #masthead .custom-logo-link img {
+            width: auto;
+            height: 40px; }
+        body #masthead .site-header-cart {
+          width: 14% !important;
+          position: fixed !important;
+          top: 0;
+          right: 12%;
+          padding: 0;
+          /*adjusting default margins and paddings*/ }
+          body #masthead .site-header-cart .cart-contents {
+            padding: 1em 0; }
+        body #masthead .site-search .widget_product_search {
+          /* positions the search icon properly in the search box*/
+          /*  resizes the search box*/ }
+          body #masthead .site-search .widget_product_search form:before {
+            top: 1.75em;
+            left: 0.5em;
+            position: relative; }
+          body #masthead .site-search .widget_product_search input[type=search], body #masthead .site-search .widget_product_search input[type=text] {
+            padding: .3em .3em .3em 2em;
+            line-height: 1.5; }
       body .site-branding {
         text-align: center;
         margin: 0 auto !important;
-        float: none !important; }
-        body .site-branding .site-title a {
-          font-size: 1.8em;
-          font-weight: 500; }
-      body .woocommerce-active .site-header {
-        /* adjusts the width of the main navigation container to accommodate the search box in the same line*/
-        /* places the search box to the left of the cart menu(optional)*/ }
-        body .woocommerce-active .site-header .main-navigation {
-          width: 50%; }
-        body .woocommerce-active .site-header .site-search {
-          float: left; }
-      body #masthead .site-search .widget_product_search {
-        /*positioning the main-navigation */ }
-        body #masthead .site-search .widget_product_search form:before {
-          top: 1.75em;
-          left: .75em;
-          position: relative; }
-        body #masthead .site-search .widget_product_search input[type=search], body #masthead .site-search .widget_product_search input[type=text] {
-          padding: .5em .5em .5em 2em;
-          line-height: 1; }
-        body #masthead .site-search .widget_product_search .main-navigation {
-          text-align: right;
-          position: fixed;
-          top: 0;
-          right: 300px;
-          padding: 0;
-          width: auto; } }
+        float: none !important;
+        margin-bottom: 1em;
+        display: inline-block; }
+      body .woocommerce-active .site-header .main-navigation {
+        width: 50%; } }
 
 /* Styles placed here will only apply to screens less than 1000 pixels wide */
