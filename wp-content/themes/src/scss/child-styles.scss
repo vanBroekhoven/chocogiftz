@@ -1,8 +1,10 @@
 // Google Fonts
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans|Lato|Open+Sans|Roboto');
 @import url('https://fonts.googleapis.com/css?family=Dr+Sugiyama');
+@import url('https://fonts.googleapis.com/css?family=Karla');
 
 // Variables
+$font-scotch: 'Karla', sans-serif;
 $font-stack: 'Josefin Sans', sans-serif;
 $logo-font: 'Dr Sugiyama', cursive;
 
@@ -15,7 +17,7 @@ $logo-color: #F2E7B8;
 $info-color: red;
 
 body {
-  font: 100% $font-stack;
+  font: 100% $font-scotch;
   background: $primary-color;
   color: $secundairy-color;
 
@@ -153,8 +155,8 @@ body {
   } // end media screen
 } // end body
 
-/* Styles placed here will only apply to screens less than 1000 pixels wide */
-// @media only screen and (max-width: 1000px)  {
+/* Styles placed here will only apply to screens less than 768 pixels wide */
+// @media only screen and (max-width: 768px)  {
 //   body {
 //     .site-branding {
 //       .site-title a {
@@ -164,3 +166,16 @@ body {
 //     }
 //   }
 // }
+
+.handheld-navigation .menu  {
+  // Stijl the primary menu items of the Toggle-menu (Mobile version)
+  .main__link a {
+    font-size: 1.5rem;
+    line-height: 0.5rem;
+    color: purple;
+  }
+  // Stijl the secundairy menu items of the Toggle-menu (Mobile version)
+  .secundairy__link a {
+    color: green;
+  }
+}

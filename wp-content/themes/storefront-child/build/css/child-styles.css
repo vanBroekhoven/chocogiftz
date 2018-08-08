@@ -1,7 +1,8 @@
 @import url("https://fonts.googleapis.com/css?family=Josefin+Sans|Lato|Open+Sans|Roboto");
 @import url("https://fonts.googleapis.com/css?family=Dr+Sugiyama");
+@import url("https://fonts.googleapis.com/css?family=Karla");
 body {
-  font: 100% "Josefin Sans", sans-serif;
+  font: 100% "Karla", sans-serif;
   background: white;
   color: #333333; }
   body .site-header {
@@ -95,4 +96,11 @@ body {
       body .woocommerce-active .site-header .main-navigation {
         width: 50%; } }
 
-/* Styles placed here will only apply to screens less than 1000 pixels wide */
+/* Styles placed here will only apply to screens less than 768 pixels wide */
+.handheld-navigation .menu .main__link a {
+  font-size: 1.5rem;
+  line-height: 0.5rem;
+  color: purple; }
+
+.handheld-navigation .menu .secundairy__link a {
+  color: green; }
