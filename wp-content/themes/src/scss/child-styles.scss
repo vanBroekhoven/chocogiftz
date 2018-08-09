@@ -21,64 +21,64 @@ body {
   background: $primary-color;
   color: $secundairy-color;
 
-  // Sticky-header
-  .site-header {
-  	position: fixed;
-  	width: 100%;
-  	z-index: 1000;
-    top: 0;
-  }
-  .main-content {
-  	padding-top: 400px; /* adjust this to match the height of your header */
-    width: 100%;
-  }
-  .storefront-breadcrumb {
-    padding-top: 300px;
-  }
-  p.site-description {
-    color: $primary-color;
-  }
-  .site-title a {
-    color: $primary-color;
-    font: 200% $logo-font;
-    font-size: 2.5em;
-  }
-  .site-header-cart .cart-contents{
-    color: $primary-color;
-  }
-  .site-footer {
-    font: 100% $font-stack;
-    background-color: $light-color;
-  }
-  .woocommerce-info, .woocommerce-noreviews, p.no-comments {
-    background-color: $info-color;
-  }
-  .main-navigation ul li {
-    a {
-      color: white;
-    }
-    a:hover {
-      color: grey;
-    }
-  }
-  ul.products img {
-      margin-bottom: 1.618em;
-      border: 5px solid #444;
-      border-style: solid;
-  }
-  .entry-title {
-    border-bottom: 1px solid black;
-  }
-  .storefront-full-width-content h1:last-child, {
-    border-bottom: 1px solid black;
-  }
-  .storefront-handheld-footer-bar ul li.home > a:before {
-	content: "\f015";
-  }
-
   @media screen and (min-width: 768px) {
 
   	#masthead {
+
+      // Sticky-header
+      .site-header {
+        position: fixed;
+        width: 100%;
+        z-index: 1000;
+        top: 0;
+      }
+      .main-content {
+        padding-top: 400px; /* adjust this to match the height of your header */
+        width: 100%;
+      }
+      .storefront-breadcrumb {
+        padding-top: 300px;
+      }
+      p.site-description {
+        color: $primary-color;
+      }
+      .site-title a {
+        color: $primary-color;
+        font: 200% $logo-font;
+        font-size: 2.5em;
+      }
+      .site-header-cart .cart-contents{
+        color: $primary-color;
+      }
+      .site-footer {
+        font: 100% $font-stack;
+        background-color: $light-color;
+      }
+      .woocommerce-info, .woocommerce-noreviews, p.no-comments {
+        background-color: $info-color;
+      }
+      .main-navigation ul li {
+        a {
+          color: white;
+        }
+        a:hover {
+          color: grey;
+        }
+      }
+      ul.products img {
+          margin-bottom: 1.618em;
+          border: 5px solid #444;
+          border-style: solid;
+      }
+      .entry-title {
+        border-bottom: 1px solid black;
+      }
+      .storefront-full-width-content h1:last-child, {
+        border-bottom: 1px solid black;
+      }
+      .storefront-handheld-footer-bar ul li.home > a:before {
+      content: "\f015";
+      }
 
       /*positioning the main-navigation */
       .main-navigation {
@@ -153,7 +153,6 @@ body {
       width: 50%;
     }
   } // end media screen
-} // end body
 
 /* Styles placed here will only apply to screens less than 768 pixels wide */
 // @media only screen and (max-width: 768px)  {
@@ -167,30 +166,42 @@ body {
 //   }
 // }
 
-.handheld-navigation .menu  {
-  // Style the primary menu items of the Toggle-menu (Mobile version)
-  .main__link a {
-    font-size: 1.5rem;
-    line-height: 0.5rem;
-  }
-  // Style the secundairy menu items of the Toggle-menu (Mobile version)
-  .secundairy__link a {
-    //
-  }
-  // Style
-}
+  .site-header {
 
-#menu-item-131 {
-  padding-top: 1.6em;
-}
-// Add horizantol line to split menu-sections:
-#menu-item-448 {
-  border-bottom: 1px solid $logo-color;
-  padding: 0 0 2em;
-  margin-bottom: 2em;
-}
-#menu-item-135 {
-  border-bottom: 1px solid $logo-color;
-  padding: 0 0 2em;
-  margin-bottom: 1.5em;
-}
+    .handheld-navigation {
+      color: white;
+      
+      .menu  {
+        // Style the primary menu items of the Toggle-menu (Mobile version)
+        .main__link a {
+          font-size: 1.5rem;
+          line-height: 0.5rem;
+        }
+        // Style the secundairy menu items of the Toggle-menu (Mobile version)
+        .secundairy__link a {
+          //
+        }
+        // Style the links to information pages
+        .information__item a {
+          color: grey;
+        }
+      }
+    }
+  } // end site-header (width < 768px)
+
+  #menu-item-131 {
+    padding-top: 1.6em;
+  }
+  // Add horizantol line to split menu-sections:
+  #menu-item-448 {
+    border-bottom: 1px solid $logo-color;
+    padding: 0 0 2em;
+    margin-bottom: 2em;
+  }
+  #menu-item-135 {
+    border-bottom: 1px solid $logo-color;
+    padding: 0 0 2em;
+    margin-bottom: .8em;
+  }
+
+} // end body

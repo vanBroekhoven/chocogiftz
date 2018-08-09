@@ -24,14 +24,20 @@ function custom_remove_footer_credit () {
 // function custom_storefront_credit() --> Replaced by javascript
 
 // Remove the link "my-account" in handheld device 'Big Icon Menu'
-function jk_remove_handheld_footer_links( $links ) {
-	unset( $links['my-account'] );
-	return $links;
-}
+// function jk_remove_handheld_footer_links( $links ) {
+// 	unset( $links['my-account'] );
+// 	return $links;
+// }
+//
+// // Function to link home
+// function jk_home_link() {
+// 	echo '<a href="' . esc_url( home_url( '/' ) ) . '">' . __( 'Home' ) . '</a>';
+// }
 
-// Function to link home
-function jk_home_link() {
-	echo '<a href="' . esc_url( home_url( '/' ) ) . '">' . __( 'Home' ) . '</a>';
+add_action( 'init', 'jk_remove_storefront_handheld_footer_bar' );
+
+function jk_remove_storefront_handheld_footer_bar() {
+  remove_action( 'storefront_footer', 'storefront_handheld_footer_bar', 999 );
 }
 
 // HOOKS:
@@ -57,9 +63,9 @@ function jk_add_home_link( $links ) {
 	return $links;
 }
 
-// Move the search bar inline with the main navigation and cart menu
-add_action( 'init', 'jk_remove_storefront_header_search' );
-function jk_remove_storefront_header_search() {
-remove_action( 'storefront_header', 'storefront_product_search', 40 );
-add_action( 'storefront_header', 'storefront_product_search', 55 );
-}
+// // Move the search bar inline with the main navigation and cart menu
+// add_action( 'init', 'jk_remove_storefront_header_search' );
+// function jk_remove_storefront_header_search() {
+// remove_action( 'storefront_header', 'storefront_product_search', 40 );
+// add_action( 'storefront_header', 'storefront_product_search', 55 );
+// }

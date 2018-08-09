@@ -4,45 +4,8 @@
 body {
   font: 100% "Karla", sans-serif;
   background: white;
-  color: #333333; }
-  body .site-header {
-    position: fixed;
-    width: 100%;
-    z-index: 1000;
-    top: 0; }
-  body .main-content {
-    padding-top: 400px;
-    /* adjust this to match the height of your header */
-    width: 100%; }
-  body .storefront-breadcrumb {
-    padding-top: 300px; }
-  body p.site-description {
-    color: white; }
-  body .site-title a {
-    color: white;
-    font: 200% "Dr Sugiyama", cursive;
-    font-size: 2.5em; }
-  body .site-header-cart .cart-contents {
-    color: white; }
-  body .site-footer {
-    font: 100% "Josefin Sans", sans-serif;
-    background-color: #f3f3f3; }
-  body .woocommerce-info, body .woocommerce-noreviews, body p.no-comments {
-    background-color: red; }
-  body .main-navigation ul li a {
-    color: white; }
-  body .main-navigation ul li a:hover {
-    color: grey; }
-  body ul.products img {
-    margin-bottom: 1.618em;
-    border: 5px solid #444;
-    border-style: solid; }
-  body .entry-title {
-    border-bottom: 1px solid black; }
-  body .storefront-full-width-content h1:last-child {
-    border-bottom: 1px solid black; }
-  body .storefront-handheld-footer-bar ul li.home > a:before {
-    content: "\f015"; }
+  color: #333333;
+  /* Styles placed here will only apply to screens less than 768 pixels wide */ }
   @media screen and (min-width: 768px) {
     body {
       /* Center Logo */
@@ -51,6 +14,44 @@ body {
         /*positioning the main-navigation */
         /*positioning the logo*/
         /*positioning the cart-menu */ }
+        body #masthead .site-header {
+          position: fixed;
+          width: 100%;
+          z-index: 1000;
+          top: 0; }
+        body #masthead .main-content {
+          padding-top: 400px;
+          /* adjust this to match the height of your header */
+          width: 100%; }
+        body #masthead .storefront-breadcrumb {
+          padding-top: 300px; }
+        body #masthead p.site-description {
+          color: white; }
+        body #masthead .site-title a {
+          color: white;
+          font: 200% "Dr Sugiyama", cursive;
+          font-size: 2.5em; }
+        body #masthead .site-header-cart .cart-contents {
+          color: white; }
+        body #masthead .site-footer {
+          font: 100% "Josefin Sans", sans-serif;
+          background-color: #f3f3f3; }
+        body #masthead .woocommerce-info, body #masthead .woocommerce-noreviews, body #masthead p.no-comments {
+          background-color: red; }
+        body #masthead .main-navigation ul li a {
+          color: white; }
+        body #masthead .main-navigation ul li a:hover {
+          color: grey; }
+        body #masthead ul.products img {
+          margin-bottom: 1.618em;
+          border: 5px solid #444;
+          border-style: solid; }
+        body #masthead .entry-title {
+          border-bottom: 1px solid black; }
+        body #masthead .storefront-full-width-content h1:last-child {
+          border-bottom: 1px solid black; }
+        body #masthead .storefront-handheld-footer-bar ul li.home > a:before {
+          content: "\f015"; }
         body #masthead .main-navigation {
           position: fixed;
           float: left;
@@ -95,21 +96,20 @@ body {
         display: inline-block; }
       body .woocommerce-active .site-header .main-navigation {
         width: 50%; } }
-
-/* Styles placed here will only apply to screens less than 768 pixels wide */
-.handheld-navigation .menu .main__link a {
-  font-size: 1.5rem;
-  line-height: 0.5rem; }
-
-#menu-item-131 {
-  padding-top: 1.6em; }
-
-#menu-item-448 {
-  border-bottom: 1px solid #F2E7B8;
-  padding: 0 0 2em;
-  margin-bottom: 2em; }
-
-#menu-item-135 {
-  border-bottom: 1px solid #F2E7B8;
-  padding: 0 0 2em;
-  margin-bottom: 1.5em; }
+  body .site-header .handheld-navigation {
+    color: white; }
+    body .site-header .handheld-navigation .menu .main__link a {
+      font-size: 1.5rem;
+      line-height: 0.5rem; }
+    body .site-header .handheld-navigation .menu .information__item a {
+      color: grey; }
+  body #menu-item-131 {
+    padding-top: 1.6em; }
+  body #menu-item-448 {
+    border-bottom: 1px solid #F2E7B8;
+    padding: 0 0 2em;
+    margin-bottom: 2em; }
+  body #menu-item-135 {
+    border-bottom: 1px solid #F2E7B8;
+    padding: 0 0 2em;
+    margin-bottom: .8em; }
