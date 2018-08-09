@@ -1,6 +1,6 @@
 <?php
 
-// FUNCTIONS:
+// FUNCTIONS://
 
 // Enqueue child-theme javascript
 function storefront_child_scripts() {
@@ -17,17 +17,11 @@ function my_theme_enqueue_styles() {
 // Remove credit in footer
 function custom_remove_footer_credit () {
     remove_action( 'storefront_footer', 'storefront_credit', 20 );
-    add_action( 'storefront_footer', 'custom_storefront_credit', 20 );
+    //add_action( 'storefront_footer', 'custom_storefront_credit', 20 );
 }
 
 // Put Copyright 'current-year' in footer
-function custom_storefront_credit() {
-	?>
-	<div class="site-info">
-		&copy; <?php echo get_bloginfo( 'name' ) . ' ' . get_the_date( 'Y' ); ?>
-	</div><!-- .site-info -->
-	<?php
-}
+// function custom_storefront_credit() --> Replaced by javascript
 
 // Remove the link "my-account" in handheld device 'Big Icon Menu'
 function jk_remove_handheld_footer_links( $links ) {

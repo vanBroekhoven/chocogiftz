@@ -168,14 +168,29 @@ body {
 // }
 
 .handheld-navigation .menu  {
-  // Stijl the primary menu items of the Toggle-menu (Mobile version)
+  // Style the primary menu items of the Toggle-menu (Mobile version)
   .main__link a {
     font-size: 1.5rem;
     line-height: 0.5rem;
-    color: purple;
   }
-  // Stijl the secundairy menu items of the Toggle-menu (Mobile version)
+  // Style the secundairy menu items of the Toggle-menu (Mobile version)
   .secundairy__link a {
-    color: green;
+    //
   }
+  // Style
+}
+
+#menu-item-131 {
+  padding-top: 1.6em;
+}
+// Add horizantol line to split menu-sections:
+#menu-item-448 {
+  border-bottom: 1px solid $logo-color;
+  padding: 0 0 2em;
+  margin-bottom: 2em;
+}
+#menu-item-135 {
+  border-bottom: 1px solid $logo-color;
+  padding: 0 0 2em;
+  margin-bottom: 1.5em;
 }

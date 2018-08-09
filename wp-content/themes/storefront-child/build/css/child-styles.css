@@ -99,8 +99,17 @@ body {
 /* Styles placed here will only apply to screens less than 768 pixels wide */
 .handheld-navigation .menu .main__link a {
   font-size: 1.5rem;
-  line-height: 0.5rem;
-  color: purple; }
+  line-height: 0.5rem; }
 
-.handheld-navigation .menu .secundairy__link a {
-  color: green; }
+#menu-item-131 {
+  padding-top: 1.6em; }
+
+#menu-item-448 {
+  border-bottom: 1px solid #F2E7B8;
+  padding: 0 0 2em;
+  margin-bottom: 2em; }
+
+#menu-item-135 {
+  border-bottom: 1px solid #F2E7B8;
+  padding: 0 0 2em;
+  margin-bottom: 1.5em; }
