@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 4.9.x - Development - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-07-31 07:46:25+0000\n"
+"PO-Revision-Date: 2018-08-06 12:43:13+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -120,13 +120,13 @@ msgstr "Test de nieuwe editor vandaag nog."
 msgid "Screenshot from the Gutenberg interface"
 msgstr "Schermafbeelding van de Gutenberg interface"
 
-#: wp-admin/includes/dashboard.php:1682
-msgid "A new, modern publishing experience is coming soon."
-msgstr "Een nieuwe moderne manier van publiceren komt binnenkort."
-
 #: wp-admin/includes/dashboard.php:1684
 msgid "Take your words, media, and layout in new directions with Gutenberg, the WordPress editor we're currently building."
 msgstr "Ga een nieuwe kant op met je woorden, media en layout met Gutenberg, de WordPress editor die op dit moment door ons ontwikkeld wordt."
+
+#: wp-admin/includes/dashboard.php:1682
+msgid "A new, modern publishing experience is coming soon."
+msgstr "Binnenkort komt er een nieuwe, moderne manier van publiceren."
 
 #: wp-admin/includes/template.php:1779
 msgid "Privacy Policy Page"
