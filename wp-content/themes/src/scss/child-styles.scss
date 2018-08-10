@@ -66,109 +66,6 @@ body {
   content: "\f015";
   }
 
-  @media screen and (min-width: 768px) {
-
-    // .storefront-breadcrumb {
-    //   padding-top: 300px;
-    // }
-
-    // Sticky-header
-  	#masthead {
-      position: fixed !important;
-      // Sticky-header
-      .site-header {
-        position: fixed;
-        width: 100%;
-        z-index: 1000;
-        top: 0;
-      }
-      /*positioning the main-navigation */
-      .main-navigation {
-    		text-align: right;
-    		position: fixed;
-        float:left;
-    		top: 0;
-    		right: 500px;
-    		width: auto;
-        ul.menu>li>a, ul.nav-menu>li>a {
-          padding: 1em 1em;
-        }
-    	}
-
-    	/*positioning the logo*/
-      .custom-logo-link {
-    		position: fixed !important;
-        display: inline-block;
-    		top: 0;
-    		margin: 0;
-    		padding: 0;
-        /*resizing the logo image */
-        img {
-      		width: auto;
-      		height: 40px;
-      	}
-    	}
-
-  	   /*positioning the cart-menu */
-      .site-header-cart {
-      	width: 14% !important;
-      	position: fixed !important;
-      	top: 0;
-      	right: 12%;
-      	padding: 0;
-        /*adjusting default margins and paddings*/
-        .cart-contents {
-            padding:1em 0;
-        }
-      }
-      .site-search {
-        // Remove site-search from header
-        //display:none;
-        position: fixed !important;
-        .widget_product_search {
-          /* positions the search icon properly in the search box*/
-        	form:before {
-        		top: 1.75em;
-        		left: 0.5em;
-        		position: relative;
-        	}
-        	/*  resizes the search box*/
-        	input[type=search], input[type=text] {
-        		padding: .3em .3em .3em 2em;
-        		line-height: 1.5;
-      	  }
-        }
-      }
-
-    } // end masthead
-
-    /* Center Logo */
-    // .site-branding{
-    //   text-align: center;
-    //   margin: 0 auto !important;
-    //   float: none !important;
-    //   margin-bottom: 1em;
-    //   display: inline-block;
-    // }
-
-    /*adjusting the width of the main-navigation*/
-    .woocommerce-active .site-header .main-navigation {
-      width: 50%;
-    }
-  } // end media screen
-
-/* Styles placed here will only apply to screens less than 768 pixels wide */
-// @media only screen and (max-width: 768px)  {
-//   body {
-//     .site-branding {
-//       .site-title a {
-//         font-size: 1.4em;
-//         font-weight: 500;
-//       }
-//     }
-//   }
-// }
-
   .site-header {
 
     .handheld-navigation {
@@ -208,3 +105,42 @@ body {
   }
 
 } // end body
+
+
+@media screen and (min-width: 768px) {
+	.site-branding{
+		text-align: center;
+		margin: 0 auto !important;
+		float: none !important;
+	}
+  /*adjusting the width of the main-navigation*/
+  .woocommerce-active .site-header .main-navigation {
+  	width: 50%;
+  }
+  /*centers the logo*/
+	.site-branding{
+		text-align: center;
+		margin: 0 auto !important;
+		float: none !important;
+	}
+	/* adjusts the width of the main navigation container to accommodate the search box in the same line*/
+	.woocommerce-active .site-header .main-navigation {
+		width: 50%;
+	}
+	/* positions the search icon properly in the search box*/
+	#masthead .site-search .widget_product_search form:before {
+		top: 1.75em;
+		left: .75em;
+		position: relative;
+	}
+	/*  resizes the search box*/
+	#masthead .site-search .widget_product_search input[type=search],#masthead .site-search .widget_product_search input[type=text] {
+		padding: .5em .5em .5em 2em;
+		line-height: 1;
+	}
+	/* places the search box to the left of the cart menu(optional)*/
+	.woocommerce-active .site-header .site-search {
+		float: left;
+	}
+
+}

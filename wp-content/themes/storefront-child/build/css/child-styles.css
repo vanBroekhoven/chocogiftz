@@ -4,8 +4,7 @@
 body {
   font: 100% "Karla", sans-serif;
   background: white;
-  color: #333333;
-  /* Styles placed here will only apply to screens less than 768 pixels wide */ }
+  color: #333333; }
   body .main-content {
     padding-top: 400px;
     /* adjust this to match the height of your header */
@@ -37,62 +36,6 @@ body {
     border-bottom: 1px solid black; }
   body .storefront-handheld-footer-bar ul li.home > a:before {
     content: "\f015"; }
-  @media screen and (min-width: 768px) {
-    body {
-      /* Center Logo */
-      /*adjusting the width of the main-navigation*/ }
-      body #masthead {
-        position: fixed !important;
-        /*positioning the main-navigation */
-        /*positioning the logo*/
-        /*positioning the cart-menu */ }
-        body #masthead .site-header {
-          position: fixed;
-          width: 100%;
-          z-index: 1000;
-          top: 0; }
-        body #masthead .main-navigation {
-          text-align: right;
-          position: fixed;
-          float: left;
-          top: 0;
-          right: 500px;
-          width: auto; }
-          body #masthead .main-navigation ul.menu > li > a, body #masthead .main-navigation ul.nav-menu > li > a {
-            padding: 1em 1em; }
-        body #masthead .custom-logo-link {
-          position: fixed !important;
-          display: inline-block;
-          top: 0;
-          margin: 0;
-          padding: 0;
-          /*resizing the logo image */ }
-          body #masthead .custom-logo-link img {
-            width: auto;
-            height: 40px; }
-        body #masthead .site-header-cart {
-          width: 14% !important;
-          position: fixed !important;
-          top: 0;
-          right: 12%;
-          padding: 0;
-          /*adjusting default margins and paddings*/ }
-          body #masthead .site-header-cart .cart-contents {
-            padding: 1em 0; }
-        body #masthead .site-search {
-          position: fixed !important; }
-          body #masthead .site-search .widget_product_search {
-            /* positions the search icon properly in the search box*/
-            /*  resizes the search box*/ }
-            body #masthead .site-search .widget_product_search form:before {
-              top: 1.75em;
-              left: 0.5em;
-              position: relative; }
-            body #masthead .site-search .widget_product_search input[type=search], body #masthead .site-search .widget_product_search input[type=text] {
-              padding: .3em .3em .3em 2em;
-              line-height: 1.5; }
-      body .woocommerce-active .site-header .main-navigation {
-        width: 50%; } }
   body .site-header .handheld-navigation .menu {
     color: white; }
     body .site-header .handheld-navigation .menu .main__link a {
@@ -110,3 +53,32 @@ body {
     border-bottom: 1px solid #F2E7B8;
     padding: 0 0 2em;
     margin-bottom: .8em; }
+
+@media screen and (min-width: 768px) {
+  .site-branding {
+    text-align: center;
+    margin: 0 auto !important;
+    float: none !important; }
+  /*adjusting the width of the main-navigation*/
+  .woocommerce-active .site-header .main-navigation {
+    width: 50%; }
+  /*centers the logo*/
+  .site-branding {
+    text-align: center;
+    margin: 0 auto !important;
+    float: none !important; }
+  /* adjusts the width of the main navigation container to accommodate the search box in the same line*/
+  .woocommerce-active .site-header .main-navigation {
+    width: 50%; }
+  /* positions the search icon properly in the search box*/
+  #masthead .site-search .widget_product_search form:before {
+    top: 1.75em;
+    left: .75em;
+    position: relative; }
+  /*  resizes the search box*/
+  #masthead .site-search .widget_product_search input[type=search], #masthead .site-search .widget_product_search input[type=text] {
+    padding: .5em .5em .5em 2em;
+    line-height: 1; }
+  /* places the search box to the left of the cart menu(optional)*/
+  .woocommerce-active .site-header .site-search {
+    float: left; } }
