@@ -1,0 +1,2 @@
+<?php !defined('ABSPATH') && exit; ?>
+"<dl data-hookr=\"true\">    \n    <dt>Tag<\/dt>\n    <dd>storefront_header<\/dd>\n            <dt>Invoker<\/dt>\n    <dd>\n        <p><strong>\/wp-content\/themes\/storefront-child\/header.php<\/strong> (45)<\/p>\n        <pre>do_action( 'storefront_header' ); ?><\/pre>\n    <\/dd>\n        <dt>Description<\/dt>\n    <dd><p>Functions hooked into storefront_header action\n<\/p><\/dd>\n        <dt>Value<\/dt>\n    <dd><pre><span class=\"val\">NULL<\/span><\/pre><\/dd>\n<\/dl>\n"
