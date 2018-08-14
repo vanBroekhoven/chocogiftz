@@ -1,6 +1,6 @@
 <?php
 
-// FUNCTIONS://
+// FUNCTIONS:////
 
 // Enqueue child-theme javascript
 function storefront_child_scripts() {
@@ -84,5 +84,5 @@ function jk_add_home_link( $links ) {
 add_action( 'init', 'jk_remove_storefront_header_search' );
 function jk_remove_storefront_header_search() {
   remove_action( 'storefront_header', 'storefront_product_search', 	40 );
-  add_action( 'storefront_header', 'storefront_product_search', 	70 );
+  add_action( 'storefront_header', 'storefront_product_search', 	55 );
 }
