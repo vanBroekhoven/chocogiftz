@@ -104,55 +104,67 @@ body {
     margin-bottom: .8em;
   }
 
+  // Delete 'Aanbieding!'
+  .onsale {
+    //display: none;
+    background-color: #FFFFFF;
+    border-color: #FF0000 !important;
+    color: #FF0000 !important;
+  }
+
+  /* Only Desktop-viewv*/
+  @media screen and (min-width: 768px) {
+  	.site-branding{
+      text-align: center;
+  		margin: 0 auto !important;
+  		float: none !important;
+  	}
+
+    .page-title {
+      border-bottom:1px solid $secundairy-color;
+    }
+
+    // Adjusting the width of the main-navigation
+    .woocommerce-active .site-header .main-navigation {
+    	width: 50%;
+    }
+
+    #masthead .custom-logo-link img {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 15px;
+      width: auto;
+      height: 60px;
+    }
+
+  	// Positions the search icon properly in the search box
+  	#masthead .site-search .widget_product_search form:before {
+  		top: 1.75em;
+  		left: .5em;
+  		position: relative;
+  	}
+  	/*  resizes the search box*/
+  	#masthead .site-search .widget_product_search input[type=search],#masthead .site-search .widget_product_search input[type=text] {
+  		padding: .5em .5em .5em 2em;
+  		line-height: 1;
+  	}
+
+    // Positioning the cart-menu
+    #masthead .site-header-cart {
+      margin-left: 15px;
+      // width: 14% !important;
+      // position: fixed !important;
+      // top: 0;
+      // right: 12%;
+      // padding: 0;
+    }
+
+    // Places the search box to the left of the cart menu(optional)
+    .woocommerce-active .site-header .site-search {
+      float: left;
+    }
+
+  } // end Desktop view
+
 } // end body
-
-
-@media screen and (min-width: 768px) {
-	.site-branding{
-    text-align: center;
-		margin: 0 auto !important;
-		float: none !important;
-	}
-
-  /*adjusting the width of the main-navigation*/
-  .woocommerce-active .site-header .main-navigation {
-  	width: 50%;
-  }
-
-  #masthead .custom-logo-link img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 15px;
-    width: auto;
-    height: 60px;
-  }
-
-	/* positions the search icon properly in the search box*/
-	#masthead .site-search .widget_product_search form:before {
-		top: 1.75em;
-		left: .5em;
-		position: relative;
-	}
-	/*  resizes the search box*/
-	#masthead .site-search .widget_product_search input[type=search],#masthead .site-search .widget_product_search input[type=text] {
-		padding: .5em .5em .5em 2em;
-		line-height: 1;
-	}
-
-  /*positioning the cart-menu */
-#masthead .site-header-cart {
-  margin-left: 15px;
-  // width: 14% !important;
-  // position: fixed !important;
-  // top: 0;
-  // right: 12%;
-  // padding: 0;
-}
-
-  /* places the search box to the left of the cart menu(optional)*/
-  .woocommerce-active .site-header .site-search {
-    float: left;
-  }
-
-}
