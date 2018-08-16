@@ -24,6 +24,8 @@ body {
     background-color: red; }
   body .main-navigation ul li a {
     color: white; }
+  body .main-navigation ul li #menu-item-449 a {
+    color: red; }
   body .main-navigation ul li a:hover {
     color: grey; }
   body ul.products img {
@@ -87,4 +89,6 @@ body {
   #masthead .site-header-cart {
     margin-left: 15px; }
   .woocommerce-active .site-header .site-search {
-    float: left; } }
+    float: left; }
+  #menu-item-449 a {
+    color: #F2E7B8; } }

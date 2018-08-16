@@ -43,14 +43,20 @@ body {
   .woocommerce-info, .woocommerce-noreviews, p.no-comments {
     background-color: $info-color;
   }
+
   .main-navigation ul li {
     a {
       color: white;
+    }
+    #menu-item-449 a {
+      color: red;
     }
     a:hover {
       color: grey;
     }
   }
+
+
   ul.products img {
       margin-bottom: 1.618em;
       border: 5px solid #444;
@@ -115,6 +121,7 @@ body {
     left: 10px;
     text-align: center;
   }
+  
 } // end body
 
   /* Only Desktop-viewv*/
@@ -168,6 +175,10 @@ body {
     // Places the search box to the left of the cart menu(optional)
     .woocommerce-active .site-header .site-search {
       float: left;
+    }
+
+    #menu-item-449 a {
+      color: $logo-color;
     }
 
   } // end Desktop view

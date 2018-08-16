@@ -86,3 +86,14 @@ function jk_remove_storefront_header_search() {
   remove_action( 'storefront_header', 'storefront_product_search', 	40 );
   add_action( 'storefront_header', 'storefront_product_search', 	55 );
 }
+
+/**
+ * Change Quick View text in WooCommerce via ..
+ *
+ */
+//  function custom_quick_view()
+//  {
+//   //$output = 'MyOutput';
+//    return __( 'Yes!', 'woo-quick-view');
+//  }
+// add_filter('woocommerce_loop_quick_view_button','custom_quick_view', 10);

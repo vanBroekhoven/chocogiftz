@@ -1,0 +1,913 @@
+# Translation of Plugins - YITH WooCommerce Badge Management - Development (trunk) in Dutch
+# This file is distributed under the same license as the Plugins - YITH WooCommerce Badge Management - Development (trunk) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2018-03-07 11:31:31+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: nl\n"
+"Project-Id-Version: Plugins - YITH WooCommerce Badge Management - Development (trunk)\n"
+
+#: plugin-fw/templates/fields/select-buttons.php:33
+msgid "Deselect All"
+msgstr "Alles uitvinken"
+
+#: plugin-fw/templates/fields/select-buttons.php:26
+msgid "Select All"
+msgstr "Alles selecteren"
+
+#: plugin-fw/templates/fields/icons.php:58
+msgid "Set Default"
+msgstr "Instellen als standaard"
+
+#: plugin-fw/templates/fields/ajax-products.php:16
+msgid "Search Product"
+msgstr "Zoek product"
+
+#: plugin-fw/templates/fields/ajax-posts.php:58
+msgid "Search Posts"
+msgstr "Zoek post"
+
+#: class.yith-wcbm-admin.php:342
+msgid "Number"
+msgstr "Nummer"
+
+#: class.yith-wcbm-admin.php:341
+msgid "Slider"
+msgstr "Slider"
+
+#: class.yith-wcbm-admin.php:186
+msgid "Duplicate"
+msgstr "Dupliceren"
+
+#: class.yith-wcbm-admin.php:185
+msgid "Make a duplicate from this badge"
+msgstr "Maak een duplicaat van deze badge"
+
+#: class.yith-wcbm-admin.php:144
+msgid "Copy"
+msgstr "Kopieëren"
+
+#: class.yith-wcbm-admin.php:139
+msgid "Error while duplicating badge: badge #%s not found"
+msgstr "Error tijdens het dupliceren van de badge: badge #%s niet gevonden"
+
+#: class.yith-wcbm-admin.php:129
+msgid "No badge to duplicate has been supplied!"
+msgstr "Er is geen badge geleverd om te dupliceren."
+
+#: plugin-fw/licence/templates/panel/activation/activation-panel.php:97
+msgid "Club Subscription"
+msgstr "Club subscriptie"
+
+#: plugin-fw/licence/lib/yit-licence.php:686
+msgid "Current product is not included in your YITH Club Subscription key"
+msgstr "Huidig product is niet inbegrepen in je YITH Club Subscription key"
+
+#: plugin-fw/lib/yit-plugin-panel.php:330
+#: plugin-fw/lib/yit-plugin-panel.php:333
+msgid "How to install premium version"
+msgstr "Hoe installeer ik de premium versie "
+
+#. Author URI of the plugin/theme
+msgid "http://yithemes.com/"
+msgstr "http://yithemes.com/"
+
+#. Author of the plugin/theme
+msgid "YITHEMES"
+msgstr "YITHEMES"
+
+#. Description of the plugin/theme
+msgid "YITH WooCommerce Badge Management allows you to create custom badge for every product."
+msgstr "YITH WooCommerce Badge Management biedt je de mogelijkheid om een eigen badge voor elk product te maken."
+
+#. Plugin URI of the plugin/theme
+msgid "https://yithemes.com/themes/plugins/yith-woocommerce-badges-management/"
+msgstr "https://yithemes.com/themes/plugins/yith-woocommerce-badges-management/"
+
+#. Plugin Name of the plugin/theme
+msgid "YITH WooCommerce Badge Management"
+msgstr "YITH WooCommerce Badge Management"
+
+#: plugin-options/settings-options.php:34
+msgid "Select if you want to hide WooCommerce default \"On Sale\" badge when the product has another badge"
+msgstr "Selecteer als je de WooCommerce default \"In de aanbieding\" badge wilt verbergen, als het product een andere badge heeft"
+
+#: plugin-options/settings-options.php:32
+msgid "Product Badge overrides default on sale badge"
+msgstr "Product badge overschrijft default in uitverkoop badge"
+
+#: plugin-options/settings-options.php:26
+msgid "Select to hide the badges in sidebars and widgets."
+msgstr "Selecteer om de badges te verbergen in sidebars en widgets."
+
+#: plugin-options/settings-options.php:24
+msgid "Hide in sidebars"
+msgstr "Verberg in sidebars"
+
+#: plugin-options/settings-options.php:18
+msgid "Select to hide the default Woocommerce \"On sale\" badge."
+msgstr "Selecteer om de default WooCommerce \"In de aanbieding\" badge te verbergen"
+
+#: plugin-options/settings-options.php:16
+msgid "Hide \"On sale\" badge"
+msgstr "Verberg \"In de aanbieding\" badge"
+
+#: plugin-options/settings-options.php:8
+msgid "General Options"
+msgstr "Algemene opties"
+
+#: plugin-fw/templates/panel/woocommerce/woocommerce-form.php:17
+msgid "Reset Defaults"
+msgstr "Reset standaard instellingen"
+
+#: plugin-fw/templates/fields/upload.php:19
+msgid "Reset"
+msgstr "Reset"
+
+#: plugin-fw/templates/fields/sidebars.php:52
+msgid "Right Sidebar"
+msgstr "Rechter sidebar"
+
+#: plugin-fw/templates/fields/sidebars.php:39
+msgid "Left Sidebar"
+msgstr "Linker sidebar"
+
+#: plugin-fw/templates/fields/sidebars.php:41
+#: plugin-fw/templates/fields/sidebars.php:54
+msgid "Choose a sidebar"
+msgstr "Kies een sidebar"
+
+#: plugin-fw/templates/fields/sidebars.php:25
+msgid "Right sidebar"
+msgstr "Rechter sidebar"
+
+#: plugin-fw/templates/fields/sidebars.php:28
+#: plugin-fw/templates/fields/sidebars.php:31
+msgid "No sidebar"
+msgstr "Geen sidebar"
+
+#: plugin-fw/templates/fields/sidebars.php:22
+msgid "Left sidebar"
+msgstr "Linker sidebar"
+
+#: plugin-fw/templates/fields/image-gallery.php:39
+msgid "Delete"
+msgstr "Verwijder"
+
+#: plugin-fw/templates/fields/image-gallery.php:39
+msgid "Add images"
+msgstr "Afbeeldingen toevoegen"
+
+#: plugin-fw/templates/fields/image-gallery.php:39
+msgid "Add to gallery"
+msgstr "Voeg toe aan gallerij"
+
+#: plugin-fw/templates/fields/image-gallery.php:39
+msgid "Add Images to Gallery"
+msgstr "Afbeeldingen toevoegen aan gallerij"
+
+#: plugin-fw/templates/fields/image-gallery.php:34
+#: plugin-fw/templates/fields/image-gallery.php:39
+msgid "Delete image"
+msgstr "Verwijder afbeelding"
+
+#: plugin-fw/templates/metaboxes/types/icon-list.php:92
+msgid "(Default: <i %s></i> )"
+msgstr "(Default: <i %s></i> )"
+
+#: plugin-fw/templates/metaboxes/types/icon-list.php:90
+msgid "(Default: %s <img src=\"%s\"/>)"
+msgstr "(Default: %s <img src=\"%s\"/>)"
+
+#: plugin-fw/templates/fields/customtabs.php:106
+msgid "Do you want to remove the custom tab?"
+msgstr "Wil je de aangepaste tab verwijderen?"
+
+#: plugin-fw/templates/fields/customtabs.php:65
+msgid "Add custom product tab"
+msgstr "Voeg een aangepaste producttab toe"
+
+#: plugin-fw/templates/fields/customtabs.php:53
+#: plugin-fw/templates/fields/customtabs.php:95
+msgid "Content of the tab. (HTML is supported)"
+msgstr "Inhoud van de tab. (HTML support)"
+
+#: plugin-fw/templates/fields/customtabs.php:52
+#: plugin-fw/templates/fields/customtabs.php:94
+msgid "Value"
+msgstr "Waarde"
+
+#: plugin-fw/templates/fields/customtabs.php:28
+msgid "Expand all"
+msgstr "Alles uitbreiden"
+
+#: plugin-fw/templates/fields/customtabs.php:28
+msgid "Close all"
+msgstr "Alles sluiten"
+
+#: plugin-fw/templates/metaboxes/types/icon-list.php:76
+msgid "Image preview"
+msgstr "Voorbeeld van afbeelding"
+
+#: plugin-fw/templates/fields/upload.php:18
+#: plugin-fw/templates/metaboxes/types/icon-list.php:70
+#: plugin-fw/templates/panel/woocommerce/woocommerce-upload.php:40
+msgid "Upload"
+msgstr "Upload"
+
+#: plugin-fw/templates/fields/customtabs.php:37
+#: plugin-fw/templates/fields/customtabs.php:81
+msgid "Remove"
+msgstr "Verwijder"
+
+#: plugin-fw/licence/templates/panel/activation/activation-panel.php:228
+msgid "Renew license"
+msgstr "Licentie verlengen"
+
+#: plugin-fw/licence/templates/panel/activation/activation-panel.php:226
+msgid "Order again"
+msgstr "Nogmaals bestellen"
+
+#: plugin-fw/licence/templates/panel/activation/activation-panel.php:190
+msgid "Expired"
+msgstr "Verlopen"
+
+#: plugin-fw/licence/templates/panel/activation/activation-panel.php:160
+msgid "Banned"
+msgstr "Verbannen"
+
+#: plugin-fw/licence/templates/panel/activation/activation-panel.php:147
+#: plugin-fw/licence/templates/panel/activation/activation-panel.php:204
+msgid "Renew"
+msgstr "Hernieuwen"
+
+#: plugin-fw/licence/templates/panel/activation/activation-panel.php:142
+msgid "Deactivate"
+msgstr "Deactiveren"
+
+#: plugin-fw/licence/templates/panel/activation/activation-panel.php:126
+msgid "%1s out of %2s"
+msgstr "%1s van de %2s"
+
+#: plugin-fw/licence/templates/panel/activation/activation-panel.php:101
+msgid "License Actions"
+msgstr "Licentie acties"
+
+#: plugin-fw/licence/templates/panel/activation/activation-panel.php:95
+msgid "Remaining"
+msgstr "Overgebleven"
+
+#: plugin-fw/licence/templates/panel/activation/activation-panel.php:92
+#: plugin-fw/licence/templates/panel/activation/activation-panel.php:201
+msgid "Expires"
+msgstr "Verlopen"
+
+#: plugin-fw/licence/templates/panel/activation/activation-panel.php:86
+#: plugin-fw/licence/templates/panel/activation/activation-panel.php:164
+#: plugin-fw/licence/templates/panel/activation/activation-panel.php:194
+msgid "Product Name"
+msgstr "Productnaam"
+
+#: plugin-fw/licence/templates/panel/activation/activation-panel.php:80
+msgid "Activated"
+msgstr "Geactiveerd"
+
+#: plugin-fw/licence/templates/panel/activation/activation-panel.php:61
+msgid "Activate"
+msgstr "Activeren"
+
+#: plugin-fw/licence/templates/panel/activation/activation-panel.php:42
+msgid "Product to activate"
+msgid_plural "Products to activate"
+msgstr[0] "Product om te activeren"
+msgstr[1] "Producten om te activeren"
+
+#: plugin-fw/licence/templates/panel/activation/activation-panel.php:29
+msgid "Update license information"
+msgstr "Update licentie informatie"
+
+#: plugin-fw/licence/templates/panel/activation/activation-panel.php:27
+msgid "Have you updated your licenses? Have you asked for an extension? Update information concerning your products."
+msgstr "Heb je je licenties bijgewerkt? Heb je om een verlenging gevraagd? Update informatie over je producten."
+
+#: plugin-fw/licence/templates/panel/activation/activation-panel.php:23
+msgid "Yithemes License Activation"
+msgstr "Yithemes licentie activatie"
+
+#: plugin-fw/licence/lib/yit-theme-licence.php:163
+msgid ""
+"If you have purchased one of our products before 27 January 2015, you can benefit from support and updates (the services offered with the license)\n"
+"                    until 27 January 2016 and you do not have to purchase it again to get a new license key, because, before this date, your license used to be activated automatically by our system.\n"
+"                    After 27 January 2016, instead, if you want to benefit from support and updates you have to buy a new license and activate it through the license key you will be\n"
+"                    provided with and that you can find in your YIThemes account, in section \"My licenses\"."
+msgstr ""
+"Als je vóór 27 januari 2015 een van onze producten hebt gekocht, kun je profiteren van ondersteuning en updates (de diensten die worden aangeboden met de licentie)\n"
+"                     tot 27 januari 2016 en je hoeft het niet opnieuw aan te schaffen om een nieuwe licentiesleutel te krijgen, want vóór deze datum werd uw licentie automatisch door ons systeem geactiveerd.\n"
+"                     Na 27 januari 2016, in plaats daarvan, als je wilt profiteren van ondersteuning en updates, moet je een nieuwe licentie kopen en deze activeren via de licentiesleutel.\n"
+"                     meegeleverd en die je kunt vinden in uw YIThemes-account, in het gedeelte \"Mijn licenties\"."
+
+#: plugin-fw/licence/lib/yit-theme-licence.php:159
+msgid "I cannot find the license key for activating the theme I have bought some time ago. Where can I find it?"
+msgstr "Ik kan de licentiesleutel niet vinden voor het activeren van het thema dat ik een tijdje geleden heb gekocht. Waar kan ik dit vinden?"
+
+#: plugin-fw/licence/lib/yit-theme-licence.php:117
+#: plugin-fw/licence/lib/yit-theme-licence.php:118
+msgid "%s"
+msgstr "%s"
+
+#: plugin-fw/licence/lib/yit-plugin-licence.php:67
+#: plugin-fw/licence/lib/yit-plugin-licence.php:68
+#: plugin-fw/licence/lib/yit-theme-licence.php:69
+#: plugin-fw/licence/lib/yit-theme-licence.php:70
+#: plugin-fw/licence/lib/yit-theme-licence.php:109
+#: plugin-fw/licence/lib/yit-theme-licence.php:110
+msgid "License Activation"
+msgstr "Licentie activatie"
+
+#: plugin-fw/licence/lib/yit-licence.php:688
+msgid "License key deactivated for website"
+msgstr "Licentiesleutel gedeactiveerd voor website"
+
+#: plugin-fw/licence/lib/yit-licence.php:687
+msgid "License successfully activated"
+msgstr "Licentie succesvol geactiveerd"
+
+#: plugin-fw/licence/lib/yit-licence.php:687
+msgid "Great"
+msgstr "Super!"
+
+#: plugin-fw/licence/lib/yit-licence.php:685
+msgid "License key has been banned"
+msgstr "Licentiesleutel is verbannen"
+
+#: plugin-fw/licence/lib/yit-licence.php:684
+msgid "License key has expired"
+msgstr "Licentiesleutel is verlopen"
+
+#: plugin-fw/licence/lib/yit-licence.php:683
+msgid "Invalid security key"
+msgstr "Ongeldige licentiesleutel"
+
+#: plugin-fw/licence/lib/yit-licence.php:682
+msgid "Invalid instance ID"
+msgstr "Ongeldige nstance ID"
+
+#: plugin-fw/licence/lib/yit-licence.php:681
+msgid "Maximum number of activations exceeded"
+msgstr "Maximaal aantal activeringen overschreden"
+
+#: plugin-fw/licence/lib/yit-licence.php:680
+msgid "Software has been deactivated"
+msgstr "Software is gedeactiveerd"
+
+#: plugin-fw/licence/lib/yit-licence.php:679
+msgid "Invalid license key"
+msgstr "Ongeldige licentiesleutel"
+
+#: plugin-fw/licence/lib/yit-licence.php:678
+msgid "Invalid Request"
+msgstr "Ongeldig verzoek"
+
+#: plugin-fw/licence/lib/yit-licence.php:192
+msgid "Are you sure you want to deactivate the license for current site?"
+msgstr "Weet je zeker dat je de licentie voor de huidige site wilt deactiveren?"
+
+#: plugin-fw/licence/lib/yit-licence.php:191
+#: plugin-fw/licence/templates/panel/activation/activation-panel.php:89
+#: plugin-fw/licence/templates/panel/activation/activation-panel.php:167
+#: plugin-fw/licence/templates/panel/activation/activation-panel.php:198
+msgid "License Key"
+msgstr "Licentiesleutel"
+
+#: plugin-fw/licence/lib/yit-licence.php:190
+#: plugin-fw/licence/templates/panel/activation/activation-panel.php:88
+#: plugin-fw/licence/templates/panel/activation/activation-panel.php:166
+#: plugin-fw/licence/templates/panel/activation/activation-panel.php:197
+msgid "Email"
+msgstr "E-mail"
+
+#: plugin-fw/licence/lib/yit-licence.php:189
+msgid "Unable to contact the remote server, please try again later. Thanks!"
+msgstr "Kan geen verbinding maken met de externe server. Probeer het later opnieuw. Bedankt!"
+
+#: plugin-fw/licence/lib/yit-licence.php:188
+msgid "%s and %s fields cannot be empty"
+msgstr "%s en %s fields mogen niet leeg blijven"
+
+#: plugin-fw/licence/lib/yit-licence.php:187
+msgctxt "%s = field name"
+msgid "%s field cannot be empty"
+msgstr "%s veld mag niet leeg blijven"
+
+#: plugin-fw/lib/yit-upgrade.php:585
+msgid "Update Plugin"
+msgstr "Plugin updaten"
+
+#: plugin-fw/lib/yit-upgrade.php:578
+msgid "You do not have sufficient permissions to update the plugins for this site."
+msgstr "Je hebt onvoldoende machtigingen om de plugins van deze site bij te werken."
+
+#: plugin-fw/lib/yit-upgrade.php:574
+msgid "You can't update the plugins for this site."
+msgstr "Je kunt de plugins voor deze site niet bijwerken."
+
+#: plugin-fw/lib/yit-upgrade.php:501
+msgid "There is a new version of %1$s available. <a href=\"%2$s\" class=\"thickbox yit-changelog-button open-plugin-details-modal\" title=\"%3$s\">View version %4$s details</a> or <a href=\"%5$s\">update now</a>."
+msgstr "Er is een nieuwe versie van%1$s beschikbaar. <a href=\"%2$s\" class=\"thickbox yit-changelog-button open-plugin-details-modal\" title=\"%3$s\"> Bekijk details van versie%4$s </a> of <a href=\"%5$s\"> nu bijwerken </a>."
+
+#: plugin-fw/lib/yit-upgrade.php:499
+msgid "There is a new version of %1$s available. <a href=\"%2$s\" class=\"thickbox yit-changelog-button open-plugin-details-modal\" title=\"%3$s\">View version %4$s details</a>. <em>Automatic update is unavailable for this plugin, please <a href=\"%5$s\" title=\"License activation\">activate</a> your copy of %6s.</em>"
+msgstr "Er is een nieuwe versie van%1$s beschikbaar. <a href=\"%2$s\" class=\"thickbox yit-changelog-button open-plugin-details-modal\" title=\"%3$s\"> Bekijk details van versie%4$s </a>. <em> Automatische update is niet beschikbaar voor deze plug-in, <a href=\"%5$s\" title=\"Licentie-activering\"> activeer </a> je exemplaar van% 6s. </em>"
+
+#: plugin-fw/lib/yit-upgrade.php:497
+msgid "There is a new version of %1$s available. <a href=\"%2$s\" class=\"thickbox yit-changelog-button open-plugin-details-modal\" title=\"%3$s\">View version %4$s details</a>. <em>You have to activate the plugin on a single site of the network to benefit from automatic updates.</em>"
+msgstr "Er is een nieuwe versie van%1$s beschikbaar. <a href=\"%2$s\" class=\"thickbox yit-changelog-button open-plugin-details-modal\" title=\"%3$s\"> Bekijk details van versie%4$s </a>. <em> Je moet de plugin op één enkele site van het netwerk activeren om te profiteren van automatische updates. </em>"
+
+#: plugin-fw/lib/yit-upgrade.php:495
+msgid "There is a new version of %1$s available. <a href=\"%2$s\" class=\"thickbox yit-changelog-button open-plugin-details-modal\" title=\"%3$s\">View version %4$s details</a>."
+msgstr "Er is een nieuwe versie van%1$s beschikbaar. <a href=\"%2$s\" class=\"thickbox yit-changelog-button open-plugin-details-modal\" title=\"%3$s\"> Bekijk details van versie%4$s</a>."
+
+#: plugin-fw/lib/yit-upgrade.php:335
+msgid "Could not create Temporary file."
+msgstr "Kon tijdelijk bestand niet maken."
+
+#: plugin-fw/lib/yit-upgrade.php:322
+msgid "Invalid URL Provided."
+msgstr "Ongeldige URL ingevoerd"
+
+#: plugin-fw/lib/yit-upgrade.php:288
+msgid "YIThemes Repository"
+msgstr "YIThemes Repository"
+
+#: plugin-fw/lib/yit-upgrade.php:188
+msgid "Update now."
+msgstr "Nu updaten."
+
+#: plugin-fw/lib/yit-upgrade.php:187
+msgid "please <a href=\"%activate_link%\">activate</a> your copy of %plugin_name%."
+msgstr "<a href=\"%activate_link%\"> activeer </a> je exemplaar van% plugin_name%."
+
+#: plugin-fw/lib/yit-upgrade.php:186
+msgid "Automatic update is unavailable for this plugin,"
+msgstr "Automatische update is niet beschikbaar voor deze plugin,"
+
+#: plugin-fw/lib/yit-upgrade.php:185
+msgid "View version %latest% details."
+msgstr "Bekijk %laatste% details van versie."
+
+#: plugin-fw/lib/yit-upgrade.php:184
+msgid "There is a new version of %plugin_name% available."
+msgstr "Er is een nieuwe versie van %plugin_name% beschikbaar."
+
+#: plugin-fw/lib/yit-pointers.php:85
+msgid ""
+"From now on, you can find the option panel of YITH plugins in YITH Plugins menu.\n"
+"                                    Every time one of our plugins is added, a new entry will be added to this menu.\n"
+"                                    For example, after the update, plugin options (such as for YITH WooCommerce Wishlist, YITH WooCommerce Ajax Search, etc.)\n"
+"                                    will be moved from previous location to YITH Plugins tab."
+msgstr ""
+"Vanaf nu kun je het optiepaneel van YITH-plug-ins vinden in het menu YITH-plug-ins.\n"
+"                                     Telkens wanneer een van onze plugins wordt toegevoegd, wordt een nieuw item aan dit menu toegevoegd.\n"
+"                                     Bijvoorbeeld na de update, plug-in opties (zoals voor YITH WooCommerce Wishlist, YITH WooCommerce Ajax Search, etc.)\n"
+"                                     wordt verplaatst van de vorige locatie naar het tabblad YITH-plug-ins."
+
+#: plugin-fw/lib/yit-pointers.php:84
+msgid "Plugins Upgraded"
+msgstr "Upgraded plugins"
+
+#: plugin-fw/lib/yit-pointers.php:74 plugin-fw/lib/yit-pointers.php:90
+msgid "and"
+msgstr "en"
+
+#: plugin-fw/lib/yit-pointers.php:73 plugin-fw/lib/yit-pointers.php:89
+msgid "Discover all our plugins available on:"
+msgstr "Ontdek al onze plugins beschikbaar op:"
+
+#: plugin-fw/lib/yit-pointers.php:71
+msgid ""
+"From now on, you can find all plugin options in YITH Plugins menu.\n"
+"                                     Plugin customization settings will be available as a new entry in YITH Plugins menu."
+msgstr ""
+"Vanaf nu kun je alle pluginopties vinden in het menu YITH plugins.\n"
+"                                      Aanpassingsinstellingen voor plugins zijn beschikbaar als nieuw item in het menu YITH plugins."
+
+#: plugin-fw/lib/yit-pointers.php:70
+msgid "Plugins Activated"
+msgstr "Geactiveerde plugins"
+
+#: plugin-fw/lib/yit-plugin-panel.php:534
+msgid "Sorting successful."
+msgstr "Sorteren succesvol."
+
+#: plugin-fw/lib/yit-plugin-panel.php:533
+msgid "Sorry, import is disabled."
+msgstr "Sorry, importeren is uitgeschakeld."
+
+#: plugin-fw/lib/yit-plugin-panel.php:532
+msgid "The added file is not valid."
+msgstr "Het toegevoegde bestand is niet geldig."
+
+#: plugin-fw/lib/yit-plugin-panel.php:531
+msgid "An error has occurred during import. Please try again."
+msgstr "Er is een fout opgetreden tijdens het importeren. Probeer het opnieuw."
+
+#: plugin-fw/lib/yit-plugin-panel.php:530
+msgid "Database imported correctly."
+msgstr "Database correct geïmporteerd."
+
+#: plugin-fw/lib/yit-plugin-panel.php:528
+#: plugin-fw/lib/yit-plugin-panel.php:529
+msgid "Element updated correctly."
+msgstr "Element correct bijgewerkt."
+
+#: plugin-fw/lib/yit-plugin-panel.php:527
+msgid "Element deleted correctly."
+msgstr "Element correct verwijderd."
+
+#: plugin-fw/lib/yit-plugin-panel.php:526
+msgid "Settings reset"
+msgstr "Instellingen reset"
+
+#: plugin-fw/lib/yit-plugin-panel.php:525
+msgid "Settings saved"
+msgstr "Instellingen bewaard"
+
+#: plugin-fw/lib/yit-plugin-panel.php:524
+msgid "The element you have entered already exists. Please, enter another name."
+msgstr "Het element dat je hebt ingevoerd, bestaat al. Voer alstjeblieft een andere naam in."
+
+#: plugin-fw/lib/yit-plugin-panel.php:390
+#: plugin-fw/lib/yit-plugin-subpanel.php:161
+#: plugin-fw/templates/panel/woocommerce/woocommerce-form.php:18
+msgid "Are you sure?"
+msgstr "Weet je het zeker?"
+
+#: plugin-fw/lib/yit-plugin-panel.php:389
+#: plugin-fw/lib/yit-plugin-subpanel.php:160
+msgid "Reset to default"
+msgstr "Resetten naar standaard instellingen"
+
+#: plugin-fw/lib/yit-plugin-panel.php:387
+#: plugin-fw/lib/yit-plugin-subpanel.php:158
+#: plugin-fw/templates/panel/woocommerce/woocommerce-form.php:14
+msgid "If you continue with this action, you will reset all options in this page."
+msgstr "Als je doorgaat met deze actie, stel je alle opties op deze pagina opnieuw in."
+
+#: plugin-fw/lib/yit-plugin-panel.php:384
+#: plugin-fw/lib/yit-plugin-subpanel.php:155
+#: plugin-fw/templates/panel/woocommerce/woocommerce-form.php:11
+msgid "Save Changes"
+msgstr "Bewerkingen opslaan"
+
+#: plugin-fw/lib/yit-plugin-panel.php:72
+msgid "Plugin Settings"
+msgstr "Plugin instellingen"
+
+#: plugin-fw/lib/yit-plugin-panel-wc.php:382
+msgid "The changes you have made will be lost if you leave this page."
+msgstr "De wijzigingen die je hebt aangebracht, gaan verloren als je deze pagina verlaat."
+
+#: plugin-fw/lib/yit-cpt-unlimited.php:1633
+msgid "Upload multiple files"
+msgstr "Upload meerdere bestanden"
+
+#: plugin-fw/lib/yit-cpt-unlimited.php:1631
+msgid "Add %s from images"
+msgstr "%s Toevoegen vanuit afbeeldingen"
+
+#: plugin-fw/lib/yit-cpt-unlimited.php:1482
+#: plugin-fw/templates/fields/customtabs.php:46
+#: plugin-fw/templates/fields/customtabs.php:89
+msgid "Name"
+msgstr "Naam"
+
+#: plugin-fw/lib/yit-cpt-unlimited.php:1475
+msgid "Show frontend of the %s"
+msgstr "Toon frontend van de %s"
+
+#: plugin-fw/lib/yit-cpt-unlimited.php:1222
+#: plugin-fw/lib/yit-cpt-unlimited.php:1235
+msgid "Quick links"
+msgstr "Quick links"
+
+#: plugin-fw/lib/yit-cpt-unlimited.php:1130
+msgid "layout settings"
+msgstr "opmaak instellingen"
+
+#: plugin-fw/lib/yit-cpt-unlimited.php:1089
+msgid "Layout for single page of this portfolio"
+msgstr "Layout voor enkele pagina van deze portfolio"
+
+#: plugin-fw/lib/yit-cpt-unlimited.php:1088
+msgid "Single layout"
+msgstr "Enkele layout"
+
+#: plugin-fw/lib/yit-cpt-unlimited.php:1083
+msgid "Set univocal name for each category page URL."
+msgstr "Stel een eenduidige naam in voor de URL van elke categoriepagina."
+
+#: plugin-fw/lib/yit-cpt-unlimited.php:1082
+msgid "Taxonomy Rewrite"
+msgstr "Taxonomy herschrijven"
+
+#: plugin-fw/lib/yit-cpt-unlimited.php:1077
+msgid "If you want to use categories in the portfolio, set a name for taxonomy. Name should be a slug (must not contain capital letters nor spaces) and must not be more than 32 characters long (database structure restriction)."
+msgstr "Als je categorieën in de portfolio wilt gebruiken, stel je een naam in voor taxonomie. Naam moet een slug zijn (mag geen hoofdletters of spaties bevatten) en mag niet langer zijn dan 32 tekens (beperking van databasestructuur)."
+
+#: plugin-fw/lib/yit-cpt-unlimited.php:1076
+msgid "Taxonomy"
+msgstr "Taxonomy"
+
+#: plugin-fw/lib/yit-cpt-unlimited.php:1071
+msgid "Set a label in plural (title of portfolio if empty)"
+msgstr "Stel een label in meervoud in (titel van portfolio indien leeg)"
+
+#: plugin-fw/lib/yit-cpt-unlimited.php:1070
+msgid "Label in Plural"
+msgstr "Label in meervoud"
+
+#: plugin-fw/lib/yit-cpt-unlimited.php:1065
+msgid "Set a label in singular (title of portfolio if empty)"
+msgstr "Stel een label in enkelvoud in (titel van portfolio indien leeg)"
+
+#: plugin-fw/lib/yit-cpt-unlimited.php:1064
+msgid "Label in Singular"
+msgstr "Label in enkelvoud"
+
+#: plugin-fw/lib/yit-cpt-unlimited.php:1059
+msgid "Univocal identification name in the URL for each product (slug from post if empty)"
+msgstr "Uniforme identificatienaam in de URL voor elk product (slug van post als deze leeg is)"
+
+#: plugin-fw/lib/yit-cpt-unlimited.php:1058
+msgid "Rewrite"
+msgstr "Herschrijven"
+
+#: plugin-fw/lib/yit-cpt-unlimited.php:1052
+msgid "Layout for this %s"
+msgstr "Layout voor deze %s"
+
+#: plugin-fw/lib/yit-cpt-unlimited.php:1051
+msgid "Type"
+msgstr "Type"
+
+#: plugin-fw/lib/yit-cpt-unlimited.php:1042
+msgid "%s Settings"
+msgstr "%s Instellingen"
+
+#: plugin-fw/lib/yit-cpt-unlimited.php:724
+msgid "Categories"
+msgstr "Categorieën"
+
+#: plugin-fw/lib/yit-cpt-unlimited.php:635
+msgid "Category"
+msgstr "Categorie"
+
+#: plugin-fw/lib/yit-cpt-unlimited.php:634
+msgid "New Category Name"
+msgstr "Nieuwe categorienaam"
+
+#: plugin-fw/lib/yit-cpt-unlimited.php:633
+msgid "Add New Category"
+msgstr "Nieuwe categorie toevoegen"
+
+#: plugin-fw/lib/yit-cpt-unlimited.php:632
+msgid "Update Category"
+msgstr "Categorie updaten"
+
+#: plugin-fw/lib/yit-cpt-unlimited.php:631
+msgid "Edit Category"
+msgstr "Bewerk categorie"
+
+#: plugin-fw/lib/yit-cpt-unlimited.php:630
+msgid "Parent Category:"
+msgstr "Hoofd categorie:"
+
+#: plugin-fw/lib/yit-cpt-unlimited.php:629
+msgid "Parent Category"
+msgstr "Hoofd categorie"
+
+#: plugin-fw/lib/yit-cpt-unlimited.php:628
+msgid "All Categories"
+msgstr "Alle categorieën"
+
+#: plugin-fw/lib/yit-cpt-unlimited.php:627
+#: plugin-fw/templates/fields/ajax-terms.php:57
+msgid "Search Categories"
+msgstr "Zoek categorieën"
+
+#: plugin-fw/lib/yit-cpt-unlimited.php:626
+msgctxt "taxonomy singular name"
+msgid "Category"
+msgstr "Categorie"
+
+#: plugin-fw/lib/yit-cpt-unlimited.php:625
+msgctxt "taxonomy general name"
+msgid "%s Categories"
+msgstr "%s categorieën"
+
+#: plugin-fw/lib/yit-cpt-unlimited.php:468
+#: plugin-fw/lib/yit-cpt-unlimited.php:582
+msgid "No %s found in Trash"
+msgstr "Geen %s gevonden in prullenbak"
+
+#: plugin-fw/lib/yit-cpt-unlimited.php:467
+#: plugin-fw/lib/yit-cpt-unlimited.php:581
+msgid "No %s found"
+msgstr "Geen %s gevonden"
+
+#: plugin-fw/lib/yit-cpt-unlimited.php:466
+#: plugin-fw/lib/yit-cpt-unlimited.php:580
+msgid "Search %s"
+msgstr "Zoek %s"
+
+#: plugin-fw/lib/yit-cpt-unlimited.php:465
+#: plugin-fw/lib/yit-cpt-unlimited.php:579
+#: plugin-fw/lib/yit-cpt-unlimited.php:1251
+#: plugin-fw/lib/yit-cpt-unlimited.php:1305
+msgid "View %s"
+msgstr "Weergeven %s"
+
+#: plugin-fw/lib/yit-cpt-unlimited.php:464
+#: plugin-fw/lib/yit-cpt-unlimited.php:578
+msgid "All %s"
+msgstr "Alle %s"
+
+#: plugin-fw/lib/yit-cpt-unlimited.php:463
+#: plugin-fw/lib/yit-cpt-unlimited.php:577
+msgid "New %s"
+msgstr "Nieuw %s"
+
+#: plugin-fw/lib/yit-cpt-unlimited.php:462
+#: plugin-fw/lib/yit-cpt-unlimited.php:576
+#: plugin-fw/lib/yit-cpt-unlimited.php:1267
+#: plugin-fw/lib/yit-cpt-unlimited.php:1304
+msgid "Edit %s"
+msgstr "%s Bewerken"
+
+#: plugin-fw/lib/yit-cpt-unlimited.php:461
+#: plugin-fw/lib/yit-cpt-unlimited.php:575
+msgid "Add New %s"
+msgstr "%s Nieuw toevoegen"
+
+#: plugin-fw/lib/yit-cpt-unlimited.php:460
+#: plugin-fw/lib/yit-cpt-unlimited.php:574
+#: plugin-fw/lib/yit-cpt-unlimited.php:719
+#: plugin-fw/lib/yit-cpt-unlimited.php:1632
+msgid "Add %s"
+msgstr "%s Toevoegen"
+
+#: init.php:54
+msgid "You can't activate the free version of YITH WooCommerce Badge Management while you are using the premium one."
+msgstr "Je kunt de gratis versie van YITH WooCommerce Badge Management niet activeren terwijl je de premium versie gebruikt."
+
+#: init.php:45
+msgid "YITH WooCommerce Badge Management is enabled but not effective. It requires WooCommerce in order to work."
+msgstr "YITH WooCommerce Badge Management is ingeschakeld maar werkt niet. Het heeft WooCommerce nodig om te werken."
+
+#: functions.yith-wcbm.php:143
+msgid "Preview"
+msgstr "Voorbeeld"
+
+#: functions.yith-wcbm.php:134
+msgid "bottom-right"
+msgstr "Rechtsonder"
+
+#: functions.yith-wcbm.php:133
+msgid "bottom-left"
+msgstr "Linksonder"
+
+#: functions.yith-wcbm.php:132
+msgid "top-right"
+msgstr "Rechtsboven"
+
+#: functions.yith-wcbm.php:131
+msgid "top-left"
+msgstr "Linksboven"
+
+#: functions.yith-wcbm.php:123 functions.yith-wcbm.php:127
+msgid "Position"
+msgstr "Positie"
+
+#: functions.yith-wcbm.php:105
+msgid "Select the Image Badge"
+msgstr "Selecteer de afbeelding badge"
+
+#: functions.yith-wcbm.php:93
+msgid "Height"
+msgstr "Hoogte"
+
+#: functions.yith-wcbm.php:90
+msgid "Width"
+msgstr "Breedte"
+
+#: functions.yith-wcbm.php:76
+msgid "Size (pixel)"
+msgstr "Afmeten (pixel)"
+
+#: functions.yith-wcbm.php:67
+msgid "Background Color"
+msgstr "Achtergrond kleur"
+
+#: functions.yith-wcbm.php:63
+msgid "Style Options"
+msgstr "Stijl opties"
+
+#: functions.yith-wcbm.php:52
+msgid "Text Color"
+msgstr "Tekstkleur"
+
+#: functions.yith-wcbm.php:44
+msgid "Text"
+msgstr "Tekst"
+
+#: functions.yith-wcbm.php:40
+msgid "Text Options"
+msgstr "Tekst opties"
+
+#: functions.yith-wcbm.php:30
+msgid "Image Badge"
+msgstr "Badge afbeelding"
+
+#: functions.yith-wcbm.php:29
+msgid "Text Badge"
+msgstr "Tekst badge"
+
+#: class.yith-wcbm-admin.php:440
+msgid "none"
+msgstr "geen"
+
+#: class.yith-wcbm-admin.php:421
+msgid "Product Badge"
+msgstr "Product Badge"
+
+#: class.yith-wcbm-admin.php:374
+msgid "Badge Options"
+msgstr "Badge Opties"
+
+#: class.yith-wcbm-post-types.php:46
+msgid "Badge not found in trash"
+msgstr "Badge niet gevonden in prullenbak"
+
+#: class.yith-wcbm-post-types.php:45
+msgid "Badge not found"
+msgstr "Badge niet gevonden"
+
+#: class.yith-wcbm-post-types.php:44
+msgid "View Badge"
+msgstr "Bekijk Badge"
+
+#: class.yith-wcbm-post-types.php:43
+msgid "Edit Badge"
+msgstr "Bewerk Badge"
+
+#: class.yith-wcbm-post-types.php:42
+msgid "Add new Badge"
+msgstr "Nieuwe badge toevoegen"
+
+#: class.yith-wcbm-post-types.php:41
+msgid "Add Badge"
+msgstr "Badge toevoegen"
+
+#: class.yith-wcbm-post-types.php:40
+msgid "Badge"
+msgstr "Badge"
+
+#: class.yith-wcbm-post-types.php:39
+msgid "Badges"
+msgstr "Badges"
+
+#: class.yith-wcbm-admin.php:292 class.yith-wcbm-admin.php:293
+msgid "Badge Management"
+msgstr "Badge Management"
+
+#: class.yith-wcbm-admin.php:237 class.yith-wcbm-admin.php:284
+msgid "Premium Version"
+msgstr "Premium Versie"
+
+#: class.yith-wcbm-admin.php:235 class.yith-wcbm-admin.php:283
+#: plugin-fw/lib/yit-cpt-unlimited.php:1048
+#: plugin-fw/lib/yit-cpt-unlimited.php:1196
+#: plugin-fw/lib/yit-cpt-unlimited.php:1202
+#: plugin-fw/lib/yit-plugin-panel.php:73
+msgid "Settings"
+msgstr "Instellingen"
+
+#: class.yith-wcbm-admin.php:213
+msgid "Live Demo"
+msgstr "Live Demo"
+
+#: class.yith-wcbm-admin.php:209
+msgid "Plugin Site"
+msgstr "Plugin Site"
+
+#: class.yith-wcbm-admin.php:205 class.yith-wcbm-admin.php:261
+msgid "Plugin Documentation"
+msgstr "Plugin Documentatie"
+
+#: class.yith-wcbm-admin.php:201
+msgid "Your Inspiration Themes"
+msgstr "Your Inspiration Themes"

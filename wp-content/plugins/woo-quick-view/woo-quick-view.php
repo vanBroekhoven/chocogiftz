@@ -36,7 +36,7 @@ function wcqv_quick_view_activate(){
 
 register_deactivation_hook( __FILE__, 'wcqv_quick_view_deactivate' );
 function wcqv_quick_view_deactivate(){
-    
+
 	delete_option( 'wcqv_style' );
     delete_option( 'wcqv_options' );
     delete_option( 'wpcqv_view_install_date' );
@@ -49,12 +49,12 @@ add_action('plugins_loaded','wqv_load_class_files');
 function wqv_load_class_files(){
 
     if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
- 
+
 		require_once 'classes/class.frontend.php';
 		require_once 'classes/class.backend.php';
 
-		load_plugin_textdomain( 'woocommerce-quick-view', false, plugin_basename( dirname( __FILE__ ) ) . '/lang' ); 
-		
+		load_plugin_textdomain( 'woocommerce-quick-view', false, plugin_basename( dirname( __FILE__ ) ) . '/lang' );
+
 
 		$wcqv_plugin_dir_url  = plugin_dir_url( __FILE__ );
 		$data                 = get_option('wcqv_options');
@@ -65,7 +65,7 @@ function wqv_load_class_files(){
 		if ( $load_backend->mobile_detect() ){
 
 			if($enable_mobile  && ($data['enable_quick_view'] == 1)){
-			
+
 				$load_frontend 	  = new wcqv_frontend($wcqv_plugin_dir_url);
 			}
 
@@ -82,15 +82,11 @@ function wqv_load_class_files(){
 
 
 //Add settings link on plugin page
-function wcqv_settings_link($links) { 
-  $settings_link = '<a href="options-general.php?page=woocommerce-quick-qiew">Settings</a>'; 
-  array_unshift($links, $settings_link); 
-  return $links; 
+function wcqv_settings_link($links) {
+  $settings_link = '<a href="options-general.php?page=woocommerce-quick-qiew">Settings</a>';
+  array_unshift($links, $settings_link);
+  return $links;
 }
- 
-$plugin = plugin_basename(__FILE__); 
+
+$plugin = plugin_basename(__FILE__);
 add_filter("plugin_action_links_$plugin", 'wcqv_settings_link' );
-
-
-
-
