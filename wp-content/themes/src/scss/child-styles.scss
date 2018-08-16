@@ -106,8 +106,16 @@ body {
 
   // Delete 'Aanbieding!'
   .onsale {
-    display: none;
+  //  display: none;
   }
+
+  ul.products li.product .onsale {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    text-align: center;
+  }
+} // end body
 
   /* Only Desktop-viewv*/
   @media screen and (min-width: 768px) {
@@ -163,5 +171,3 @@ body {
     }
 
   } // end Desktop view
-
-} // end body

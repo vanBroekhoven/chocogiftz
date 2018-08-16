@@ -4,8 +4,7 @@
 body {
   font: 100% "Karla", sans-serif;
   background: white;
-  color: #333333;
-  /* Only Desktop-viewv*/ }
+  color: #333333; }
   body .main-content {
     padding-top: 400px;
     /* adjust this to match the height of your header */
@@ -54,34 +53,38 @@ body {
     border-bottom: 1px solid #F2E7B8;
     padding: 0 0 2em;
     margin-bottom: .8em; }
-  body .onsale {
-    display: none; }
-  @media screen and (min-width: 768px) {
-    body {
-      /*  resizes the search box*/ }
-      body .site-branding {
-        text-align: center;
-        margin: 0 auto !important;
-        float: none !important; }
-      body .page-title {
-        border-bottom: 1px solid #333333; }
-      body .woocommerce-active .site-header .main-navigation {
-        width: 50%; }
-      body #masthead .custom-logo-link img {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        margin-bottom: 15px;
-        width: auto;
-        height: 60px; }
-      body #masthead .site-search .widget_product_search form:before {
-        top: 1.75em;
-        left: .5em;
-        position: relative; }
-      body #masthead .site-search .widget_product_search input[type=search], body #masthead .site-search .widget_product_search input[type=text] {
-        padding: .5em .5em .5em 2em;
-        line-height: 1; }
-      body #masthead .site-header-cart {
-        margin-left: 15px; }
-      body .woocommerce-active .site-header .site-search {
-        float: left; } }
+  body ul.products li.product .onsale {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    text-align: center; }
+
+/* Only Desktop-viewv*/
+@media screen and (min-width: 768px) {
+  .site-branding {
+    text-align: center;
+    margin: 0 auto !important;
+    float: none !important; }
+  .page-title {
+    border-bottom: 1px solid #333333; }
+  .woocommerce-active .site-header .main-navigation {
+    width: 50%; }
+  #masthead .custom-logo-link img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 15px;
+    width: auto;
+    height: 60px; }
+  #masthead .site-search .widget_product_search form:before {
+    top: 1.75em;
+    left: .5em;
+    position: relative; }
+  /*  resizes the search box*/
+  #masthead .site-search .widget_product_search input[type=search], #masthead .site-search .widget_product_search input[type=text] {
+    padding: .5em .5em .5em 2em;
+    line-height: 1; }
+  #masthead .site-header-cart {
+    margin-left: 15px; }
+  .woocommerce-active .site-header .site-search {
+    float: left; } }
