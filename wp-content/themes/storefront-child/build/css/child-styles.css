@@ -55,9 +55,7 @@ body {
     padding: 0 0 2em;
     margin-bottom: .8em; }
   body .onsale {
-    background-color: #FFFFFF;
-    border-color: #FF0000 !important;
-    color: #FF0000 !important; }
+    display: none; }
   @media screen and (min-width: 768px) {
     body {
       /*  resizes the search box*/ }
