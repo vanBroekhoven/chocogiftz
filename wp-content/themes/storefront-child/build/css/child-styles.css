@@ -22,12 +22,14 @@ body {
     background-color: #f3f3f3; }
   body .woocommerce-info, body .woocommerce-noreviews, body p.no-comments {
     background-color: red; }
-  body .main-navigation ul li a {
-    color: white; }
-  body .main-navigation ul li #menu-item-449 a {
-    color: red; }
-  body .main-navigation ul li a:hover {
-    color: grey; }
+  body .main-navigation ul li {
+    font: 100% "Karla", sans-serif; }
+    body .main-navigation ul li a {
+      color: white; }
+    body .main-navigation ul li #menu-item-449 a {
+      color: red; }
+    body .main-navigation ul li a:hover {
+      color: grey; }
   body ul.products img {
     margin-bottom: 1.618em;
     border: 5px solid #444;

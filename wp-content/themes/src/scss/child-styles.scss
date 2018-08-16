@@ -45,6 +45,7 @@ body {
   }
 
   .main-navigation ul li {
+    font: 100% $font-scotch;
     a {
       color: white;
     }
@@ -121,7 +122,7 @@ body {
     left: 10px;
     text-align: center;
   }
-  
+
 } // end body
 
   /* Only Desktop-viewv*/
