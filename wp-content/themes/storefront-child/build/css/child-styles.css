@@ -94,3 +94,23 @@ body {
     float: left; }
   #menu-item-449 a {
     color: #F2E7B8; } }
+
+/*
+* Webpage width settings
+*/
+body {
+  font-size: 0.8em;
+  line-height: 1.5; }
+  @media (min-width: 64em) {
+    body {
+      font-size: 0.96em;
+      line-height: 1.8; } }
+  @media (min-width: 85.375em) {
+    body {
+      font-size: 1.04em; } }
+  @media (min-width: 120em) {
+    body {
+      font-size: 1.12em; } }
+  @media (min-width: 160em) {
+    body {
+      font-size: 1.28em; } }
