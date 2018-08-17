@@ -1,0 +1,11 @@
+<wpml-config>  
+    <admin-texts>
+        <key name="br_mm_quantity_options">
+            <key name="min_qty_text" />
+            <key name="max_qty_text" />
+            <key name="min_price_text" />
+            <key name="max_price_text" />
+            <key name="multiplicity_text" />
+        </key>
+    </admin-texts> 
+</wpml-config>
