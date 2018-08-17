@@ -233,3 +233,19 @@ body {
     font-size: $base-font-size*1.6;
   }
 }
+
+@media screen and (min-width: 1400px) {
+  .header .container {
+    width: 100%;
+  }
+}
+@media screen and (min-width: 1600px) {
+  .container {
+    width: 100%;
+  }
+}
+@media screen and (min-width: 1900px) {
+  .header .container  {
+    width: 95%;
+  }
+}
