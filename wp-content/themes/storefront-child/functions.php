@@ -63,6 +63,40 @@ function jk_add_home_link( $links ) {
 	return $links;
 }
 
+/* Reposition the search bar */
+add_action( 'init', 'jk_remove_storefront_header_search' );
+function jk_remove_storefront_header_search() {
+  remove_action( 'storefront_header', 'storefront_product_search', 	40 );
+  add_action( 'storefront_header', 'storefront_product_search', 	55 );
+}
+
+/* Create Min & Max Quantity fields */
+function wc_qty_add_product_field() {
+	echo '<div class="options_group">';
+	woocommerce_wp_text_input(
+		array(
+			'id'          => '_wc_min_qty_product',
+			'label'       => __( 'Minimum Quantity', 'woocommerce-max-quantity' ),
+			'placeholder' => '',
+			'desc_tip'    => 'true',
+			'description' => __( 'Optional. Set a minimum quantity limit allowed per order. Enter a number, 1 or greater.', 'woocommerce-max-quantity' )
+		)
+	);
+	echo '</div>';
+	echo '<div class="options_group">';
+	woocommerce_wp_text_input(
+		array(
+			'id'          => '_wc_max_qty_product',
+			'label'       => __( 'Maximum Quantity', 'woocommerce-max-quantity' ),
+			'placeholder' => '',
+			'desc_tip'    => 'true',
+			'description' => __( 'Optional. Set a maximum quantity limit allowed per order. Enter a number, 1 or greater.', 'woocommerce-max-quantity' )
+		)
+	);
+	echo '</div>';
+}
+add_action( 'woocommerce_product_options_inventory_product_data', 'wc_qty_add_product_field' );
+
 // Move the search bar inline with the main navigation and cart menu
 // add_action( 'init', 'jk_remove_storefront_header_search' );
 // function jk_remove_storefront_header_search() {
@@ -81,11 +115,6 @@ function jk_add_home_link( $links ) {
 //     echo '<span style="display:inline-block; padding:10px; border:solid 1px grey;">My custom mega menu goes Here</span>';
 // }
 
-add_action( 'init', 'jk_remove_storefront_header_search' );
-function jk_remove_storefront_header_search() {
-  remove_action( 'storefront_header', 'storefront_product_search', 	40 );
-  add_action( 'storefront_header', 'storefront_product_search', 	55 );
-}
 
 /**
  * Change Quick View text in WooCommerce via ..
