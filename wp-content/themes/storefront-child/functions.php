@@ -97,6 +97,32 @@ function wc_qty_add_product_field() {
 }
 add_action( 'woocommerce_product_options_inventory_product_data', 'wc_qty_add_product_field' );
 
+/*
+* This function will save the value set to Minimum Quantity and Maximum Quantity options
+* into _wc_min_qty_product and _wc_max_qty_product meta keys respectively
+*/
+function wc_qty_save_product_field( $post_id ) {
+	$val_min = trim( get_post_meta( $post_id, '_wc_min_qty_product', true ) );
+	$new_min = sanitize_text_field( $_POST['_wc_min_qty_product'] );
+	$val_max = trim( get_post_meta( $post_id, '_wc_max_qty_product', true ) );
+	$new_max = sanitize_text_field( $_POST['_wc_max_qty_product'] );
+
+	if ( $val_min != $new_min ) {
+		update_post_meta( $post_id, '_wc_min_qty_product', $new_min );
+	}
+	if ( $val_max != $new_max ) {
+		update_post_meta( $post_id, '_wc_max_qty_product', $new_max );
+	}
+}
+add_action( 'woocommerce_process_product_meta', 'wc_qty_save_product_field' );
+
+
+
+
+
+
+
+
 // Move the search bar inline with the main navigation and cart menu
 // add_action( 'init', 'jk_remove_storefront_header_search' );
 // function jk_remove_storefront_header_search() {
