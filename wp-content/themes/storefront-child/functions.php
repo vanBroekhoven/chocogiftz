@@ -69,35 +69,3 @@ function jk_remove_storefront_header_search() {
   remove_action( 'storefront_header', 'storefront_product_search', 	40 );
   add_action( 'storefront_header', 'storefront_product_search', 	55 );
 }
-
-
-
-// Move the search bar inline with the main navigation and cart menu
-// add_action( 'init', 'jk_remove_storefront_header_search' );
-// function jk_remove_storefront_header_search() {
-// remove_action( 'storefront_header', 'storefront_product_search', 40 );
-// add_action( 'storefront_header', 'storefront_product_search', 55 );
-// }
-
-// add_action('init', 'replace_storefront_primary_navigation' );
-// function replace_storefront_primary_navigation(){
-//     remove_action( 'storefront_header', 'storefront_primary_navigation', 50 );
-//     add_action('storefront_header', 'jk_storefront_header_content', 50);
-// }
-//
-// function jk_storefront_header_content(){
-//     // your custom navigation code goes here
-//     echo '<span style="display:inline-block; padding:10px; border:solid 1px grey;">My custom mega menu goes Here</span>';
-// }
-
-
-/**
- * Change Quick View text in WooCommerce via ..
- *
- */
-//  function custom_quick_view()
-//  {
-//   //$output = 'MyOutput';
-//    return __( 'Yes!', 'woo-quick-view');
-//  }
-// add_filter('woocommerce_loop_quick_view_button','custom_quick_view', 10);
