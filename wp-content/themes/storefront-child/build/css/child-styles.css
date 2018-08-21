@@ -126,3 +126,6 @@ body {
 @media screen and (min-width: 1900px) {
   .header .container {
     width: 95%; } }
+
+.storefront-sticky-add-to-cart--slideInDown {
+  display: none; }
