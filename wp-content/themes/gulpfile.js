@@ -37,13 +37,10 @@ gulp.task('sass', function(){
 // Watch task
 gulp.task('watch', ['browser-sync','sass'], function() {
   gulp.watch('src/scss/**/*.scss', ['sass']);
-  gulp.watch('storefront-child/functions.php', ['functions']);
 });
 
-
-
 // Default taak
-// Maakt automatisch de CSS als er SCSS veranderd
+// Maakt automatisch de CSS als er SCSS veranderd en refresh browser
 gulp.task('default', ['browser-sync','sass'], function() {
-  // Guess this function doesnt need more code.
+  return gulp.watch('src/scss/**/*.scss', ['sass']);
 });
