@@ -69,3 +69,32 @@ function jk_remove_storefront_header_search() {
   remove_action( 'storefront_header', 'storefront_product_search', 	40 );
   add_action( 'storefront_header', 'storefront_product_search', 	55 );
 }
+
+/* Custom shortcode for Lorem Ipsum */
+
+function lorem_func($attr) {
+
+  $txt = "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+  eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+  veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+  dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+  sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor
+  sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+  labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+  exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+  irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+  nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
+  qui officia deserunt mollit anim id est laborum.</p>";
+
+  shortcode_atts(
+    array(
+      'repeat' => 1
+    ), $attr
+  );
+
+  return str_repeat($txt, $attr['repeat']);
+
+}
+
+add_shortcode('lorem','lorem_func');
