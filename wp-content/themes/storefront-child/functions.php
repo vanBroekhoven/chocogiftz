@@ -102,13 +102,14 @@ add_shortcode('lorem','lorem_func');
 /* Functions for slider */
 add_action('init', 'register_my_scripts');
 
-// Registers JS file 
+// Registers JS file
 function register_my_scripts() {
 	wp_register_script( 'flexslider', get_stylesheet_directory_uri() . '/flexslider/jquery.flexslider-min.js', array('jquery'), '1.0.0', true );
 }
 
 add_action('wp_footer', 'print_my_script', 99);
 
+// Output (print) all the other code (incl. the code for Flexslider) into the footer of your theme
 function print_my_script() {
 	global $add_my_script, $ss_atts;
 	if ( $add_my_script ) {
@@ -132,4 +133,35 @@ jQuery(document).ready(function($) {
 	} else {
 		return;
 	}
+}
+
+// Create custom post type for all the different sliders I will later create for my website.
+add_action( 'init', 'create_slider_posttype' );
+function create_slider_posttype() {
+    $args = array(
+      'public' => false,
+      'show_ui' => true,
+      'menu_icon' => 'dashicons-images-alt',
+      'capability_type' => 'page',
+      'rewrite' => array( 'slider-loc', 'post_tag' ),
+      'label'  => 'Simple slides',
+      'supports' => array( 'title', 'editor', 'custom-fields', 'thumbnail', 'page-attributes')
+    );
+    register_post_type( 'slider', $args );
+}
+
+// Create custom taxonomy to bundle these slides (posts) into slideshow.
+add_action( 'init', 'create_slider_location_tax' );
+function create_slider_location_tax() {
+	register_taxonomy(
+		'slider-loc',
+		'slider',
+		array(
+			'label' => 'Slider location',
+			'public' => false,
+			'show_ui' => true,
+			'show_admin_column' => true,
+			'rewrite' => false
+		)
+	);
 }
