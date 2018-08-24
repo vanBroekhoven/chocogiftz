@@ -165,3 +165,67 @@ function create_slider_location_tax() {
 		)
 	);
 }
+
+ // Create a post meta value for each slide.
+ // This value is used as a default URL value for the custom field.
+add_action('wp_insert_post', 'set_default_slidermeta');
+
+function set_default_slidermeta($post_ID){
+    add_post_meta($post_ID, 'slider-url', 'http://', true);
+    return $post_ID;
+}
+
+/* WordPress image slider shortcode */
+add_shortcode( 'simpleslider', 'simple_slider_shortcode' );
+
+function simple_slider_shortcode($atts = null) {
+	global $add_my_script, $ss_atts;
+	$add_my_script = true;
+	$ss_atts = shortcode_atts(
+		array(
+			'location' => '',
+			'limit' => -1,
+			'ulid' => 'flexid',
+			'animation' => 'slide',
+			'slideshowspeed' => 5
+		), $atts, 'simpleslider'
+	);
+	$args = array(
+		'post_type' => 'slider',
+		'posts_per_page' => $ss_atts['limit'],
+		'orderby' => 'menu_order',
+		'order' => 'ASC'
+	);
+	if ($ss_atts['location'] != '') {
+		$args['tax_query'] = array(
+			array( 'taxonomy' => 'slider-loc', 'field' => 'slug', 'terms' => $ss_atts['location'] )
+		);
+	}
+	$the_query = new WP_Query( $args );
+	$slides = array();
+	if ( $the_query->have_posts() ) {
+		while ( $the_query->have_posts() ) {
+			$the_query->the_post();
+			$imghtml = get_the_post_thumbnail(get_the_ID(), 'full');
+			$url = get_post_meta(get_the_ID(), 'slider-url', true);
+			if ($url != '' && $url != 'http://') {
+				$imghtml = '<a href="'.$url.'">'.$imghtml.'</a>';
+			}
+			$slides[] = '
+				<li>
+					<div class="slide-media">'.$imghtml.'</div>
+					<div class="slide-content">
+						<h3 class="slide-title">'.get_the_title().'</h3>
+						<div class="slide-text">'.get_the_content().'</div>
+					</div>
+				</li>';
+		}
+	}
+	wp_reset_query();
+	return '
+	<div class="flexslider" id="'.$ss_atts['ulid'].'">
+		<ul class="slides">
+			'.implode('', $slides).'
+		</ul>
+	</div>';
+}
