@@ -176,6 +176,13 @@ function set_default_slidermeta($post_ID){
 }
 
 /* WordPress image slider shortcode */
+/* Shortcode accepts 3 attributes:
+  * A slider location
+  * The animation type
+  * And the slideshow speed
+*/
+
+// Example: [simpleslider location="homepage" animation="slide" slideshowspeed="5"]
 add_shortcode( 'simpleslider', 'simple_slider_shortcode' );
 
 function simple_slider_shortcode($atts = null) {
