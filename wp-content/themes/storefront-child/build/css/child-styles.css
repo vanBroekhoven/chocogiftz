@@ -30,10 +30,13 @@ body {
       color: red; }
     body .main-navigation ul li a:hover {
       color: grey; }
-  body ul.products img {
-    margin-bottom: 1.618em;
-    border: 5px solid #444;
-    border-style: solid; }
+  body .popular {
+    border-bottom: 1px solid #333333; }
+  body ul.products {
+    margin-top: 30px; }
+    body ul.products img {
+      border: 2px solid #333333;
+      border-style: solid; }
   body .entry-title {
     border-bottom: 1px solid black; }
   body .storefront-full-width-content h1:last-child {
@@ -69,6 +72,8 @@ body {
     text-align: center;
     margin: 0 auto !important;
     float: none !important; }
+  .secondary-navigation {
+    background-color: red; }
   .page-title {
     border-bottom: 1px solid #333333; }
   .woocommerce-active .site-header .main-navigation {
