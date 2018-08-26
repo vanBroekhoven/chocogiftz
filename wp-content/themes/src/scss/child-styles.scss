@@ -57,11 +57,16 @@ body {
     }
   }
 
-
-  ul.products img {
-      margin-bottom: 1.618em;
-      border: 5px solid #444;
-      border-style: solid;
+  .popular {
+    border-bottom:1px solid $secundairy-color;
+  }
+  ul.products {
+    margin-top: 30px;
+    img {
+        border: 2px solid $secundairy-color;
+        border-style: solid;
+        //border-radius:
+    }
   }
   .entry-title {
     border-bottom: 1px solid black;
@@ -132,6 +137,10 @@ body {
   		margin: 0 auto !important;
   		float: none !important;
   	}
+
+    .secondary-navigation {
+      background-color: red;
+    }
 
     .page-title {
       border-bottom:1px solid $secundairy-color;
