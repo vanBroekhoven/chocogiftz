@@ -20,7 +20,6 @@ function my_theme_enqueue_styles() {
     wp_enqueue_style( 'child-sass', get_stylesheet_directory_uri() . '/build/css/child-styles.css', array(), '1.0', 'all' );
 }
 
-<<<<<<< HEAD
 function custom_storefront_credit() {
   ?>
   <div class="site-info">
@@ -32,8 +31,6 @@ function custom_storefront_credit() {
   <?php
 }
 
-=======
->>>>>>> parent of 62a141a... customized footer credit
 // Remove credit in footer
 function custom_remove_footer_credit () {
     remove_action( 'storefront_footer', 'storefront_credit', 20 );
