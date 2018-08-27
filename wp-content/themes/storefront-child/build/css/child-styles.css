@@ -68,35 +68,24 @@ body {
 
 /* Only Desktop-viewv*/
 @media screen and (min-width: 768px) {
-  .site-branding {
-    text-align: center;
-    margin: 0 auto !important;
-    float: none !important; }
-  .secondary-navigation {
-    background-color: red; }
+  /*
+    Generic
+    ----------------------------------------------------------------
+  */
+  .background-image {
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat; }
+  /*
+    header
+    ----------------------------------------------------------------
+  */
+  .header-container {
+    position: relative;
+    display: block;
+    height: 300px; }
   .page-title {
     border-bottom: 1px solid #333333; }
-  .woocommerce-active .site-header .main-navigation {
-    width: 50%; }
-  #masthead .custom-logo-link img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 15px;
-    width: auto;
-    height: 60px; }
-  #masthead .site-search .widget_product_search form:before {
-    top: 1.75em;
-    left: .5em;
-    position: relative; }
-  /*  resizes the search box*/
-  #masthead .site-search .widget_product_search input[type=search], #masthead .site-search .widget_product_search input[type=text] {
-    padding: .5em .5em .5em 2em;
-    line-height: 1; }
-  #masthead .site-header-cart {
-    margin-left: 15px; }
-  .woocommerce-active .site-header .site-search {
-    float: left; }
   #menu-item-449 a {
     color: #F2E7B8; } }
 
