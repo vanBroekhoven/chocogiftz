@@ -14,14 +14,27 @@ function my_theme_enqueue_styles() {
     wp_enqueue_style( 'child-sass', get_stylesheet_directory_uri() . '/build/css/child-styles.css', array(), '1.0', 'all' );
 }
 
+
+
+function custom_storefront_credit() {
+  ?>
+  <div class="site-info">
+    <?php echo esc_html( apply_filters( 'storefront_copyright_text', $content = '&copy; ' . get_bloginfo( 'name' ) . ' ' . date( 'Y' ) ) ); ?>
+    <?php if ( apply_filters( 'storefront_credit_link', true ) ) { ?>
+    <br /> <br> Ontwikkeld door <a href="https://epicwebapps.com" title="epicwebapps.com">epicwebapps.com</a>.
+    <?php } ?>
+  </div><!-- .site-info -->
+  <?php
+}
+
 // Remove credit in footer
 function custom_remove_footer_credit () {
     remove_action( 'storefront_footer', 'storefront_credit', 20 );
-    //add_action( 'storefront_footer', 'custom_storefront_credit', 20 );
+    add_action( 'storefront_footer', 'custom_storefront_credit', 20 );
 }
 
 // Put Copyright 'current-year' in footer
-// function custom_storefront_credit() --> Replaced by javascript
+//function custom_storefront_credit()
 
 // Remove the link "my-account" in handheld device 'Big Icon Menu'
 // function jk_remove_handheld_footer_links( $links ) {
