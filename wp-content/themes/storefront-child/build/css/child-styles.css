@@ -80,10 +80,6 @@ body {
     header
     ----------------------------------------------------------------
   */
-  .header-container {
-    position: relative;
-    display: block;
-    height: 300px; }
   .page-title {
     border-bottom: 1px solid #333333; }
   #menu-item-449 a {

@@ -34,7 +34,7 @@ function custom_storefront_credit() {
 // Remove credit in footer
 function custom_remove_footer_credit () {
     remove_action( 'storefront_footer', 'storefront_credit', 20 );
-    //add_action( 'storefront_footer', 'custom_storefront_credit', 20 );
+    add_action( 'storefront_footer', 'custom_storefront_credit', 20 );
 }
 
 // Put Copyright 'current-year' in footer
