@@ -20,6 +20,16 @@ function my_theme_enqueue_styles() {
     wp_enqueue_style( 'child-sass', get_stylesheet_directory_uri() . '/build/css/child-styles.css', array(), '1.0', 'all' );
 }
 
+// add_action( 'wp_enqueue_scripts', 'custom_load_font_awesome' );
+// /**
+//  * Enqueue Font Awesome.
+//  */
+// function custom_load_font_awesome() {
+//
+//     wp_enqueue_style( 'font-awesome-free', '//use.fontawesome.com/releases/v5.2.0/css/all.css' );
+//
+// }
+
 function custom_storefront_credit() {
   ?>
   <div class="site-info">
@@ -34,7 +44,7 @@ function custom_storefront_credit() {
 // Remove credit in footer
 function custom_remove_footer_credit () {
     remove_action( 'storefront_footer', 'storefront_credit', 20 );
-    add_action( 'storefront_footer', 'custom_storefront_credit', 20 );
+    add_action( 'storefront_footer', 'custom_storefront_credit', 80 );
 }
 
 
