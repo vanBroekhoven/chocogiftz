@@ -12,10 +12,10 @@ function storefront_child_scripts() {
   wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/../src/js/bootstrap.min.js', array('jquery'), '4.1.3', true);
 }
 
-// Enqueue child-theme stylesheet
+// Enqueue child-theme stylesheet and Bootstrap 4
 function my_theme_enqueue_styles() {
     $parent_style = 'parent-style';
-    wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/build/css/bootstrap.min.css', array(), '4.1.3', 'all' );
+    wp_enqueue_style( 'bootstrap_css', 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css' );
     wp_enqueue_style( $parent_style, get_template_directory_uri() . '/style.css' );
     wp_enqueue_style( 'child-sass', get_stylesheet_directory_uri() . '/build/css/child-styles.css', array(), '1.0', 'all' );
 }
