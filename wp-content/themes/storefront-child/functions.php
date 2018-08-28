@@ -37,20 +37,9 @@ function custom_remove_footer_credit () {
     add_action( 'storefront_footer', 'custom_storefront_credit', 20 );
 }
 
-// Put Copyright 'current-year' in footer
-// function custom_storefront_credit() --> Replaced by javascript
 
-// Remove the link "my-account" in handheld device 'Big Icon Menu'
-// function jk_remove_handheld_footer_links( $links ) {
-// 	unset( $links['my-account'] );
-// 	return $links;
-// }
-//
-// // Function to link home
-// function jk_home_link() {
-// 	echo '<a href="' . esc_url( home_url( '/' ) ) . '">' . __( 'Home' ) . '</a>';
-// }
 
+// Remove handheld footer bar
 add_action( 'init', 'jk_remove_storefront_handheld_footer_bar' );
 
 function jk_remove_storefront_handheld_footer_bar() {
@@ -85,6 +74,8 @@ add_action( 'init', 'jk_remove_storefront_header_search' );
 function jk_remove_storefront_header_search() {
   remove_action( 'storefront_header', 'storefront_product_search', 	40 );
   add_action( 'storefront_header', 'storefront_product_search', 	55 );
+  remove_action( 'storefront_header', 'storefront_header_cart', 60 );
+
 }
 
 /* Custom shortcode for Lorem Ipsum */

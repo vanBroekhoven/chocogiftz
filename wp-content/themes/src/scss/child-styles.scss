@@ -51,24 +51,31 @@ $hover-color: grey;
   ----------------------------------------------------------------
 */
 @media screen and (min-width: 768px) {
-  .secondary-navigation ul.menu a {
-    color: $secundary-text-color;
+  .secondary-navigation {
+    font-size: 0.8em;
+    ul.menu #menu-item-587 a {
+      padding: .2em .75em;
+      border-right: solid grey 1px;
+    }
+    ul.menu #menu-item-595 a {
+      padding: .2em .75em;
+      border-right: solid grey 1px;
+    }
+    ul.menu #menu-item-588 a {
+      padding: .2em .75em;
+      border-right: solid grey 1px;
+    }
+    ul.menu a {
+      color: $secundary-text-color;
+    }
   }
-
   .storefront-secondary-navigation.woocommerce-active .site-header .secondary-navigation {
     float: right;
     margin: 0;
     margin-top: 10px;
     color: $primary-color;
   }
-
-
-
 }
-
-
-
-
 
 /*
   Mobile Header
@@ -213,6 +220,16 @@ body {
     }
   }
 
+  /*
+    Order by
+    ----------------------------------------------------------------
+  */
+  .orderby {
+    border: 1px;
+    padding: 5px 5px 5px 5px;
+    background-color: $light-color;
+  }
+
 } // end body
 
 /*
@@ -250,31 +267,15 @@ body {
     height: 60px;
   }
 
-	// Positions the search icon properly in the search box
-	#masthead .site-search .widget_product_search form:before {
-		top: 1.75em;
-		left: .5em;
-		position: relative;
-	}
 	/*  resizes the search box*/
 	#masthead .site-search .widget_product_search input[type=search],#masthead .site-search .widget_product_search input[type=text] {
 		padding: .5em .5em .5em 2em;
 		line-height: 1;
 	}
 
-  // Positioning the cart-menu
-  #masthead .site-header-cart {
-    margin-left: 15px;
-    //width: 20% !important;
-    // position: fixed !important;
-    // top: 0;
-    // right: 12%;
-    // padding: 0;
-  }
-
-  // Places the search box to the left of the cart menu(optional)
-  .woocommerce-active .site-header .site-search {
-    float: left;
+  .widget_product_search {
+    position: relative;
+    margin-top: 1.1em;
   }
 
   #menu-item-449 a {
@@ -308,7 +309,7 @@ $mq-xxlarge: "(min-width: #{$bp-xxlarge})";
 $mq-retina: "(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)";
 
 // Font-Size
-$base-font-size: .8em;
+$base-font-size: .7em;
 
 // Line-Height
 $base-line-height: 1.5;
