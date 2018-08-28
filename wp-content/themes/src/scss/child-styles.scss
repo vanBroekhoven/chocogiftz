@@ -10,35 +10,67 @@ $logo-font: 'Dr Sugiyama', cursive;
 
 // Color variables
 $primary-color: white;
-$secundairy-color: #333333;
+$secundary-color: #333333;
 $light-color: #f3f3f3;
 $logo-color: #F2E7B8;
-
 $info-color: red;
+$secunda
+
+/*
+  Desktop Header
+  ----------------------------------------------------------------
+*/
+
+@media screen and (min-width: 768px) {
+  .secondary-navigation ul.menu a {
+    color: white;
+  }
+}
+
+.storefront-secondary-navigation.woocommerce-active .site-header .secondary-navigation {
+  float: right;
+  margin: 0;
+  color: $primary-color;
+}
+
+@media(max-width: 767px) {
+  .storefront-primary-navigation {
+    display: block !important;
+  }
+
+  button.menu-toggle {
+    background: #0c0b0b !important;
+    color: #fff;
+  }
+
+  .main-navigation ul li a,
+  .site-title a, ul.menu li a,
+  .site-branding h1 a,
+  .site-footer .storefront-handheld-footer-bar a:not(.button),
+  .handheld-navigation .dropdown-toggle {
+    color: #121111 !important
+  }
+}
 
 body {
   font: 100% $font-scotch;
   background: $primary-color;
-  color: $secundairy-color;
+  color: $secundary-color;
 
   .main-content {
     padding-top: 400px; /* adjust this to match the height of your header */
     width: 100%;
   }
   p.site-description {
-    color: $primary-color;
+    //color: $primary-color;
   }
   .site-title a {
-    color: $primary-color;
-    font: 200% $logo-font;
-    font-size: 2.5em;
+    // color: $primary-color;
+    // font: 200% $logo-font;
+    // font-size: 2.5em;
   }
   .site-header-cart .cart-contents{
     color: $primary-color;
-  }
-  .site-footer {
-    font: 100% $font-stack;
-    background-color: $light-color;
   }
   .woocommerce-info, .woocommerce-noreviews, p.no-comments {
     background-color: $info-color;
@@ -58,12 +90,12 @@ body {
   }
 
   .popular {
-    border-bottom:1px solid $secundairy-color;
+    border-bottom:1px solid $secundary-color;
   }
   ul.products {
     margin-top: 30px;
     img {
-        border: 2px solid $secundairy-color;
+        border: 2px solid $secundary-color;
         border-style: solid;
         //border-radius:
     }
@@ -130,14 +162,23 @@ body {
 
 } // end body
 
+/*
+  Footer
+  ----------------------------------------------------------------
+*/
 
-  /* Only Desktop-viewv*/
+.site-footer {
+  font: 100% $font-stack;
+  background-color: $light-color;
+}
+
+/*
+  Only desktop view
+  ----------------------------------------------------------------
+*/
   @media screen and (min-width: 768px) {
 
-  /*
-    Generic
-    ----------------------------------------------------------------
-  */
+
   .background-image {
     background-position: center center;
     background-size: cover;
@@ -150,60 +191,64 @@ body {
     ----------------------------------------------------------------
   */
 
-  // 	.site-branding{
-  //     text-align: center;
-  // 		margin: 0 auto !important;
-  // 		float: none !important;
-  // 	}
+
+  	// .site-branding{
+    //   text-align: center;
+  	// 	margin: 0 auto !important;
+  	// 	float: none !important;
+  	// }
   //
-  //   .secondary-navigation {
-  //     background-color: red;
-  //   }
+    .secondary-navigation {
+      display: block;
+      float: right;
+      margin-right: 0;
+      background-color: grey;
+    }
 
     .page-title {
-      border-bottom:1px solid $secundairy-color;
+      border-bottom:1px solid $secundary-color;
     }
 
     // Adjusting the width of the main-navigation
-    // .woocommerce-active .site-header .main-navigation {
-    // 	width: 50%;
-    // }
-    //
-    // #masthead .custom-logo-link img {
-    //   display: block;
-    //   margin-left: auto;
-    //   margin-right: auto;
-    //   margin-bottom: 15px;
-    //   width: auto;
-    //   height: 60px;
-    // }
-    //
-  	// // Positions the search icon properly in the search box
-  	// #masthead .site-search .widget_product_search form:before {
-  	// 	top: 1.75em;
-  	// 	left: .5em;
-  	// 	position: relative;
-  	// }
-  	// /*  resizes the search box*/
-  	// #masthead .site-search .widget_product_search input[type=search],#masthead .site-search .widget_product_search input[type=text] {
-  	// 	padding: .5em .5em .5em 2em;
-  	// 	line-height: 1;
-  	// }
-    //
-    // // Positioning the cart-menu
-    // #masthead .site-header-cart {
-    //   margin-left: 15px;
-    //   // width: 14% !important;
-    //   // position: fixed !important;
-    //   // top: 0;
-    //   // right: 12%;
-    //   // padding: 0;
-    // }
-    //
-    // // Places the search box to the left of the cart menu(optional)
-    // .woocommerce-active .site-header .site-search {
-    //   float: left;
-    // }
+    .woocommerce-active .site-header .main-navigation {
+    	width: 50%;
+    }
+
+    #masthead .custom-logo-link img {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 15px;
+      width: auto;
+      height: 60px;
+    }
+
+  	// Positions the search icon properly in the search box
+  	#masthead .site-search .widget_product_search form:before {
+  		top: 1.75em;
+  		left: .5em;
+  		position: relative;
+  	}
+  	/*  resizes the search box*/
+  	#masthead .site-search .widget_product_search input[type=search],#masthead .site-search .widget_product_search input[type=text] {
+  		padding: .5em .5em .5em 2em;
+  		line-height: 1;
+  	}
+
+    // Positioning the cart-menu
+    #masthead .site-header-cart {
+      margin-left: 15px;
+      // width: 14% !important;
+      // position: fixed !important;
+      // top: 0;
+      // right: 12%;
+      // padding: 0;
+    }
+
+    // Places the search box to the left of the cart menu(optional)
+    .woocommerce-active .site-header .site-search {
+      float: left;
+    }
 
     #menu-item-449 a {
       color: $logo-color;
