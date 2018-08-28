@@ -2,35 +2,94 @@
 @import url("https://fonts.googleapis.com/css?family=Dr+Sugiyama");
 @import url("https://fonts.googleapis.com/css?family=Karla");
 /*
+  Header
+  ----------------------------------------------------------------
+*/
+.site-header .site-branding {
+  margin-bottom: 0;
+  padding-bottom: 0; }
+
+.site-header .main-navigation ul li {
+  font: 100% "Karla", sans-serif; }
+  .site-header .main-navigation ul li a {
+    margin-top: 5px;
+    color: white; }
+  .site-header .main-navigation ul li a:hover {
+    color: grey;
+    text-decoration: none; }
+
+/*
   Desktop Header
   ----------------------------------------------------------------
 */
 @media screen and (min-width: 768px) {
   .secondary-navigation ul.menu a {
+    color: #dbdfe2; }
+  .storefront-secondary-navigation.woocommerce-active .site-header .secondary-navigation {
+    float: right;
+    margin: 0;
+    margin-top: 10px;
     color: white; } }
 
-.storefront-secondary-navigation.woocommerce-active .site-header .secondary-navigation {
-  float: right;
-  margin: 0;
-  color: white; }
-
+/*
+  Mobile Header
+  ----------------------------------------------------------------
+*/
 @media (max-width: 767px) {
   .storefront-primary-navigation {
     display: block !important; }
   button.menu-toggle {
-    background: #0c0b0b !important;
-    color: #fff; }
+    background: white !important;
+    color: #333333; }
   .main-navigation ul li a,
   .site-title a, ul.menu li a,
   .site-branding h1 a,
   .site-footer .storefront-handheld-footer-bar a:not(.button),
   .handheld-navigation .dropdown-toggle {
-    color: #121111 !important; } }
+    color: white !important; }
+  .main-navigation ul li {
+    font: 100% "Karla", sans-serif; }
+    .main-navigation ul li a {
+      color: white; }
+    .main-navigation ul li #menu-item-449 a {
+      color: yellow; }
+    .main-navigation ul li a:hover {
+      color: grey; }
+  .site-header .handheld-navigation .menu {
+    color: white; }
+    .site-header .handheld-navigation .menu .main__link a {
+      font-size: 1.5rem;
+      line-height: 0.5rem; }
+    .site-header .handheld-navigation .menu .information__item a {
+      color: grey; } }
 
+#menu-item-131 {
+  padding-top: 1.6em; }
+
+#menu-item-448 {
+  border-bottom: 1px solid #F2E7B8;
+  padding: 0 0 2em;
+  margin-bottom: 2em; }
+
+#menu-item-135 {
+  border-bottom: 1px solid #F2E7B8;
+  padding: 0 0 2em;
+  margin-bottom: .8em; }
+
+/*
+  Body
+  ----------------------------------------------------------------
+*/
 body {
   font: 100% "Karla", sans-serif;
   background: white;
-  color: #333333; }
+  color: #333333;
+  /*
+    Products
+    ----------------------------------------------------------------
+  */
+  /* Sale */
+  /* Delete 'Aanbieding!' */ }
   body .main-content {
     padding-top: 400px;
     /* adjust this to match the height of your header */
@@ -38,15 +97,7 @@ body {
   body .site-header-cart .cart-contents {
     color: white; }
   body .woocommerce-info, body .woocommerce-noreviews, body p.no-comments {
-    background-color: red; }
-  body .main-navigation ul li {
-    font: 100% "Karla", sans-serif; }
-    body .main-navigation ul li a {
-      color: white; }
-    body .main-navigation ul li #menu-item-449 a {
-      color: red; }
-    body .main-navigation ul li a:hover {
-      color: grey; }
+    background-color: orange; }
   body .popular {
     border-bottom: 1px solid #333333; }
   body ul.products {
@@ -58,30 +109,15 @@ body {
     border-bottom: 1px solid black; }
   body .storefront-full-width-content h1:last-child {
     border-bottom: 1px solid black; }
-  body .storefront-handheld-footer-bar ul li.home > a:before {
-    content: "\f015"; }
-  body .site-header .handheld-navigation .menu {
-    color: white; }
-    body .site-header .handheld-navigation .menu .main__link a {
-      font-size: 1.5rem;
-      line-height: 0.5rem; }
-    body .site-header .handheld-navigation .menu .information__item a {
-      color: grey; }
-  body #menu-item-131 {
-    padding-top: 1.6em; }
-  body #menu-item-448 {
-    border-bottom: 1px solid #F2E7B8;
-    padding: 0 0 2em;
-    margin-bottom: 2em; }
-  body #menu-item-135 {
-    border-bottom: 1px solid #F2E7B8;
-    padding: 0 0 2em;
-    margin-bottom: .8em; }
   body ul.products li.product .onsale {
     position: absolute;
     top: 10px;
     left: 10px;
     text-align: center; }
+  @media (max-width: 767px) {
+    body .woocommerce-product-gallery__wrapper {
+      border: 2px solid #333333;
+      border-style: solid; } }
 
 /*
   Footer
@@ -96,19 +132,6 @@ body {
   ----------------------------------------------------------------
 */
 @media screen and (min-width: 768px) {
-  .background-image {
-    background-position: center center;
-    background-size: cover;
-    background-repeat: no-repeat; }
-  /*
-    header
-    ----------------------------------------------------------------
-  */
-  .secondary-navigation {
-    display: block;
-    float: right;
-    margin-right: 0;
-    background-color: grey; }
   .page-title {
     border-bottom: 1px solid #333333; }
   .woocommerce-active .site-header .main-navigation {
@@ -117,7 +140,8 @@ body {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 15px;
+    padding-left: 0;
+    margin-bottom: 0;
     width: auto;
     height: 60px; }
   #masthead .site-search .widget_product_search form:before {
@@ -133,10 +157,13 @@ body {
   .woocommerce-active .site-header .site-search {
     float: left; }
   #menu-item-449 a {
-    color: #F2E7B8; } }
+    color: #F2E7B8; }
+  #menu-item-449 a:hover {
+    color: grey; } }
 
 /*
-* Webpage width settings
+  Webpage Width Settings
+  ----------------------------------------------------------------
 */
 body {
   font-size: 0.8em;
@@ -167,5 +194,28 @@ body {
   .header .container {
     width: 95%; } }
 
+/*
+  Slide In Down
+  ----------------------------------------------------------------
+*/
 .storefront-sticky-add-to-cart--slideInDown {
   display: none; }
+
+/*
+  Handheld Footer Bar (unhooked in functions.php)
+  ----------------------------------------------------------------
+*/
+.storefront-handheld-footer-bar ul li.home > a:before {
+  content: "\f015"; }
+
+.woocommerce-mini-cart-item {
+  background-color: white; }
+
+.woocommerce-mini-cart__total {
+  background-color: white; }
+
+.woocommerce-mini-cart__buttons {
+  background-color: white; }
+
+.widget_shopping_cart_content {
+  background-color: white; }

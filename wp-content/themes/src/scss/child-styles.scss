@@ -13,34 +13,75 @@ $primary-color: white;
 $secundary-color: #333333;
 $light-color: #f3f3f3;
 $logo-color: #F2E7B8;
-$info-color: red;
-$secunda
+$info-color: orange;
+$secundary-text-color: #dbdfe2;
+$hover-color: grey;
+
+/*
+  Header
+  ----------------------------------------------------------------
+*/
+
+.site-header {
+
+  .col-full {
+    // margin-bottom: 0;
+    // padding-bottom: 0;
+  }
+  .site-branding {
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+  .main-navigation ul li {
+    font: 100% $font-scotch;
+    a {
+      margin-top: 5px;
+      color: $primary-color;
+    }
+    a:hover {
+      color: $hover-color;
+      text-decoration: none;
+    }
+
+  }
+} // site-header
 
 /*
   Desktop Header
   ----------------------------------------------------------------
 */
-
 @media screen and (min-width: 768px) {
   .secondary-navigation ul.menu a {
-    color: white;
+    color: $secundary-text-color;
   }
+
+  .storefront-secondary-navigation.woocommerce-active .site-header .secondary-navigation {
+    float: right;
+    margin: 0;
+    margin-top: 10px;
+    color: $primary-color;
+  }
+
+
+
 }
 
-.storefront-secondary-navigation.woocommerce-active .site-header .secondary-navigation {
-  float: right;
-  margin: 0;
-  color: $primary-color;
-}
 
+
+
+
+/*
+  Mobile Header
+  ----------------------------------------------------------------
+*/
 @media(max-width: 767px) {
   .storefront-primary-navigation {
     display: block !important;
   }
 
   button.menu-toggle {
-    background: #0c0b0b !important;
-    color: #fff;
+    background: $primary-color !important;
+    color: $secundary-color;
   }
 
   .main-navigation ul li a,
@@ -48,10 +89,63 @@ $secunda
   .site-branding h1 a,
   .site-footer .storefront-handheld-footer-bar a:not(.button),
   .handheld-navigation .dropdown-toggle {
-    color: #121111 !important
+    color: $primary-color !important;
   }
+
+  .main-navigation ul li {
+    font: 100% $font-scotch;
+    a {
+      color: white;
+    }
+    #menu-item-449 a {
+      color: yellow;
+    }
+    a:hover {
+      color: $hover-color;
+    }
+  }
+
+  .site-header {
+    .handheld-navigation {
+      .menu  {
+        color: white;
+        // Style the primary menu items of the Toggle-menu (Mobile version)
+        .main__link a {
+          font-size: 1.5rem;
+          line-height: 0.5rem;
+        }
+        // Style the secundairy menu items of the Toggle-menu (Mobile version)
+        .secundairy__link a {
+          //
+        }
+        // Style the links to information pages
+        .information__item a {
+          color: grey;
+        }
+      }
+    }
+  } // end site-header (width < 768px)
+} //end max-width 767px
+
+#menu-item-131 {
+  padding-top: 1.6em;
+}
+// Add horizantol line to split menu-sections:
+#menu-item-448 {
+  border-bottom: 1px solid $logo-color;
+  padding: 0 0 2em;
+  margin-bottom: 2em;
+}
+#menu-item-135 {
+  border-bottom: 1px solid $logo-color;
+  padding: 0 0 2em;
+  margin-bottom: .8em;
 }
 
+/*
+  Body
+  ----------------------------------------------------------------
+*/
 body {
   font: 100% $font-scotch;
   background: $primary-color;
@@ -76,18 +170,10 @@ body {
     background-color: $info-color;
   }
 
-  .main-navigation ul li {
-    font: 100% $font-scotch;
-    a {
-      color: white;
-    }
-    #menu-item-449 a {
-      color: red;
-    }
-    a:hover {
-      color: grey;
-    }
-  }
+  /*
+    Products
+    ----------------------------------------------------------------
+  */
 
   .popular {
     border-bottom:1px solid $secundary-color;
@@ -106,58 +192,25 @@ body {
   .storefront-full-width-content h1:last-child, {
     border-bottom: 1px solid black;
   }
-  .storefront-handheld-footer-bar ul li.home > a:before {
-  content: "\f015";
-  }
 
-  .site-header {
-
-    .handheld-navigation {
-
-      .menu  {
-        color: white;
-        // Style the primary menu items of the Toggle-menu (Mobile version)
-        .main__link a {
-          font-size: 1.5rem;
-          line-height: 0.5rem;
-        }
-        // Style the secundairy menu items of the Toggle-menu (Mobile version)
-        .secundairy__link a {
-          //
-        }
-        // Style the links to information pages
-        .information__item a {
-          color: grey;
-        }
-      }
-    }
-  } // end site-header (width < 768px)
-
-  #menu-item-131 {
-    padding-top: 1.6em;
-  }
-  // Add horizantol line to split menu-sections:
-  #menu-item-448 {
-    border-bottom: 1px solid $logo-color;
-    padding: 0 0 2em;
-    margin-bottom: 2em;
-  }
-  #menu-item-135 {
-    border-bottom: 1px solid $logo-color;
-    padding: 0 0 2em;
-    margin-bottom: .8em;
-  }
-
-  // Delete 'Aanbieding!'
-  .onsale {
-  //  display: none;
-  }
-
+  /* Sale */
   ul.products li.product .onsale {
     position: absolute;
     top: 10px;
     left: 10px;
     text-align: center;
+  }
+
+  /* Delete 'Aanbieding!' */
+  .onsale {
+  //  display: none;
+  }
+
+  @media(max-width: 767px) {
+    .woocommerce-product-gallery__wrapper {
+      border: 2px solid $secundary-color;
+      border-style: solid;
+    }
   }
 
 } // end body
@@ -176,91 +229,69 @@ body {
   Only desktop view
   ----------------------------------------------------------------
 */
-  @media screen and (min-width: 768px) {
+@media screen and (min-width: 768px) {
 
-
-  .background-image {
-    background-position: center center;
-    background-size: cover;
-    background-repeat: no-repeat;
+  .page-title {
+    border-bottom:1px solid $secundary-color;
   }
 
+  // Adjusting the width of the main-navigation
+  .woocommerce-active .site-header .main-navigation {
+  	width: 50%;
+  }
 
-  /*
-    header
-    ----------------------------------------------------------------
-  */
+  #masthead .custom-logo-link img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0;
+    margin-bottom: 0;
+    width: auto;
+    height: 60px;
+  }
 
+	// Positions the search icon properly in the search box
+	#masthead .site-search .widget_product_search form:before {
+		top: 1.75em;
+		left: .5em;
+		position: relative;
+	}
+	/*  resizes the search box*/
+	#masthead .site-search .widget_product_search input[type=search],#masthead .site-search .widget_product_search input[type=text] {
+		padding: .5em .5em .5em 2em;
+		line-height: 1;
+	}
 
-  	// .site-branding{
-    //   text-align: center;
-  	// 	margin: 0 auto !important;
-  	// 	float: none !important;
-  	// }
-  //
-    .secondary-navigation {
-      display: block;
-      float: right;
-      margin-right: 0;
-      background-color: grey;
-    }
+  // Positioning the cart-menu
+  #masthead .site-header-cart {
+    margin-left: 15px;
+    //width: 20% !important;
+    // position: fixed !important;
+    // top: 0;
+    // right: 12%;
+    // padding: 0;
+  }
 
-    .page-title {
-      border-bottom:1px solid $secundary-color;
-    }
+  // Places the search box to the left of the cart menu(optional)
+  .woocommerce-active .site-header .site-search {
+    float: left;
+  }
 
-    // Adjusting the width of the main-navigation
-    .woocommerce-active .site-header .main-navigation {
-    	width: 50%;
-    }
+  #menu-item-449 a {
+    color: $logo-color;
+  }
 
-    #masthead .custom-logo-link img {
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-      margin-bottom: 15px;
-      width: auto;
-      height: 60px;
-    }
+  #menu-item-449 a:hover {
+    color: $hover-color;
+  }
 
-  	// Positions the search icon properly in the search box
-  	#masthead .site-search .widget_product_search form:before {
-  		top: 1.75em;
-  		left: .5em;
-  		position: relative;
-  	}
-  	/*  resizes the search box*/
-  	#masthead .site-search .widget_product_search input[type=search],#masthead .site-search .widget_product_search input[type=text] {
-  		padding: .5em .5em .5em 2em;
-  		line-height: 1;
-  	}
-
-    // Positioning the cart-menu
-    #masthead .site-header-cart {
-      margin-left: 15px;
-      // width: 14% !important;
-      // position: fixed !important;
-      // top: 0;
-      // right: 12%;
-      // padding: 0;
-    }
-
-    // Places the search box to the left of the cart menu(optional)
-    .woocommerce-active .site-header .site-search {
-      float: left;
-    }
-
-    #menu-item-449 a {
-      color: $logo-color;
-    }
-
-  } // end Desktop view
+} // end Desktop view
 
 
 /*
-* Webpage width settings
+  Webpage Width Settings
+  ----------------------------------------------------------------
 */
-
 // Breakpoints
 $bp-small: 48em; // 768px
 $bp-medium: 64em; // 1024px
@@ -322,4 +353,30 @@ body {
   }
 }
 
+/*
+  Slide In Down
+  ----------------------------------------------------------------
+*/
 .storefront-sticky-add-to-cart--slideInDown { display: none; }
+
+/*
+  Handheld Footer Bar (unhooked in functions.php)
+  ----------------------------------------------------------------
+*/
+.storefront-handheld-footer-bar ul li.home > a:before {
+  content: "\f015";
+}
+
+.woocommerce-mini-cart-item {
+  background-color: white;
+}
+.woocommerce-mini-cart__total {
+  background-color: white;
+}
+.woocommerce-mini-cart__buttons {
+  background-color: white;
+}
+
+.widget_shopping_cart_content {
+  background-color: white;
+}
