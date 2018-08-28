@@ -1,6 +1,32 @@
 @import url("https://fonts.googleapis.com/css?family=Josefin+Sans|Lato|Open+Sans|Roboto");
 @import url("https://fonts.googleapis.com/css?family=Dr+Sugiyama");
 @import url("https://fonts.googleapis.com/css?family=Karla");
+/*
+  Desktop Header
+  ----------------------------------------------------------------
+*/
+@media screen and (min-width: 768px) {
+  .secondary-navigation ul.menu a {
+    color: white; } }
+
+.storefront-secondary-navigation.woocommerce-active .site-header .secondary-navigation {
+  float: right;
+  margin: 0;
+  color: white; }
+
+@media (max-width: 767px) {
+  .storefront-primary-navigation {
+    display: block !important; }
+  button.menu-toggle {
+    background: #0c0b0b !important;
+    color: #fff; }
+  .main-navigation ul li a,
+  .site-title a, ul.menu li a,
+  .site-branding h1 a,
+  .site-footer .storefront-handheld-footer-bar a:not(.button),
+  .handheld-navigation .dropdown-toggle {
+    color: #121111 !important; } }
+
 body {
   font: 100% "Karla", sans-serif;
   background: white;
@@ -9,17 +35,8 @@ body {
     padding-top: 400px;
     /* adjust this to match the height of your header */
     width: 100%; }
-  body p.site-description {
-    color: white; }
-  body .site-title a {
-    color: white;
-    font: 200% "Dr Sugiyama", cursive;
-    font-size: 2.5em; }
   body .site-header-cart .cart-contents {
     color: white; }
-  body .site-footer {
-    font: 100% "Josefin Sans", sans-serif;
-    background-color: #f3f3f3; }
   body .woocommerce-info, body .woocommerce-noreviews, body p.no-comments {
     background-color: red; }
   body .main-navigation ul li {
@@ -66,12 +83,19 @@ body {
     left: 10px;
     text-align: center; }
 
-/* Only Desktop-viewv*/
+/*
+  Footer
+  ----------------------------------------------------------------
+*/
+.site-footer {
+  font: 100% "Josefin Sans", sans-serif;
+  background-color: #f3f3f3; }
+
+/*
+  Only desktop view
+  ----------------------------------------------------------------
+*/
 @media screen and (min-width: 768px) {
-  /*
-    Generic
-    ----------------------------------------------------------------
-  */
   .background-image {
     background-position: center center;
     background-size: cover;
@@ -80,8 +104,34 @@ body {
     header
     ----------------------------------------------------------------
   */
+  .secondary-navigation {
+    display: block;
+    float: right;
+    margin-right: 0;
+    background-color: grey; }
   .page-title {
     border-bottom: 1px solid #333333; }
+  .woocommerce-active .site-header .main-navigation {
+    width: 50%; }
+  #masthead .custom-logo-link img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 15px;
+    width: auto;
+    height: 60px; }
+  #masthead .site-search .widget_product_search form:before {
+    top: 1.75em;
+    left: .5em;
+    position: relative; }
+  /*  resizes the search box*/
+  #masthead .site-search .widget_product_search input[type=search], #masthead .site-search .widget_product_search input[type=text] {
+    padding: .5em .5em .5em 2em;
+    line-height: 1; }
+  #masthead .site-header-cart {
+    margin-left: 15px; }
+  .woocommerce-active .site-header .site-search {
+    float: left; }
   #menu-item-449 a {
     color: #F2E7B8; } }
 
