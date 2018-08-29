@@ -21,7 +21,6 @@ $hover-color: grey;
   Header
   ----------------------------------------------------------------
 */
-
 .site-header {
 
   .col-full {
@@ -150,6 +149,17 @@ $hover-color: grey;
 }
 
 /*
+  Storefront Breadcrumb
+  ----------------------------------------------------------------
+*/
+.storefront-breadcrumb {
+  a:hover {
+    text-decoration: none;
+    color: $secundary-color;
+  }
+}
+
+/*
   Body
   ----------------------------------------------------------------
 */
@@ -210,7 +220,7 @@ body {
 
   /* Delete 'Aanbieding!' */
   .onsale {
-  //  display: none;
+    display: none;
   }
 
   @media(max-width: 767px) {
@@ -386,4 +396,61 @@ body {
 
 .widget_shopping_cart_content {
   background-color: white;
+}
+
+/*
+  Contact Page
+  ----------------------------------------------------------------
+*/
+
+*{
+  margin: 0;
+}
+section{
+  background-color: #555;
+  padding: 2rem 0;
+  text-align: left;
+}
+.contact{
+  display: inline-block;
+  text-align: left;
+}
+.contact h2{
+  color: white;
+  font-weight: 500;
+  /*text-align: center;                   removed  */
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  margin-left: 40px;                  /*  added  */
+}
+.contact ul{
+  padding-left: 0;                    /*  added  */
+}
+.contact li{
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.contact li:last-child{
+  margin: 0;
+}
+.contact a{
+  color: white;
+  text-decoration: none;
+}
+.contact a:hover{
+  color: $logo-color;
+}
+.contact p{
+  color: white;
+  line-height: 1.4;
+}
+.contact .fa{
+  color: white;
+  font-size: 1.5rem;
+  line-height: 30px;
+  margin-right: 10px;
+  width: 30px;
+  height: 30px;
+  text-align: center;
 }
