@@ -14,7 +14,11 @@ get_header(); ?>
 
 			<?php while ( have_posts() ) : the_post();
 
+				
 				do_action( 'storefront_page_before' );
+
+
+
 
 				get_template_part( 'content', 'page' );
 
