@@ -140,7 +140,7 @@ $condition_types = apply_filters($hook_name.'_types', array());
                 $parent.remove();
             });
             jQuery(document).on('change', '.br_cond_attr_select', function() {
-                var $attr_block = jQuery(this).parents('.br_cond_attribute');
+                var $attr_block = jQuery(this).parents('.br_cond_attribute, .br_cond_woo_attribute');
                 $attr_block.find('.br_attr_values').hide();
                 $attr_block.find('.br_attr_value_'+jQuery(this).val()).show();
             });

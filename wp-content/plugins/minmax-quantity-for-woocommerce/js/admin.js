@@ -27,5 +27,8 @@
         }
         check_br_minmax_fix_duplicate();
         $(document).on('change', '.br_minmax_fix_duplicate', check_br_minmax_fix_duplicate);
+        $(document).on('change', '.berocket_addons', function() {
+            $(this).parents('.br_framework_submit_form').addClass('br_reload_form');
+        });
     });
 })(jQuery);

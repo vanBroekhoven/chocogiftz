@@ -4,8 +4,8 @@ Contributors: berocket, dholovnia
 Donate link: http://berocket.com/product/woocommerce-minmax-quantity
 Tags: limit quantity, limit cost, woocommerce limits, range to buy, min and max to purchase, product limits to buy, products min, products max, set min and max, woocommerce min and max, quantity limits for products, quantity limits for product variations, quantity limits for products in cart, cost limits for products in cart, minimum product quantity, maximum product quantity, product quantity, product quantity category, quantity order, minimum, maximum, quantity, minimum purchase, maximum purchase, max quantity, cart maximum, max purchase, cart max, order limit, products purchase limit, limit products purchase, min max products purchase limit, berocket, berocket min and max quantity for woocommerce
 Requires at least: 4.0
-Tested up to: 4.9.6
-Stable tag: 1.2.3
+Tested up to: 4.9.8
+Stable tag: 1.2.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,6 +14,7 @@ Min and Max Quantity for WooCommerce - set limits for cost of products in orders
 == Description ==
 
 Min and Max Quantity for WooCommerce plugin allow you to setup limits for cost of products in orders and in groups and limits for quantity of products, product variations, products in orders and products in group. You can add products and product variations to group. Infinite amount of groups.
+
 
 = Features: =
 &#9989; Quantity limits for products
@@ -98,6 +99,19 @@ You can try this plugin's admin side [here](http://berocket.com/product/woocomme
 ---
 
 == Changelog ==
+
+= 1.2.6 =
+* Enhancement - Limit values in quantity input field for product
+* Enhancement - Feature request box
+* Enhancement - Feedback box
+
+= 1.2.5 =
+* Fix - Support link
+* Fix - Restore some information, that was removed in previous version
+
+= 1.2.4 =
+* Fix - Limit errors
+* Fix - Updater compatible
 
 = 1.2.3 =
 * Fix - Grouped products in conditions

@@ -23,6 +23,7 @@ class BeRocket_MM_Quantity extends BeRocket_Framework {
         do_action('BeRocket_MM_Quantity__construct');
         $this->info = array(
             'id'          => 9,
+            'lic_id'      => 17,
             'version'     => BeRocket_MM_Quantity_version,
             'plugin'      => '',
             'slug'        => '',
@@ -30,7 +31,7 @@ class BeRocket_MM_Quantity extends BeRocket_Framework {
             'name'        => '',
             'plugin_name' => 'MM_Quantity',
             'full_name'   => 'WooCommerce Min and Max Quantities',
-            'norm_name'   => 'WooCommerce Min and Max Quantities',
+            'norm_name'   => 'Min/Max Quantities',
             'price'       => '',
             'domain'      => 'BeRocket_MM_Quantity_domain',
             'templates'   => MM_QUANTITY_TEMPLATE_PATH,
@@ -57,6 +58,7 @@ class BeRocket_MM_Quantity extends BeRocket_Framework {
             'min_price_text'        => 'Total cost of products in cart must be <strong>%value%</strong> or more',
             'max_price_text'        => 'Total cost of products in cart must be <strong>%value%</strong> or less',
             'custom_css'            => '',
+            'addons'                => array(),
             'script'                => array(
                 'js_page_load'      => '',
             ),
@@ -66,10 +68,21 @@ class BeRocket_MM_Quantity extends BeRocket_Framework {
             'settings_name' => 'br_mm_quantity_options',
             'option_page'   => 'br-mm-quantity',
             'premium_slug'  => 'woocommerce-minmax-quantity',
+            'free_slug'     => 'minmax-quantity-for-woocommerce'
         );
 
         // List of the features missed in free version of the plugin
-        $this->feature_list = array();
+        $this->feature_list = array(
+            'Quantity and cost limits for products from category',
+            'Quantity and cost limits for products from specific attribute',
+            'Quantity and cost limits for a specific user role',
+            'Quantity and cost limits for group of products',
+            'Infinite groups of products',
+            'Multiplicity for products in limitation',
+            'Use limitation for each product or for products summary',
+            'Prevent add to cart when limit is reached',
+            'Exclude product from rules'
+        );
 
         parent::__construct( $this );
 
@@ -77,6 +90,11 @@ class BeRocket_MM_Quantity extends BeRocket_Framework {
             if ( ( is_plugin_active( 'woocommerce/woocommerce.php' ) || is_plugin_active_for_network( 'woocommerce/woocommerce.php' ) ) && 
             br_get_woocommerce_version() >= 2.1 ) {
                 $options = parent::get_option();
+                if( ! empty($options['addons']) && is_array($options['addons']) ) {
+                    foreach($options['addons'] as $addon) {
+                        include_once(plugin_dir_path( __FILE__ ) . "includes/addons/{$addon}.php");
+                    }
+                }
                 add_action ( 'init', array( $this, 'init' ) );
                 add_action ( 'wp_head', array( $this, 'set_styles' ) );
                 add_action ( 'admin_init', array( $this, 'register_mm_quantity_options' ) );
@@ -98,6 +116,8 @@ class BeRocket_MM_Quantity extends BeRocket_Framework {
                 }
                 add_action('woocommerce_before_shop_loop', array($this, 'rewrite_wc_print_notices'), 9);
                 add_filter( 'woocommerce_add_to_cart_fragments', array( __CLASS__, 'woocommerce_add_to_cart_fragments' ), 900, 1 );
+                add_filter ( 'BeRocket_updater_menu_order_custom_post', array($this, 'menu_order_custom_post') );
+                add_filter ( 'berocket_update_qunatity_limitation_result_array', array($this, 'update_qunatity_limitation_result_array'), 10, 2 );
             }
         }
     }
@@ -185,6 +205,9 @@ class BeRocket_MM_Quantity extends BeRocket_Framework {
                 'License' => array(
                     'icon' => 'unlock-alt',
                     'link' => admin_url( 'admin.php?page=berocket_account' )
+                ),
+                'Addons'     => array(
+                    'icon' => 'cubes',
                 ),
             ),
             array(
@@ -324,6 +347,16 @@ class BeRocket_MM_Quantity extends BeRocket_Framework {
                     "type"  => "textarea",
                     "label" => "Custom CSS",
                     "name"  => "custom_css",
+                ),
+            ),
+            'Addons' => array(
+                'addon_input_limitation' => array(
+                    "label"     => __('Input Limitation', 'BeRocket_MM_Quantity_domain'),
+                    "label_for" => __('Set correct limitation for product quantity input field on product page and cart page', 'BeRocket_MM_Quantity_domain'),
+                    "type"      => "checkbox",
+                    "class"     => "berocket_addons",
+                    "name"      => array("addons", "1"),
+                    "value"     => "set_input_limitation",
                 ),
             ),
         ) );
@@ -562,19 +595,47 @@ class BeRocket_MM_Quantity extends BeRocket_Framework {
         }
     }
     public function get_line_total( $item, $inc_tax = false, $round = true ) {
-    $total = 0;
+        $total = 0;
 
-    if ( is_callable( array( $item, 'get_total' ) ) ) {
-      // Check if we need to add line tax to the line total.
-      $total = $inc_tax ? $item->get_total() + $item->get_total_tax() : $item->get_total();
+        if ( is_callable( array( $item, 'get_total' ) ) ) {
+            // Check if we need to add line tax to the line total.
+            $total = $inc_tax ? $item->get_total() + $item->get_total_tax() : $item->get_total();
 
-      // Check if we need to round.
-      $total = $round ? round( $total, wc_get_price_decimals() ) : $total;
+            // Check if we need to round.
+            $total = $round ? round( $total, wc_get_price_decimals() ) : $total;
+        }
+
+        return apply_filters( 'woocommerce_order_amount_line_total', $total, $this, $item, $inc_tax, $round );
     }
-
-    return apply_filters( 'woocommerce_order_amount_line_total', $total, $this, $item, $inc_tax, $round );
-  }
+    public function update_qunatity_limitation_result_array($qunatity_limitation_result_array, $limitation) {
+        $min = (empty($limitation['min_qty']) ? 0 : (int)$limitation['min_qty']);
+        $max = (empty($limitation['max_qty']) ? 0 : (int)$limitation['max_qty']);
+        $step = (empty($limitation['multiplicity']) ? 0 : (int)$limitation['multiplicity']);
+        if( $min != 0 ) {
+            $qunatity_limitation_result_array['min'] = ( isset($qunatity_limitation_result_array['min'])
+                ?   ( $qunatity_limitation_result_array['min'] < $min ? $min : $qunatity_limitation_result_array['min'] )
+                :   ( $min )
+            );
+        }
+        if( $max != 0 ) {
+            $qunatity_limitation_result_array['max'] = ( isset($qunatity_limitation_result_array['max'])
+                ?   ( $qunatity_limitation_result_array['max'] > $max ? $max : $qunatity_limitation_result_array['max'] )
+                :   ( $max )
+            );
+        }
+        if( $step != 0 ) {
+            $qunatity_limitation_result_array['step'] = ( isset($qunatity_limitation_result_array['step'])
+                ?   ( $step == 1
+                    ?   $qunatity_limitation_result_array['step']
+                    :   ($qunatity_limitation_result_array['step'] == 1 ? $step : 0 )
+                )
+                :   ( $step )
+            );
+        }
+        return $qunatity_limitation_result_array;
+    }
     public function new_calculate_total($cart, $additional_product = false, $display_error = true, $only_err_product_id = false) {
+        $check_product_variations = array();
         $options = $this->get_option();
         //GET OPTIONS AND FILTER IT
         global $br_minmax_notices;
@@ -717,6 +778,7 @@ class BeRocket_MM_Quantity extends BeRocket_Framework {
 
                 //CHECK FOR LIMITATION ERRORS AND ADD ERRORS TO LIST
                 if( ($only_err_product_id === FALSE || $only_err_product_id == $_product_id) && ! isset($product_limitations[$_var_product_id]) ) {
+                    $check_product_variations[] = apply_filters('berocket_minmax_check_product_variation', array(), array($variation_limitation), $qty_variation, $price_variation);
                     $check_result = $this->check_product(array($variation_limitation), $qty_variation, $price_variation);
                     $new_errors = $this->add_correct_error($product_text_errors['variation'], $check_result, array($_product_post->post_title));
                     if( count($new_errors) ) {
@@ -752,6 +814,7 @@ class BeRocket_MM_Quantity extends BeRocket_Framework {
 
             //CHECK FOR PRODUCT ERRORS AND ADD ERRORS TO LIST
             if( ($only_err_product_id === FALSE || $only_err_product_id == $_product_id) && ! $has_error && ! isset($product_limitations[$_product_id]) ) {
+                $check_product_variations[] = apply_filters('berocket_minmax_check_product_variation', array(), array($product_limitation), $qty_prod, $price_prod);
                 $check_result = $this->check_product(array($product_limitation), $qty_prod, $price_prod);
                 $new_errors = $this->add_correct_error($product_text_errors['product'], $check_result, array($_product_post->post_title));
                 if( count($new_errors) ) {
@@ -815,7 +878,7 @@ class BeRocket_MM_Quantity extends BeRocket_Framework {
                     'var_check_condition' => $var_check_condition,
                     'only_err_product_id' => $only_err_product_id,
                 );
-                $filter_elements = array('group_limitations', 'br_minmax_notices', 'return_result', 'product_limitations');
+                $filter_elements = array('group_limitations', 'br_minmax_notices', 'return_result', 'product_limitations', 'check_product_variations');
                 $filter_array = array();
                 foreach($filter_elements as $filter_element) {
                     $filter_array[$filter_element] = $$filter_element;
@@ -833,6 +896,7 @@ class BeRocket_MM_Quantity extends BeRocket_Framework {
                 $settings_minmax = get_post_meta( $limitation_id, 'br_minmax_limitation', true );
                 $settings_minmax = apply_filters('berocket_minmax_group_limitation_settings_text', $settings_minmax, $limitation_id, $options);
             }
+            $check_product_variations[] = apply_filters('berocket_minmax_check_product_variation', array(), $settings_minmax['limitations'], $limitation_data['qty'], $limitation_data['price'], false);
             $check_result = $this->check_product($settings_minmax['limitations'], $limitation_data['qty'], $limitation_data['price']);
             $new_errors = $this->add_correct_error($settings_minmax, $check_result, $limitation_data['products']);
             $check_errors = $this->add_correct_error($settings_minmax, $check_result, $limitation_data['products'], true);
@@ -843,6 +907,9 @@ class BeRocket_MM_Quantity extends BeRocket_Framework {
                 $br_minmax_notices['error'] = array_merge($br_minmax_notices['error'], $new_errors);
             }
         }
+        if( $display_error === 'check_product_variations' ) {
+            return $check_product_variations;
+        }
         if( $display_error ) {
             foreach($br_minmax_notices as $error_type => $errors) {
                 foreach($errors as $error) {
@@ -850,6 +917,7 @@ class BeRocket_MM_Quantity extends BeRocket_Framework {
                 }
             }
         }
+        error_log(print_r($check_product_variations, true));
         if ( wc_notice_count( 'error' ) == 0 ) {
             $this->show_checkout_button();
         } else {
@@ -986,6 +1054,10 @@ class BeRocket_MM_Quantity extends BeRocket_Framework {
         // standart
         $settings = parent::save_settings_callback($settings);
         return $settings;
+    }
+    public function menu_order_custom_post($compatibility) {
+        $compatibility['br_minmax_limitation'] = 'br-mm-quantity';
+        return $compatibility;
     }
 }
 

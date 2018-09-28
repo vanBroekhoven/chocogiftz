@@ -18,6 +18,7 @@ var br_something_changed = false;
         $('.br_framework_submit_form').submit( function(event) {
             event.preventDefault();
             if( !br_savin_ajax ) {
+                var br_reload_page = $(this).is('.br_reload_form');
                 br_savin_ajax = true;
                 var form_data = $(this).serialize();
                 var plugin_name = $(this).data('plugin');
@@ -34,6 +35,9 @@ var br_something_changed = false;
                     br_saved_timeout = setTimeout( function(){destroy_br_saved();}, 2000 );
                     br_savin_ajax = false;
                     br_something_changed = false;
+                    if( br_reload_page ) {
+                        location.reload();
+                    }
                 }).fail(function(data) {
                     if($('.br_saved').length > 0) {
                         $('.br_saved').removeClass('br_saving').addClass('br_not_saved').find('.fa').removeClass('fa-spin').removeClass('fa-refresh').addClass('fa-times');
@@ -61,6 +65,7 @@ var br_something_changed = false;
                 $(this).addClass('active');
                 $('.'+$(this).data('block')+'-block').addClass('nav-block-active');
                 $('.br_framework_settings .content .title').html( $(this).html() );
+                window.history.replaceState(null, null, $(this).attr('href'));
             }
         });
 
@@ -301,3 +306,186 @@ var br_something_changed = false;
         }
     });
 })(jQuery);
+
+
+//SHOW MESSAGE FOR BLOCK
+var berocket_block_messages_elements = [];
+var berocket_block_messages_element_last = false;
+var berocket_block_messages_element_interval = false;
+function berocket_blocks_messages(options) {
+    if( typeof(options) == 'undefined' ) {
+        do {
+            var element = berocket_block_messages_elements.shift();
+        } while (! berocket_display_block_messages(element, berocket_block_messages_elements) && berocket_block_messages_elements.length);
+        return 'next';
+    }
+    if( ! berocket_block_messages_elements.length && berocket_block_messages_element_last == false ) {
+        berocket_block_messages_elements = options;
+        berocket_blocks_messages();
+        berocket_block_messages_element_interval = setInterval(function() {
+            if( berocket_block_messages_element_last !== false ) {
+                var $element = jQuery(berocket_block_messages_element_last.selector).first();
+                var top = parseInt($element.offset().top);
+                var left = parseInt($element.offset().left);
+                if( berocket_block_messages_element_last.top != top || berocket_block_messages_element_last.left != left ) {
+                    berocket_display_block_message_reload_last();
+                }
+            }
+        }, 2000);
+        return true;
+    } else {
+        return false;
+    }
+}
+function berocket_display_block_messages(element, next_elements) {
+    if( typeof(element.selector) != 'undefined' && jQuery(element.selector).length ) {
+        berocket_block_messages_element_last = element;
+        if( typeof(element.disable_inside) == 'undefined' ) {
+            element.disable_inside = true;
+        }
+        if( typeof(element.execute) == 'function' ) {
+            element.execute(element, next_elements);
+        }
+        var $element = jQuery(element.selector).first();
+        var top = parseInt($element.offset().top);
+        var left = parseInt($element.offset().left);
+        berocket_block_messages_element_last.top = top;
+        berocket_block_messages_element_last.left = left;
+        var width = parseInt($element.outerWidth());
+        var height = parseInt($element.outerHeight());
+        var left_end = left + width;
+        var top_end = top + height;
+        var right_width = (parseInt(jQuery(window).width()) - left_end);
+        styles = {
+            top:'top:0;left:0;width:100%;height:'+top+'px;',
+            bottom:'top:'+top_end+'px;left:0;width:100%;',
+            left:'top:'+top+'px;left:0;width:'+left+'px;height:'+height+'px;',
+            right:'top:'+top+'px;left:'+left_end+'px;right:0;height:'+height+'px;',
+            inside:'top:'+top+'px;left:'+left+'px;width:'+width+'px;height:'+height+'px;'
+        };
+        if( top < 40 ) {
+            styles.top += 'padding:0;';
+        }
+        if( jQuery('#wpcontent').length ) {
+            var bottom_height = parseInt(jQuery('#wpcontent').outerHeight()) - top_end;
+            styles.bottom += 'height:'+(bottom_height + 40)+'px;';
+        } else {
+            styles.bottom += "bottom:0;";
+        }
+        if( left < 40 || height < 40 ) {
+            styles.left += 'padding:0;';
+        }
+        if( right_width < 40 || height < 40 ) {
+            styles.right += 'padding:0;';
+        }
+        //Create hide blocks
+        var html = '<div class="berocket_display_block_messages_hide top" style="'+styles.top+'"></div>';
+        html += '<div class="berocket_display_block_messages_hide bottom" style="'+styles.bottom+'"></div>';
+        html += '<div class="berocket_display_block_messages_hide left" style="'+styles.left+'"></div>';
+        html += '<div class="berocket_display_block_messages_hide right" style="'+styles.right+'"></div>';
+        if( typeof(element.text) == 'undefined' || element.disable_inside ) {
+            html += '<div class="berocket_display_block_messages_hide inside" style="'+styles.inside+'"></div>';
+        }
+        jQuery('body').append(jQuery(html));
+        jQuery("html, body").stop().animate({scrollTop:top - 50}, 500, 'swing');
+        //Button to next and close
+        html = '<a href="#close" class="berocket_display_block_messages_close_button">Close</a>';
+        if( next_elements.length ) {
+            html += '<a href="#next" class="berocket_display_block_messages_next_button">Next</a>';
+        }
+        if( typeof(element.text) == 'undefined' ) {
+            jQuery('.berocket_display_block_messages_hide.inside').last().append(jQuery(html));
+        } else {
+            berocket_display_tooltip($element, element.text)
+            jQuery('.berocket_display_tooltip').last().append(jQuery(html));
+        }
+        return true;
+    } else {
+        return false;
+    }
+}
+function berocket_display_block_message_reload_last() {
+    berocket_display_block_messages_remove();
+    berocket_display_block_messages(berocket_block_messages_element_last, berocket_block_messages_elements);
+}
+function berocket_display_tooltip(element, text, additional) {
+    $element = jQuery(element).first();
+    if( typeof(additional) != 'object' ) {
+        additional = {};
+    }
+    var top = parseInt($element.offset().top);
+    var left = parseInt($element.offset().left);
+    var width = parseInt($element.outerWidth());
+    var height = parseInt($element.outerHeight());
+    var left_end = left + width;
+    var right_width = (parseInt(jQuery(window).width()) - left_end);
+    if( left > 200 ) {
+        var position = 'left';
+    } else if( right_width > 200 ) {
+        var position = 'right';
+    } else {
+        var position = 'element';
+    }
+    var style="";
+    if( position == 'left' || position == 'right' ) {
+        style += 'top:'+top+'px;';
+    } else if( position == 'element' ) {
+        style += 'top:'+(top+40)+'px;';
+    }
+    if( position == 'left' ) {
+        style += 'right:'+(right_width + width + 15)+'px;';
+    } else if( position == 'right' ) {
+        style += 'left:'+(left_end + 15)+'px;';
+    } else if( position == 'element' ) {
+        style += 'left:'+left+'px;';
+    }
+    if( position == 'left' ) {
+        if( (left - 30) < 500 ) {
+            style += 'max-width:'+(left - 30)+'px;';
+        }
+    } else if( position == 'right' ) {
+        if( (right_width - 30) < 500 ) {
+            style += 'max-width:'+(right_width - 30)+'px;';
+        }
+    } else if( position == 'element' ) {
+        style += 'width:'+width+'px;';
+    }
+    var classes = 'berocket_display_tooltip position_'+position;
+    if( typeof(additional.hide_on_click) != 'undefined' && additional.hide_on_click ) {
+        classes += ' hide_on_click';
+    }
+    if( typeof(additional.classes) != 'undefined' ) {
+        classes += ' '+additional.classes;
+    }
+    var html = '<div class="'+classes+'" style="'+style+'">';
+    html += '<span class="br_text">'+text+'</span>';
+    html += '<span class="br_add1"></span>';
+    html += '<span class="br_add2"></span>';
+    html += '<span class="br_add3"></span>';
+    html += '</div>';
+    jQuery('body').append(jQuery(html));
+}
+function berocket_display_block_messages_remove() {
+    if( typeof(berocket_block_messages_element_last.execute_after) == 'function' ) {
+        berocket_block_messages_element_last.execute_after(berocket_block_messages_element_last, berocket_block_messages_elements);
+    }
+    jQuery('.berocket_display_block_messages_hide').remove();
+    jQuery('.berocket_display_block_messages_close_button').remove();
+    jQuery('.berocket_display_block_messages_next_button').remove();
+    jQuery('.berocket_display_tooltip').remove();
+}
+jQuery(document).on('click', '.berocket_display_block_messages_close_button', function(event) {
+    event.preventDefault();
+    berocket_display_block_messages_remove();
+    berocket_block_messages_element_last = false;
+    berocket_block_messages_elements = [];
+    clearInterval(berocket_block_messages_element_interval);
+});
+jQuery(document).on('click', '.berocket_display_block_messages_next_button', function(event) {
+    event.preventDefault();
+    berocket_display_block_messages_remove();
+    berocket_blocks_messages();
+});
+jQuery(document).on('click', function() {
+    jQuery('.berocket_display_tooltip.hide_on_click').remove();
+});

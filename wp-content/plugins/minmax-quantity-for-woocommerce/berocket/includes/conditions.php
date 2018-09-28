@@ -81,6 +81,7 @@ if( ! class_exists('BeRocket_conditions') ) {
         }
         public static function get_conditions() {
             return array(
+                //PRODUCTS
                 'condition_product' => array('save' => 'save_condition_product', 'func' => 'check_condition_product', 'type' => 'product', 'name' => __('Product', 'BeRocket_domain')),
                 'condition_product_sale' => array('func' => 'check_condition_product_sale', 'type' => 'sale', 'name' => __('On Sale', 'BeRocket_domain')),
                 'condition_product_bestsellers' => array('func' => 'check_condition_product_bestsellers', 'type' => 'bestsellers', 'name' => __('Bestsellers', 'BeRocket_domain')),
@@ -96,8 +97,11 @@ if( ! class_exists('BeRocket_conditions') ) {
                 'condition_product_featured' => array('func' => 'check_condition_product_featured', 'type' => 'featured', 'name' => __('Featured', 'BeRocket_domain')),
                 'condition_product_shippingclass' => array('func' => 'check_condition_product_shippingclass', 'type' => 'shippingclass', 'name' => __('Shipping Class', 'BeRocket_domain')),
                 'condition_product_type' => array('func' => 'check_condition_product_type', 'type' => 'product_type', 'name' => __('Product Type', 'BeRocket_domain')),
-                
+                //PAGES
                 'condition_page_id' => array('func' => 'check_condition_page_id', 'type' => 'page_id', 'name' => __('Page ID', 'BeRocket_domain')),
+                'condition_page_woo_attribute' => array('func' => 'check_condition_page_woo_attribute', 'type' => 'woo_attribute', 'name' => __('Product Attribute', 'BeRocket_domain')),
+                'condition_page_woo_search' => array('func' => 'check_condition_page_woo_search', 'type' => 'woo_search', 'name' => __('Product Search', 'BeRocket_domain')),
+                'condition_page_woo_category' => array('func' => 'check_condition_page_woo_category', 'type' => 'woo_category', 'name' => __('Product Category', 'BeRocket_domain')),
             );
         }
         public static function get_condition($condition) {
@@ -431,6 +435,7 @@ if( ! class_exists('BeRocket_conditions') ) {
             }
             return $show;
         }
+
         public static function check_condition_product_featured($show, $condition, $additional) {
             $show = function_exists('wc_get_product_visibility_term_ids');
             if( $show ) {
@@ -454,6 +459,7 @@ if( ! class_exists('BeRocket_conditions') ) {
             }
             return $show;
         }
+
         public static function check_condition_product_shippingclass($show, $condition, $additional) {
             $terms = get_the_terms( $additional['product_id'], 'product_shipping_class' );
             if( is_array( $terms ) ) {
@@ -614,25 +620,100 @@ if( ! class_exists('BeRocket_conditions') ) {
         }
         //PAGE CONDITIONS
 
-        //HTML FOR PRODUCT CONDITIONS IN ADMIN PANEL
+        //HTML FOR PAGE CONDITIONS IN ADMIN PANEL
         
         public static function condition_page_id($html, $name, $options) {
             $def_options = array('pages' => array());
             $options = array_merge($def_options, $options);
             $html .= br_supcondition_equal($name, $options);
             $pages = get_pages();
-            $html .= '<div style="max-height: 150px; overflow: auto;">';
-            $html .= '<p><label><input name="' . $name . '[pages][]" type="checkbox" value="shop"'.(in_array('shop', $options['pages']) ? ' checked' : '').'>[SHOP PAGE]</label></p>';
-            $html .= '<p><label><input name="' . $name . '[pages][]" type="checkbox" value="product"'.(in_array('product', $options['pages']) ? ' checked' : '').'>[PRODUCT PAGE]</label></p>';
-            $html .= '<p><label><input name="' . $name . '[pages][]" type="checkbox" value="category"'.(in_array('category', $options['pages']) ? ' checked' : '').'>[PRODUCT CATEGORY PAGE]</label></p>';
+            $html .= '<div style="max-height:150px;overflow:auto;border:1px solid #ccc;padding: 5px;">';
+            $woo_pages = array(
+                'shop' => '[SHOP PAGE]',
+                'product' => '[PRODUCT PAGE]',
+                'category' => '[PRODUCT CATEGORY PAGE]',
+                'taxonomies' => '[PRODUCT TAXONOMIES]',
+                'tags' => '[PRODUCT TAGS]',
+            );
+            foreach($woo_pages as $page_id => $page_name) {
+                $html .= '<div><label><input name="' . $name . '[pages][]" type="checkbox" value="' . $page_id . '"'.(in_array($page_id, $options['pages']) ? ' checked' : '').'>' . $page_name . '</label></div>';
+            }
             foreach($pages as $page) {
-                $html .= '<p><label><input name="' . $name . '[pages][]" type="checkbox" value="'.$page->ID.'"'.(in_array($page->ID, $options['pages']) ? ' checked' : '').'>'.$page->post_title.' (ID: '.$page->ID.')</label></p>';
+                $html .= '<div><label><input name="' . $name . '[pages][]" type="checkbox" value="'.$page->ID.'"'.(in_array($page->ID, $options['pages']) ? ' checked' : '').'>'.$page->post_title.' (ID: '.$page->ID.')</label></div>';
             }
             $html .= '</div>';
             return $html;
         }
 
-        //CHECK PRODUCT CONDITIONS
+        public static function condition_page_woo_attribute($html, $name, $options) {
+            $def_options = array('attribute' => '');
+            $options = array_merge($def_options, $options);
+            $attributes = get_object_taxonomies( 'product', 'objects');
+            $product_attributes = array();
+            foreach( $attributes as $attribute ) {
+                $attribute_i = array();
+                $attribute_i['name'] = $attribute->name;
+                $attribute_i['label'] = $attribute->label;
+                $attribute_i['value'] = array();
+                $terms = get_terms(array(
+                    'taxonomy' => $attribute->name,
+                    'hide_empty' => false,
+                ));
+                foreach($terms as $term) {
+                    $attribute_i['value'][$term->term_id] = $term->name;
+                }
+                $product_attributes[] = $attribute_i;
+            }
+            $html .= br_supcondition_equal($name, $options);
+            $html .= '<label>' . __('Select attribute', 'BeRocket_domain') . '</label>';
+            $html .= '<select name="' . $name . '[attribute]" class="br_cond_attr_select">';
+            $has_selected_attr = false;
+            foreach($product_attributes as $attribute) {
+                $html .= '<option value="' . $attribute['name'] . '"' . ( isset($options['attribute']) && $attribute['name'] == $options['attribute'] ? ' selected' : '' ) . '>' . $attribute['label'] . '</option>';
+                if( $attribute['name'] == $options['attribute'] ) {
+                    $has_selected_attr = true;
+                }
+            }
+            $html .= '</select>';
+            $is_first_attr = ! $has_selected_attr;
+            foreach($product_attributes as $attribute) {
+                $html .= '<select class="br_attr_values br_attr_value_' . $attribute['name'] . '" name="' . $name . '[values][' . $attribute['name'] . ']"' . ($is_first_attr || $attribute['name'] == $options['attribute'] ? '' : ' style="display:none;"') . '>';
+                foreach($attribute['value'] as $term_id => $term_name) {
+                    $html .= '<option value="' . $term_id . '"' . (! empty($options['values'][$attribute['name']]) && $options['values'][$attribute['name']] == $term_id ? ' selected' : '') . '>' . $term_name . '</option>';
+                }
+                $html .= '</select>';
+                $is_first_attr = false;
+            }
+            return $html;
+        }
+
+        public static function condition_page_woo_search($html, $name, $options) {
+            $def_options = array('search' => array());
+            $options = array_merge($def_options, $options);
+            $html .= br_supcondition_equal($name, $options);
+            return $html;
+        }
+
+        public static function condition_page_woo_category($html, $name, $options) {
+            $product_categories = get_terms( 'product_cat' );
+            if( is_array($product_categories) && count($product_categories) > 0 ) {
+                $def_options = array('category' => '');
+                $options = array_merge($def_options, $options);
+                $html .= br_supcondition_equal($name, $options);
+                $html .= '<label><input type="checkbox" name="' . $name . '[subcats]" value="1"' . (empty($options['subcats']) ? '' : ' checked') . '>' . __('Include subcategories', 'BeRocket_AJAX_domain') . '</label>';
+                $html .= '<div style="max-height:150px;overflow:auto;border:1px solid #ccc;padding: 5px;">';
+                foreach($product_categories as $category) {
+                    $html .= '<div><label>
+                    <input type="checkbox" name="' . $name . '[category][]" value="' . $category->term_id . '"' . ( (! empty($options['category']) && is_array($options['category']) && in_array($category->term_id, $options['category']) ) ? ' checked' : '' ) . '>
+                    ' . $category->name . '
+                    </label></div>';
+                }
+                $html .= '</div>';
+            }
+            return $html;
+        }
+
+        //CHECK PAGE CONDITIONS
         
         public static function check_condition_page_id($show, $condition, $additional) {
             $show = false;
@@ -642,7 +723,9 @@ if( ! class_exists('BeRocket_conditions') ) {
                 if( function_exists('is_shop') && function_exists('is_product_category') && function_exists('is_product') ) {
                     if(is_shop() && in_array('shop', $condition['pages']) 
                     || is_product_category() && in_array('category', $condition['pages'])
-                    || is_product() && in_array('product', $condition['pages'])) {
+                    || is_product() && in_array('product', $condition['pages'])
+                    || is_product_tag() && in_array('tags', $condition['pages'])
+                    || is_product_taxonomy() && in_array('taxonomies', $condition['pages'])) {
                         $show = true;
                     }
                 }
@@ -655,6 +738,53 @@ if( ! class_exists('BeRocket_conditions') ) {
                 }
                 if( ! empty($condition['pages']) && is_page($condition['pages']) ) {
                     $show = true;
+                }
+            }
+            if( $condition['equal'] == 'not_equal' ) {
+                $show = ! $show;
+            }
+            return $show;
+        }
+
+        public static function check_condition_page_woo_attribute($show, $condition, $additional) {
+            $show = ( is_tax($condition['attribute'], $condition['values'][$condition['attribute']]) );
+            if( $condition['equal'] == 'not_equal' ) {
+                $show = ! $show;
+            }
+            return $show;
+        }
+
+        public static function check_condition_page_woo_search($show, $condition, $additional) {
+            $show = ( is_search() );
+            if( $condition['equal'] == 'not_equal' ) {
+                $show = ! $show;
+            }
+            return $show;
+        }
+
+        public static function check_condition_page_woo_category($show, $condition, $additional) {
+            global $wp_query;
+            $show = false;
+            if( ! empty($condition['category']) && ! is_array($condition['category']) ) {
+                $condition['category'] = array($condition['category']);
+            }
+            if( $wp_query->is_tax ) {
+                $queried_object = $wp_query->get_queried_object();
+                if(! empty($condition['category'])
+                && is_array($condition['category'])
+                && is_object($queried_object)
+                && property_exists($queried_object, 'term_id')
+                && property_exists($queried_object, 'taxonomy')
+                && $queried_object->taxonomy == 'product_cat' ) {
+                    $show = in_array($queried_object->term_id, $condition['category']);
+                    if( empty($show) && ! empty($condition['subcats']) ) {
+                        foreach($condition['category'] as $category) {
+                            $show = term_is_ancestor_of($category, $queried_object, 'product_cat');
+                            if( $show ) {
+                                break;
+                            }
+                        }
+                    }
                 }
             }
             if( $condition['equal'] == 'not_equal' ) {

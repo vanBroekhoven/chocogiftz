@@ -81,7 +81,10 @@ class BeRocket_minmax_custom_post extends BeRocket_custom_post_class {
         $this->post_settings = array(
             'label' => __( 'Min/Max Limitation', 'BeRocket_MM_Quantity_domain' ),
             'labels' => array(
-                'menu_name'          => _x( 'Min/Max Limitation', 'Admin menu name', 'BeRocket_MM_Quantity_domain' ),
+                'name'               => __( 'Min/Max Limitation', 'BeRocket_MM_Quantity_domain' ),
+                'singular_name'      => __( 'Min/Max Limitation', 'BeRocket_MM_Quantity_domain' ),
+                'menu_name'          => _x( 'Limitations', 'Admin menu name', 'BeRocket_MM_Quantity_domain' ),
+                'add_new'            => __( 'Add Min/Max Limitation', 'BeRocket_MM_Quantity_domain' ),
                 'add_new_item'       => __( 'Add New Min/Max Limitation', 'BeRocket_MM_Quantity_domain' ),
                 'edit'               => __( 'Edit', 'BeRocket_MM_Quantity_domain' ),
                 'edit_item'          => __( 'Edit Min/Max Limitation', 'BeRocket_MM_Quantity_domain' ),

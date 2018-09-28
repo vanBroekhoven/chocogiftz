@@ -1,17 +1,17 @@
 {
-  "name": "chocogiftz",
+  "name": "choco",
   "version": "1.0.0",
-  "description": "Storefront-childtheme for chocowebshop",
+  "description": "theme for choco webshop",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
+  "author": "epicwebapps",
   "license": "ISC",
   "devDependencies": {
-    "browser-sync": "^2.24.6",
-    "gulp": "^3.9.1",
+    "gulp": "^3.9.1"
+  },
+  "dependencies": {
+    "browser-sync": "^2.24.7",
     "gulp-sass": "^4.0.1",
-    "gulp-watch": "^5.0.1"
+    "gulp-watch": "^5.0.1",
+    "module": "^1.2.5"
   }
 }

@@ -48,12 +48,11 @@ if( ! class_exists( 'BeRocket_Framework' ) ) {
             do_action('BeRocket_framework_init_plugin', $this->cc->info);
             $this->plugin_version_capability = apply_filters('brfr_plugin_version_capability_'.$this->cc->info['plugin_name'], $this->plugin_version_capability, $this);
             $this->defaults = apply_filters('brfr_plugin_defaults_value_'.$this->cc->info['plugin_name'], $this->defaults, $this);
-            if( ! empty($this->cc->feature_list) ) {
-                berocket_admin_notices::generate_subscribe_notice();
-            }
+            
             register_activation_hook( $this->cc->info[ 'plugin_file' ], array( $this->cc, 'activation' ) );
             register_uninstall_hook( $this->cc->info[ 'plugin_file' ], array( get_class( $this->cc ), 'deactivation' ) );
             add_filter( 'BeRocket_updater_add_plugin', array( $this->cc, 'updater_info' ) );
+            add_filter( 'berocket_admin_notices_rate_stars_plugins', array( $this, 'rate_stars_plugins' ) );
 
             if ( $this->cc->init_validation() ) {
                 add_action( 'init', array( $this->cc, 'init' ) );
@@ -104,7 +103,7 @@ if( ! class_exists( 'BeRocket_Framework' ) ) {
          */
         public function get_product_data_berocket() {
             $products = get_transient($this->info[ 'plugin_name' ] . '_paid_info');
-            if( $products != FALSE ) {
+            if( $products === FALSE ) {
                 $response = wp_remote_post('https://berocket.com/main/get_product_data/'.$this->info['id'], array(
                     'method' => 'POST',
                     'timeout' => 15,
@@ -116,8 +115,12 @@ if( ! class_exists( 'BeRocket_Framework' ) ) {
                     $out = wp_remote_retrieve_body($response);
                     if( !empty($out) && json_decode($out) ) {
                         $products = json_decode($out, true);
+                        set_transient($this->info[ 'plugin_name' ] . '_paid_info', $products, WEEK_IN_SECONDS);
+                    } else {
+                        set_transient($this->info[ 'plugin_name' ] . '_paid_info', '', DAY_IN_SECONDS);
                     }
-                    set_transient($this->info[ 'plugin_name' ] . '_paid_info', $products, 86400);
+                } else {
+                    set_transient($this->info[ 'plugin_name' ] . '_paid_info', '', DAY_IN_SECONDS);
                 }
             }
             return $products;
@@ -152,13 +155,26 @@ if( ! class_exists( 'BeRocket_Framework' ) ) {
             $option = $this->get_option();
             $info   = get_plugin_data( $this->cc->info[ 'plugin_file' ] );
 
-            $this->cc->info[ 'key' ]    = ( isset($option[ 'plugin_key' ]) ? $option[ 'plugin_key' ] : '' );
-            $this->cc->info[ 'slug' ]   = basename( $this->cc->info[ 'plugin_dir' ] );
-            $this->cc->info[ 'plugin' ] = plugin_basename( $this->cc->info[ 'plugin_file' ] );
-            $this->cc->info[ 'name' ]   = $info[ 'Name' ];
+            $this->cc->info[ 'key' ]                = ( isset($option[ 'plugin_key' ]) ? $option[ 'plugin_key' ] : '' );
+            $this->cc->info[ 'slug' ]               = basename( $this->cc->info[ 'plugin_dir' ] );
+            $this->cc->info[ 'plugin' ]             = plugin_basename( $this->cc->info[ 'plugin_file' ] );
+            $this->cc->info[ 'name' ]               = $info[ 'Name' ];
+            $this->cc->info[ 'version_capability' ] = $this->plugin_version_capability;
 
             $plugins[] = $this->cc->info;
 
+            return $plugins;
+        }
+
+        public function rate_stars_plugins($plugins) {
+            if( $this->plugin_version_capability < 10 ) {
+                $plugin = array(
+                    'id'            => $this->info['id'],
+                    'name'          => $this->info['name'],
+                    'free_slug'     => $this->values['free_slug'],
+                );
+                $plugins[$this->info['id']] = $plugin;
+            }
             return $plugins;
         }
 
@@ -182,17 +198,17 @@ if( ! class_exists( 'BeRocket_Framework' ) ) {
             $plugin_base_slug = plugin_basename( $this->cc->info[ 'plugin_file' ] );
             if ( $file == $plugin_base_slug ) {
                 $row_meta = array(
-                    'docs'    => '<a href="http://berocket.com/docs/plugin/' .
+                    'docs'    => '<a href="https://berocket.com/docs/plugin/' .
                                  $this->cc->values[ 'premium_slug' ] . '" title="' .
                                  __( 'View Plugin Documentation', 'BeRocket_domain' ) .
                                  '" target="_blank">' . __( 'Docs', 'BeRocket_domain' ) . '</a>',
                 );
                 if( ! empty($this->plugin_version_capability) && $this->plugin_version_capability > 10 ) {
-                    $row_meta['premium'] = '<a href="http://berocket.com/support/product/' . $this->cc->values[ 'premium_slug' ] .
+                    $row_meta['premium'] = '<a href="https://berocket.com/support/product/' . $this->cc->values[ 'premium_slug' ] .
                                  '" title="' . __( 'View Premium Support Page', 'BeRocket_domain' ) .
                                  '" target="_blank">' . __( 'Premium Support', 'BeRocket_domain' ) . '</a>';
                 } else {
-                    $row_meta['premium'] = '<a href="http://berocket.com/product/' . $this->cc->values[ 'premium_slug' ] .
+                    $row_meta['premium'] = '<a href="https://berocket.com/product/' . $this->cc->values[ 'premium_slug' ] .
                                  '" title="' . __( 'View Premium Version Page', 'BeRocket_domain' ) .
                                  '" target="_blank">' . __( 'Premium Version', 'BeRocket_domain' ) . '</a>';
                 }
@@ -253,6 +269,15 @@ if( ! class_exists( 'BeRocket_Framework' ) ) {
          * @return void
          */
         public function admin_init() {
+            if( isset($this->plugin_version_capability) && $this->plugin_version_capability <= 5 ) {
+                berocket_admin_notices::generate_subscribe_notice();
+                if( empty($this->feature_list) || ! is_array($this->feature_list) || ! count($this->feature_list) ) {
+                    $products_info = $this->get_product_data_berocket();
+                    if( is_array($products_info) && isset($products_info['difference']) && is_array($products_info['difference']) ) {
+                        $this->feature_list = $products_info['difference'];
+                    }
+                }
+            }
             require_once( plugin_dir_path( __FILE__ ) . 'includes/settings_fields.php');
             wp_register_script(
                 'berocket_framework_admin',
@@ -313,6 +338,12 @@ if( ! class_exists( 'BeRocket_Framework' ) ) {
 
             wp_enqueue_style( 'berocket_framework_global_admin_style' );
 
+            add_filter('option_page_capability_'.$this->cc->values[ 'option_page' ], array($this, 'option_page_capability'));
+        }
+
+        public function option_page_capability($capability) {
+            $capability = 'manage_woocommerce';
+            return $capability;
         }
 
         /**
@@ -330,7 +361,7 @@ if( ! class_exists( 'BeRocket_Framework' ) ) {
                     'berocket_account',
                     $this->cc->info[ 'norm_name' ] . ' ' . __( 'Settings', 'BeRocket_domain' ),
                     $this->cc->info[ 'norm_name' ],
-                    'manage_options',
+                    'manage_woocommerce',
                     $this->cc->values[ 'option_page' ],
                     array(
                         $this->cc,
@@ -355,6 +386,7 @@ if( ! class_exists( 'BeRocket_Framework' ) ) {
         public function admin_settings( $tabs_info = array(), $data = array() ) {
             $setup_style = func_get_args();
             $setup_style = (empty($setup_style[2]) || ! is_array($setup_style[2]) ? array() : $setup_style[2]);
+            $setup_style['settings_url'] = admin_url( 'admin.php?page=' . $this->cc->values[ 'option_page' ] );
             $this->display_admin_settings($tabs_info, $data, $setup_style);
         }
 
@@ -367,7 +399,9 @@ if( ! class_exists( 'BeRocket_Framework' ) ) {
          */
         public function display_admin_settings( $tabs_info = array(), $data = array(), $setup_style = array() ) {
             $plugin_info = get_plugin_data( $this->cc->info[ 'plugin_file' ] );
+            global $wp;
             $def_setup_style = array(
+                'settings_url'    => add_query_arg( NULL, NULL ),
                 'use_filters_hook' => true,
                 'hide_header' => false,
                 'hide_header_links' => false,
@@ -403,7 +437,7 @@ if( ! class_exists( 'BeRocket_Framework' ) ) {
                 foreach ( $tabs_info as $tab_name => $tab_info ) {
                     $page_menu .= '<li>';
 
-                    $page_menu .= '<a href="' . ( empty($tab_info['link']) ? add_query_arg('tab', sanitize_title( $tab_name ), admin_url( 'admin.php?page=' . $this->cc->values[ 'option_page' ] )) : $tab_info['link'] ) . 
+                    $page_menu .= '<a href="' . ( empty($tab_info['link']) ? add_query_arg('tab', sanitize_title( $tab_name ), $setup_style['settings_url']) : $tab_info['link'] ) . 
                                   '" class="' . ( empty($tab_info['priority']) ? 'default' : $tab_info['priority'] ) . 
                                   ( empty($tab_info['link']) ? '' : ' redirect_link' ) . 
                                   ( $selected_tab ? ( sanitize_title( $tab_name ) == $_GET['tab'] ? ' active' : '' ) : ( $is_first ? ' active' : '' )  ) .
@@ -593,20 +627,20 @@ if( ! class_exists( 'BeRocket_Framework' ) ) {
                     echo "
                         <header>
                             <div class='br_logo_white'>
-                                <a href='http://berocket.com/products/' title='BeRocket' target='_blank'><img src='" . ( plugins_url( 'berocket/images/br_logo_white.png', $this->cc->info[ 'plugin_file' ] ) ) . "' /></a>
+                                <a href='https://berocket.com/products/' title='BeRocket' target='_blank'><img src='" . ( plugins_url( 'berocket/images/br_logo_white.png', $this->cc->info[ 'plugin_file' ] ) ) . "' /></a>
                             </div>
                             <nav class='premium'>";
                                 if( ! $setup_style['hide_header_links'] ) {
                                     $header_links = array(
                                         'documentation' => array(
                                             'text' => "<i class='fa fa-book'></i>",
-                                            'link' => apply_filters('brfr_docs_link_' . $setup_style['name_for_filters'], "http://berocket.com/docs/plugin/{$this->cc->values['premium_slug']}" )
+                                            'link' => apply_filters('brfr_docs_link_' . $setup_style['name_for_filters'], "https://berocket.com/docs/plugin/{$this->cc->values['premium_slug']}" )
                                         )
                                     );
                                     if( ! empty($this->plugin_version_capability) && $this->plugin_version_capability > 5 ) {
                                         $header_links['support'] = array(
                                             'text' => "<i class='fa fa-support'></i>",
-                                            'link' => apply_filters('brfr_support_link_' . $setup_style['name_for_filters'], "http://berocket.com/support/product/{$this->cc->values['premium_slug']}" )
+                                            'link' => apply_filters('brfr_support_link_' . $setup_style['name_for_filters'], "https://berocket.com/support/product/{$this->cc->values['premium_slug']}" )
                                         );
                                     } elseif( ! empty($this->cc->values['free_slug']) ) {
                                         $header_links['support'] = array(
@@ -636,21 +670,21 @@ if( ! class_exists( 'BeRocket_Framework' ) ) {
                 echo '<div class="content">';
                     echo "<div class='title'>{$title}</div>";
                     if( ! $setup_style['hide_form'] ) {
-                        echo '<form data-plugin="' . $this->cc->info['plugin_name'] . '" class="br_framework_submit_form ' . $this->cc->info['plugin_name'] . '_submit_form ' . ( ( ! empty($this->cc->feature_list) ) ? 'show_premium' : '' ) .
+                        echo '<form data-plugin="' . $this->cc->info['plugin_name'] . '" class="br_framework_submit_form ' . $this->cc->info['plugin_name'] . '_submit_form ' . ( ( isset($this->plugin_version_capability) && $this->plugin_version_capability <= 5 ) ? 'show_premium' : '' ) .
                              '" method="post" action="options.php">';
                              settings_fields( $_GET['page'] );
                     }
-                        echo $page_content;
-                        if( ! $setup_style['hide_additional_blocks'] ) {
-                            require_once( plugin_dir_path( __FILE__ ) . 'templates/premium.php');
-                        }
-                        echo '<div class="clear-both"></div>';
-                        if( ! $setup_style['hide_save_button'] ) {
-                            echo '<input type="submit" class="button-primary button" value="' . __( 'Save Changes', 'BeRocket_domain' ) . '" />';
-                            echo '<div class="br_save_error"></div>';
-                        }
+                    echo $page_content;
+                    echo '<div class="clear-both"></div>';
+                    if( ! $setup_style['hide_save_button'] ) {
+                        echo '<input type="submit" class="button-primary button" value="' . __( 'Save Changes', 'BeRocket_domain' ) . '" />';
+                        echo '<div class="br_save_error"></div>';
+                    }
                     if( ! $setup_style['hide_form'] ) {
                         echo '</form>';
+                    }
+                    if( ! $setup_style['hide_additional_blocks'] ) {
+                        require_once( plugin_dir_path( __FILE__ ) . 'templates/premium.php');
                     }
                 echo '</div>';
                 echo '<div class="clear-both"></div>';

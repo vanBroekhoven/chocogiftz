@@ -2,7 +2,7 @@
 $plugin_info   = get_plugin_data( $this->cc->info[ 'plugin_file' ] );
 
 $dplugin_name  = $this->cc->info['full_name'];
-$dplugin_link  = 'http://berocket.com/product/' . $this->cc->values['premium_slug'];
+$dplugin_link  = 'https://berocket.com/product/' . $this->cc->values['premium_slug'];
 $dplugin_price = $this->cc->info['price'];
 $dplugin_desc  = $plugin_info['Description'];
 $options       = $this->get_option();

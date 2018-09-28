@@ -94,22 +94,15 @@ if ( ! class_exists( 'BeRocket_updater' ) ) {
         public static function wp_menu_order( $menu_ord ) {
             global $submenu;
 
+            if( empty($submenu[ 'berocket_account' ]) || ! is_array($submenu[ 'berocket_account' ]) || count($submenu[ 'berocket_account' ]) == 0 ) {
+                return $menu_ord;
+            }
+
             $new_order_temp = array();
             $new_sub_order  = array();
             $new_order_sort = array();
 
-            $compatibility_hack = array(
-                'br_notice'            => 'br-cart_notices',
-                'br_labels'            => 'br_products_label',
-                'br_force_sell'        => 'br-force_sell',
-                'br_minmax_limitation' => 'br-mm-quantity',
-                'br_order_numbers'     => 'br-BeRocket_Order_Numbers',
-                'br_sale_report'       => 'br-sales_report',
-            );
-
-            if( empty($submenu[ 'berocket_account' ]) || ! is_array($submenu[ 'berocket_account' ]) || count($submenu[ 'berocket_account' ]) == 0 ) {
-                return $menu_ord;
-            }
+            $compatibility_hack = apply_filters('BeRocket_updater_menu_order_custom_post', array());
 
             foreach ( $submenu[ 'berocket_account' ] as $item ) {
                 if ( $item[ 0 ] == 'BeRocket' ) {
@@ -122,46 +115,15 @@ if ( ! class_exists( 'BeRocket_updater' ) ) {
                     continue;
                 }
 
-                if ( false !== strpos( $item[ 2 ], 'edit.php' ) ) {
-                    // better names
-                    if ( $item[ 0 ] == 'Min/Max Limitation' ) {
-                        $item[ 0 ] = 'Limitations';
-                    }
-
+                if ( false !== strpos( $item[ 2 ], 'edit.php' ) && ! empty($compatibility_hack[ str_replace( "edit.php?post_type=", "", $item[ 2 ] ) ]) ) {
                     $item[ 0 ] = "<span class='berocket_admin_menu_custom_post_submenu'>" . $item[ 0 ] . "</span>";
                     $new_sub_order[ $compatibility_hack[ str_replace( "edit.php?post_type=", "", $item[ 2 ] ) ] ][] = $item;
                 } else {
-                    // better names
-                    if ( $item[ 0 ] == 'WooCommerce Min and Max Quantities' ) {
-                        $item[ 0 ] = 'Min/Max Quantities';
-                    }
-
                     $new_order_temp[] = $item;
                     $new_order_sort[] = $item[ 0 ];
-
-                    if ( $item[ 0 ] == 'Product Brands' ) {
-                        $new_sub_order[ 'br-product_brand' ][] = array(
-                            "<span class='berocket_admin_menu_custom_post_submenu'>" . __( 'All Brands', 'BeRocket_product_brand_domain' ) . "</span>",
-                            'edit_posts',
-                            'edit-tags.php?taxonomy=berocket_brand&post_type=product',
-                            'Brands',
-                        );
-                    } elseif ( $item[ 0 ] == 'Product Filters' ) {
-                        $new_sub_order[ 'br-product-filters' ][] = array(
-                            "<span class='berocket_admin_menu_custom_post_submenu'>" . __( 'Filters', 'BeRocket_AJAX_domain' ) . "</span>",
-                            'edit_posts',
-                            'edit.php?post_type=br_product_filter',
-                            'Filters',
-                        );
-                        $new_sub_order[ 'br-product-filters' ][] = array(
-                            "<span class='berocket_admin_menu_custom_post_submenu'>" . __( 'Groups', 'BeRocket_AJAX_domain' ) . "</span>",
-                            'edit_posts',
-                            'edit.php?post_type=br_filters_group',
-                            'Groups',
-                        );
-                    }
                 }
             }
+            $new_sub_order = apply_filters('BeRocket_updater_menu_order_sub_order', $new_sub_order);
 
             array_multisort( $new_order_sort, $new_order_temp );
 
@@ -403,6 +365,7 @@ if ( ! class_exists( 'BeRocket_updater' ) ) {
                         $out  = json_encode( $data );
                     }
                 }
+                self::update_check_set('');
             }
             echo $out;
             wp_die();
@@ -474,7 +437,7 @@ if ( ! class_exists( 'BeRocket_updater' ) ) {
         }
 
         public static function main_menu_item() {
-            add_menu_page( 'BeRocket Account', 'BeRocket', 'manage_options', 'berocket_account', array(
+            add_menu_page( 'BeRocket Account', 'BeRocket', 'manage_woocommerce', 'berocket_account', array(
                     __CLASS__,
                     'account_form'
                 ), plugin_dir_url( __FILE__ ) . 'ico.png', '55.55' );
@@ -620,6 +583,8 @@ if ( ! class_exists( 'BeRocket_updater' ) ) {
                 $active_plugin = get_option( 'berocket_key_activated_plugins' );
             }
 
+            $no_update_paid = array();
+
             foreach ( self::$plugin_info as $plugin ) {
                 if ( ! empty( self::$key ) && strlen( self::$key ) == 40 ) {
                     $key = self::$key;
@@ -664,9 +629,10 @@ if ( ! class_exists( 'BeRocket_updater' ) ) {
                     $active_plugin = array();
                 }
 
+                $responsed = false;
                 if ( $version !== false ) {
                     $active_plugin[ $plugin[ 'id' ] ] = true;
-                    if ( version_compare( $plugin[ 'version' ], $version, '<' ) ) {
+                    if ( version_compare( $plugin[ 'version' ], $version, '<' ) && ! empty($value) ) {
                         $value->checked[ $plugin[ 'plugin' ] ]  = $version;
                         $val                                    = (object) array(
                             'id'          => 'br_' . $plugin[ 'id' ],
@@ -677,9 +643,21 @@ if ( ! class_exists( 'BeRocket_updater' ) ) {
                             'slug'        => $plugin[ 'slug' ]
                         );
                         $value->response[ $plugin[ 'plugin' ] ] = $val;
+                        $responsed = true;
                     }
                 } else {
                     $active_plugin[ $plugin[ 'id' ] ] = false;
+                }
+                if( ! $responsed && isset($plugin[ 'version_capability' ]) && $plugin[ 'version_capability' ] >= 10 ) {
+                    $val                                    = (object) array(
+                        'id'          => 'br_' . $plugin[ 'id' ],
+                        'new_version' => $plugin[ 'version' ],
+                        'package'     => BeRocket_update_path . 'main/update_product/' . $plugin[ 'id' ] . '/' . ( empty($key) ? 'none' : $key ),
+                        'url'         => BeRocket_update_path . 'product/' . $plugin[ 'id' ],
+                        'plugin'      => $plugin[ 'plugin' ],
+                        'slug'        => $plugin[ 'slug' ]
+                    );
+                    $no_update_paid[$plugin[ 'plugin' ]] = $val;
                 }
             }
 
@@ -691,11 +669,27 @@ if ( ! class_exists( 'BeRocket_updater' ) ) {
 
             delete_site_transient( 'berocket_not_activated_notices_site' );
             delete_transient( 'berocket_not_activated_notices' );
+            if ( is_multisite() ) {  
+                global $wpdb;  
 
-            if ( isset( $value->no_update ) && is_array( $value->no_update ) ) {
+                $current_site = get_current_site();
+                $all_sites = get_sites(array('fields' => 'ids'));
+                if( is_array($all_sites) ) {
+                    foreach($all_sites as $site_id) {
+                        switch_to_blog($site_id);
+                        delete_site_transient( 'berocket_not_activated_notices_site' );
+                        delete_transient( 'berocket_not_activated_notices' );
+                        restore_current_blog();
+                    }
+                }
+            }
+            if ( ! empty($value) && isset( $value->no_update ) && is_array( $value->no_update ) ) {
+                $value->no_update = array_merge($value->no_update, $no_update_paid);
                 foreach ( $value->no_update as $key => $val ) {
                     if ( isset( $val->slug ) && in_array( $val->slug, self::$slugs ) ) {
-                        unset( $value->no_update[ $key ] );
+                        if( ! array_key_exists($key, $no_update_paid) ) {
+                            unset( $value->no_update[ $key ] );
+                        }
                     }
                 }
             }
@@ -761,6 +755,7 @@ if ( ! class_exists( 'BeRocket_updater' ) ) {
             } else {
                 update_option( 'BeRocket_account_option', $options );
             }
+            self::update_check_set('');
         }
         public static function admin_notice_is_display_notice($display_notice, $item, $search_data) {
             if( ! empty($item['for_plugin']) && is_array($item['for_plugin']) && ! empty($item['for_plugin']['id']) && ! empty($item['for_plugin']['version']) ) {
