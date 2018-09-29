@@ -89,6 +89,18 @@
   margin-bottom: .8em; }
 
 /*
+  Links
+  ----------------------------------------------------------------
+*/
+a {
+  color: #532b0f;
+  text-decoration: none; }
+
+a:hover {
+  color: grey;
+  text-decoration: none; }
+
+/*
   Storefront Breadcrumb
   ----------------------------------------------------------------
 */
@@ -142,9 +154,8 @@ body {
     border-bottom: 1px solid #532b0f; }
   body ul.products li.product .onsale {
     position: absolute;
-    top: 10px;
-    left: 10px;
-    text-align: center; }
+    top: 137px;
+    right: 62px; }
   body .onsale {
     display: none; }
   @media (max-width: 767px) {

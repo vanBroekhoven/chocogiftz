@@ -150,6 +150,19 @@ $light-logo-color: #b160265d;
 }
 
 /*
+  Links
+  ----------------------------------------------------------------
+*/
+a {
+  color: $secundary-color;
+  text-decoration: none;
+}
+a:hover {
+  color: $hover-color;
+  text-decoration: none;
+}
+
+/*
   Storefront Breadcrumb
   ----------------------------------------------------------------
 */
@@ -214,9 +227,8 @@ body {
   /* Sale */
   ul.products li.product .onsale {
     position: absolute;
-    top: 10px;
-    left: 10px;
-    text-align: center;
+    top: 137px;
+    right: 62px;
   }
 
   /* Delete 'Aanbieding!' */
