@@ -10,19 +10,20 @@ $logo-font: 'Dr Sugiyama', cursive;
 
 // Color variables
 $primary-color: white;
-$secundary-color: #333333;
+$secundary-color: #532b0f;
 $light-color: #f3f3f3;
-$logo-color: #F2E7B8;
+$logo-color: #FF0080;
 $info-color: orange;
 $secundary-text-color: #dbdfe2;
 $hover-color: grey;
+$light-logo-color: #b160265d;
 
 /*
-  Header
+  Header 
   ----------------------------------------------------------------
 */
 .site-header {
-
+  background-color: $secundary-color;  
   .col-full {
     // margin-bottom: 0;
     // padding-bottom: 0;
@@ -32,7 +33,7 @@ $hover-color: grey;
     padding-bottom: 0;
   }
   .main-navigation ul li {
-    font: 100% $font-scotch;
+    font: 110% $font-scotch;
     a {
       margin-top: 5px;
       color: $primary-color;
@@ -163,6 +164,13 @@ $hover-color: grey;
   Body
   ----------------------------------------------------------------
 */
+
+.button {
+  background-color: $secundary-color;
+}
+h1, h2, h3, h4, h5, h6 {
+  color: $secundary-color;
+}
 body {
   font: 100% $font-scotch;
   background: $primary-color;
@@ -171,14 +179,6 @@ body {
   .main-content {
     padding-top: 400px; /* adjust this to match the height of your header */
     width: 100%;
-  }
-  p.site-description {
-    //color: $primary-color;
-  }
-  .site-title a {
-    // color: $primary-color;
-    // font: 200% $logo-font;
-    // font-size: 2.5em;
   }
   .site-header-cart .cart-contents{
     color: $primary-color;
@@ -204,10 +204,11 @@ body {
     }
   }
   .entry-title {
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid $secundary-color;
+    text-align: center;
   }
   .storefront-full-width-content h1:last-child, {
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid $secundary-color;
   }
 
   /* Sale */
@@ -249,7 +250,7 @@ body {
 
 .site-footer {
   font: 100% $font-stack;
-  background-color: $light-color;
+  background-color: $light-logo-color;
 }
 
 .site-info {
@@ -270,7 +271,7 @@ body {
 
   // Adjusting the width of the main-navigation
   .woocommerce-active .site-header .main-navigation {
-  	width: 50%;
+  	width: 70%;
   }
 
   #masthead .custom-logo-link img {
@@ -280,7 +281,7 @@ body {
     padding-left: 0;
     margin-bottom: 0;
     width: auto;
-    height: 60px;
+    height: 100px;
   }
 
 	/*  resizes the search box*/
@@ -407,7 +408,7 @@ body {
   margin: 0;
 }
 section{
-  background-color: #555;
+  background-color: $secundary-color;
   padding: 2rem 0;
   text-align: left;
 }
@@ -454,3 +455,16 @@ section{
   height: 30px;
   text-align: center;
 }
+
+#page-woocommerce.sidebar.sidebar-column.col-md-4 {
+  display: none;
+}
+#page-woocommerce.main-column.col-md-8 {
+width: 100%;
+}
+
+/*
+  Woocommerce product pages full-width.
+  ----------------------------------------------------------------
+*/
+body.woocommerce #primary { width: 100%; }

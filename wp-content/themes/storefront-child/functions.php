@@ -116,3 +116,15 @@ function lorem_func($attr) {
 }
 
 add_shortcode('lorem','lorem_func');
+
+/*
+  Woocommerce pages full-width.
+  ----------------------------------------------------------------
+*/
+add_action( 'get_header', 'remove_storefront_sidebar' );
+function remove_storefront_sidebar() {
+	if ( is_woocommerce() ) {
+		remove_action( 'storefront_sidebar', 'storefront_get_sidebar', 10 );
+	}
+}
+

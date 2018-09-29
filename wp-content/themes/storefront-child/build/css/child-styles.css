@@ -2,21 +2,22 @@
 @import url("https://fonts.googleapis.com/css?family=Dr+Sugiyama");
 @import url("https://fonts.googleapis.com/css?family=Karla");
 /*
-  Header
+  Header 
   ----------------------------------------------------------------
 */
-.site-header .site-branding {
-  margin-bottom: 0;
-  padding-bottom: 0; }
-
-.site-header .main-navigation ul li {
-  font: 100% "Karla", sans-serif; }
-  .site-header .main-navigation ul li a {
-    margin-top: 5px;
-    color: white; }
-  .site-header .main-navigation ul li a:hover {
-    color: grey;
-    text-decoration: none; }
+.site-header {
+  background-color: #532b0f; }
+  .site-header .site-branding {
+    margin-bottom: 0;
+    padding-bottom: 0; }
+  .site-header .main-navigation ul li {
+    font: 110% "Karla", sans-serif; }
+    .site-header .main-navigation ul li a {
+      margin-top: 5px;
+      color: white; }
+    .site-header .main-navigation ul li a:hover {
+      color: grey;
+      text-decoration: none; }
 
 /*
   Desktop Header
@@ -51,7 +52,7 @@
     display: block !important; }
   button.menu-toggle {
     background: white !important;
-    color: #333333; }
+    color: #532b0f; }
   .main-navigation ul li a,
   .site-title a, ul.menu li a,
   .site-branding h1 a,
@@ -78,12 +79,12 @@
   padding-top: 1.6em; }
 
 #menu-item-448 {
-  border-bottom: 1px solid #F2E7B8;
+  border-bottom: 1px solid #FF0080;
   padding: 0 0 2em;
   margin-bottom: 2em; }
 
 #menu-item-135 {
-  border-bottom: 1px solid #F2E7B8;
+  border-bottom: 1px solid #FF0080;
   padding: 0 0 2em;
   margin-bottom: .8em; }
 
@@ -93,16 +94,22 @@
 */
 .storefront-breadcrumb a:hover {
   text-decoration: none;
-  color: #333333; }
+  color: #532b0f; }
 
 /*
   Body
   ----------------------------------------------------------------
 */
+.button {
+  background-color: #532b0f; }
+
+h1, h2, h3, h4, h5, h6 {
+  color: #532b0f; }
+
 body {
   font: 100% "Karla", sans-serif;
   background: white;
-  color: #333333;
+  color: #532b0f;
   /*
     Products
     ----------------------------------------------------------------
@@ -122,16 +129,17 @@ body {
   body .woocommerce-info, body .woocommerce-noreviews, body p.no-comments {
     background-color: orange; }
   body .popular {
-    border-bottom: 1px solid #333333; }
+    border-bottom: 1px solid #532b0f; }
   body ul.products {
     margin-top: 30px; }
     body ul.products img {
-      border: 2px solid #333333;
+      border: 2px solid #532b0f;
       border-style: solid; }
   body .entry-title {
-    border-bottom: 1px solid black; }
+    border-bottom: 1px solid #532b0f;
+    text-align: center; }
   body .storefront-full-width-content h1:last-child {
-    border-bottom: 1px solid black; }
+    border-bottom: 1px solid #532b0f; }
   body ul.products li.product .onsale {
     position: absolute;
     top: 10px;
@@ -141,7 +149,7 @@ body {
     display: none; }
   @media (max-width: 767px) {
     body .woocommerce-product-gallery__wrapper {
-      border: 2px solid #333333;
+      border: 2px solid #532b0f;
       border-style: solid; } }
   body .orderby {
     border: 1px;
@@ -154,7 +162,7 @@ body {
 */
 .site-footer {
   font: 100% "Josefin Sans", sans-serif;
-  background-color: #f3f3f3; }
+  background-color: #b160265d; }
 
 .site-info {
   text-align: center;
@@ -167,9 +175,9 @@ body {
 */
 @media screen and (min-width: 768px) {
   .page-title {
-    border-bottom: 1px solid #333333; }
+    border-bottom: 1px solid #532b0f; }
   .woocommerce-active .site-header .main-navigation {
-    width: 50%; }
+    width: 70%; }
   #masthead .custom-logo-link img {
     display: block;
     margin-left: auto;
@@ -177,7 +185,7 @@ body {
     padding-left: 0;
     margin-bottom: 0;
     width: auto;
-    height: 60px; }
+    height: 100px; }
   /*  resizes the search box*/
   #masthead .site-search .widget_product_search input[type=search], #masthead .site-search .widget_product_search input[type=text] {
     padding: .5em .5em .5em 2em;
@@ -186,7 +194,7 @@ body {
     position: relative;
     margin-top: 1.1em; }
   #menu-item-449 a {
-    color: #F2E7B8; }
+    color: #FF0080; }
   #menu-item-449 a:hover {
     color: grey; } }
 
@@ -257,7 +265,7 @@ body {
   margin: 0; }
 
 section {
-  background-color: #555;
+  background-color: #532b0f;
   padding: 2rem 0;
   text-align: left; }
 
@@ -291,7 +299,7 @@ section {
   text-decoration: none; }
 
 .contact a:hover {
-  color: #F2E7B8; }
+  color: #FF0080; }
 
 .contact p {
   color: white;
@@ -305,3 +313,16 @@ section {
   width: 30px;
   height: 30px;
   text-align: center; }
+
+#page-woocommerce.sidebar.sidebar-column.col-md-4 {
+  display: none; }
+
+#page-woocommerce.main-column.col-md-8 {
+  width: 100%; }
+
+/*
+  Woocommerce product pages full-width.
+  ----------------------------------------------------------------
+*/
+body.woocommerce #primary {
+  width: 100%; }
