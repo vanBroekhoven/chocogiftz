@@ -314,15 +314,10 @@ section {
   height: 30px;
   text-align: center; }
 
-#page-woocommerce.sidebar.sidebar-column.col-md-4 {
-  display: none; }
-
-#page-woocommerce.main-column.col-md-8 {
-  width: 100%; }
-
 /*
-  Woocommerce product pages full-width.
+  Woocommerce pages full-width.
   ----------------------------------------------------------------
 */
 body.woocommerce #primary {
+  float: none;
   width: 100%; }
