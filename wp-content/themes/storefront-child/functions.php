@@ -143,3 +143,17 @@ function woa_remove_sidebar_class_body( $wp_classes ) {
 $wp_classes[] = 'page-template-template-fullwidth-php';
 return $wp_classes;
 }
+
+/**
+ * Adds a top bar to Storefront, before the header.
+ */
+function storefront_add_topbar() {
+    ?>
+    <div id="topbar">
+        <div class="col-full">
+            <p>Your text here</p>
+        </div>
+    </div>
+    <?php
+}
+add_action( 'storefront_before_header', 'storefront_add_topbar' );

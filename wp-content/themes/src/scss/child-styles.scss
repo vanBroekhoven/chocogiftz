@@ -12,22 +12,39 @@ $logo-font: 'Dr Sugiyama', cursive;
 $primary-color: white;
 $secundary-color: #532b0f;
 $light-color: #f3f3f3;
-$logo-color: #FF0080;
+$logo-color: #b92258;
 $info-color: orange;
 $secundary-text-color: #dbdfe2;
 $hover-color: grey;
 $light-logo-color: #b160265d;
 
 /*
+  Topbar 
+  ----------------------------------------------------------------
+*/
+#topbar {
+  text-align: center;
+  background-color: $logo-color;
+  height: 30px;
+  line-height: 30px;
+}
+
+#topbar p {
+  color: $primary-color;
+}
+
+/*
   Header 
   ----------------------------------------------------------------
 */
 .site-header {
-  background-color: $secundary-color;  
-  .col-full {
-    // margin-bottom: 0;
-    // padding-bottom: 0;
-  }
+  background-color: $secundary-color; 
+  padding-bottom: 0.5em;
+  padding-top: 0.7em; 
+  // .col-full {
+  //   padding-bottom: 0px;
+  //   padding-top: 0px;
+  // }
   .site-branding {
     margin-bottom: 0;
     padding-bottom: 0;
@@ -42,7 +59,7 @@ $light-logo-color: #b160265d;
       color: $hover-color;
       text-decoration: none;
     }
-
+    padding-bottom: 0px;
   }
 } // site-header
 
@@ -74,7 +91,9 @@ $light-logo-color: #b160265d;
     margin: 0;
     margin-top: 10px;
     color: $primary-color;
+    padding-bottom: 0px;
   }
+  padding-bottom: 0px;
 }
 
 /*
@@ -122,9 +141,9 @@ $light-logo-color: #b160265d;
           line-height: 0.5rem;
         }
         // Style the secundairy menu items of the Toggle-menu (Mobile version)
-        .secundairy__link a {
-          //
-        }
+        // .secundairy__link a {
+        //   //
+        // }
         // Style the links to information pages
         .information__item a {
           color: grey;
@@ -161,6 +180,9 @@ a:hover {
   color: $hover-color;
   text-decoration: none;
 }
+
+:any-link { text-decoration: none }
+:any-link:active { text-decoration: none }
 
 /*
   Storefront Breadcrumb
@@ -308,7 +330,7 @@ body {
   }
 
   #menu-item-449 a {
-    color: $logo-color;
+    color: #ff0080;
   }
 
   #menu-item-449 a:hover {
@@ -420,7 +442,7 @@ body {
   margin: 0;
 }
 section{
-  background-color: $secundary-color;
+  background-color: $primary-color;
   padding: 2rem 0;
   text-align: left;
 }
